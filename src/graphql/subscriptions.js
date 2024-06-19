@@ -11,20 +11,10 @@ export const onCreateMaquinaria = /* GraphQL */ `
       TIPO
       MARCA
       DESCRIPCION
-      OPERATIVIDAD {
-        ID
-        FECHA
-        DESCRIPCION
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
       OBSERVACION
       id
       createdAt
       updatedAt
-      maquinariaOPERATIVIDADId
       __typename
     }
   }
@@ -39,20 +29,10 @@ export const onUpdateMaquinaria = /* GraphQL */ `
       TIPO
       MARCA
       DESCRIPCION
-      OPERATIVIDAD {
-        ID
-        FECHA
-        DESCRIPCION
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
       OBSERVACION
       id
       createdAt
       updatedAt
-      maquinariaOPERATIVIDADId
       __typename
     }
   }
@@ -67,20 +47,10 @@ export const onDeleteMaquinaria = /* GraphQL */ `
       TIPO
       MARCA
       DESCRIPCION
-      OPERATIVIDAD {
-        ID
-        FECHA
-        DESCRIPCION
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
       OBSERVACION
       id
       createdAt
       updatedAt
-      maquinariaOPERATIVIDADId
       __typename
     }
   }
@@ -93,9 +63,22 @@ export const onCreateOPERATIVIDAD = /* GraphQL */ `
       ID
       FECHA
       DESCRIPCION
+      vehiculo {
+        NroVehiculo
+        Patentedelvehiculo
+        TIPO
+        MARCA
+        DESCRIPCION
+        OBSERVACION
+        id
+        createdAt
+        updatedAt
+        __typename
+      }
       id
       createdAt
       updatedAt
+      oPERATIVIDADVehiculoId
       __typename
     }
   }
@@ -108,9 +91,22 @@ export const onUpdateOPERATIVIDAD = /* GraphQL */ `
       ID
       FECHA
       DESCRIPCION
+      vehiculo {
+        NroVehiculo
+        Patentedelvehiculo
+        TIPO
+        MARCA
+        DESCRIPCION
+        OBSERVACION
+        id
+        createdAt
+        updatedAt
+        __typename
+      }
       id
       createdAt
       updatedAt
+      oPERATIVIDADVehiculoId
       __typename
     }
   }
@@ -123,9 +119,22 @@ export const onDeleteOPERATIVIDAD = /* GraphQL */ `
       ID
       FECHA
       DESCRIPCION
+      vehiculo {
+        NroVehiculo
+        Patentedelvehiculo
+        TIPO
+        MARCA
+        DESCRIPCION
+        OBSERVACION
+        id
+        createdAt
+        updatedAt
+        __typename
+      }
       id
       createdAt
       updatedAt
+      oPERATIVIDADVehiculoId
       __typename
     }
   }

@@ -19,17 +19,8 @@ import { TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
 import { MaquinariasService } from '../services/maquinarias.service';
+import { CreateMaquinariaInput, UpdateMaquinariaInput } from '../API.service';
 
-export interface Maquinaria {
-    id: string | number;
-    codigo: string;
-    patente: string;
-    tipo: string;
-    marca: string;
-    modelo: string;
-    fecha: string;
-}
-  
 
 @Component({
   selector: 'app-tables',
@@ -42,8 +33,8 @@ export interface Maquinaria {
 export class TablesComponent {
   @ViewChild('dt') private dt!:Table|null;
   maquinariaDialog: boolean = false;
-  maquinarias:Maquinaria[]=[]
-  maquinaria?: Maquinaria;
+  maquinarias:CreateMaquinariaInput[]=[]
+  maquinaria?: CreateMaquinariaInput;
 
   selectedProducts!: any[] | null;
 
@@ -63,34 +54,47 @@ export class TablesComponent {
           { label: 'LOWSTOCK', value: 'lowstock' },
           { label: 'OUTOFSTOCK', value: 'outofstock' }
       ];
-      this.maquinarias=this.maquinariaService.getMaquinarias;
+    this.maquinariaService.getMaquinaria().then(data=>{
+        this.maquinarias=data.data.listMaquinarias.items
+    })
   }
 
   openNew() {
-      this.maquinaria = {id:'',patente:'',codigo:'',fecha:'',marca:'',modelo:'',tipo:' '};
+      this.maquinaria = {DESCRIPCION:'',MARCA:'',NroVehiculo:'',OBSERVACION:'',Patentedelvehiculo:'',TIPO:'',id:''}
       this.submitted = false;
       this.maquinariaDialog = true;
   }
 
 
 
-  editProduct(maquinaria: Maquinaria) {
+  editProduct(maquinaria: CreateMaquinariaInput) {
       this.maquinaria = { ...maquinaria };
       this.maquinariaDialog = true;
   }
 
-  deleteProduct(maquinaria: Maquinaria) {
+  deleteProduct(maquinaria: CreateMaquinariaInput) {
       this.confirmationService.confirm({
-          message: 'Are you sure you want to delete ' + maquinaria.codigo + '?',
-          header: 'Confirm',
+          message: 'Quieres borrar el vehiculo ' + maquinaria.NroVehiculo + '?',
+          header: 'Confirmar',
           icon: 'pi pi-exclamation-triangle',
           accept: () => {
-              this.maquinarias = this.maquinarias.filter((val) => val.id !== maquinaria.id);
-              this.maquinaria = {id:'',patente:'',codigo:'',fecha:'',marca:'',modelo:'',tipo:' '};
-              this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+            this.deleteMaquinaria(maquinaria)
           }
       });
   }
+deleteMaquinaria(maquinaria:CreateMaquinariaInput){
+    if(maquinaria.id){
+        this.maquinariaService.deleteMaquinaria({id:maquinaria.id}).then(()=>{
+            this.maquinarias = this.maquinarias.filter((val) => val.id !== maquinaria.id);
+            this.maquinaria = {DESCRIPCION:'',MARCA:'',NroVehiculo:'',OBSERVACION:'',Patentedelvehiculo:'',TIPO:'',id:''}
+            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Maquinaria borrada', life: 3000 });
+          
+        })
+
+    }
+
+}
+
 
   hideDialog() {
       this.maquinariaDialog = false;
@@ -105,19 +109,33 @@ export class TablesComponent {
   saveMaquinaria() {
       this.submitted = true;
 
-      if (this.maquinaria?.codigo?.trim()) {
+      if (this.maquinaria?.NroVehiculo?.trim()) {
           if (this.maquinaria.id) {
-             this.maquinarias[this.findIndexById(this.maquinaria.id)] = this.maquinaria;
-              this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
-          } else {
+   
+            // // const maquinaria:UpdateMaquinariaInput={id:this.maquinaria.id,DESCRIPCION:this.maquinaria.DESCRIPCION,MARCA:this.maquinaria.MARCA,NroVehiculo:this.maquinaria.NroVehiculo,OBSERVACION:this.maquinaria.OBSERVACION,Patentedelvehiculo:this.maquinaria.Patentedelvehiculo,TIPO:this.maquinaria.TIPO};
+            // // console.log(this.maquinaria)
+            // // this.maquinaria
+            // this.maquinariaService.updateMaquinaria(maquinaria).then(()=>{
+            //     this.maquinarias[this.findIndexById(maquinaria.id)] = this.maquinaria
+               
+            //     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Maquinaria actualizada', life: 3000 });
+    
+            // })
+                  } else {
               this.maquinaria.id = this.createId();
-            this.maquinarias.unshift(this.maquinaria);
-              this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
-          }
+              this.maquinariaService.saveMaquinaria(this.maquinaria).then(()=>{
+                if(this.maquinaria)
+                    this.maquinarias.push(this.maquinaria)
+                this.messageService.add({ severity: 'success', summary: 'Successful', detail: `Se registro la maquinaria ${this.maquinaria?.NroVehiculo}`, life: 3000 });
+              }).catch(()=>{
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: `hubo un problema con el  registro de la maquinaria ${this.maquinaria?.NroVehiculo}`, life: 3000 });
+  
+              });
+         }
 
           this.maquinarias = [...this.maquinarias];
           this.maquinariaDialog = false;
-          this.maquinaria = {id:'',patente:'',codigo:'',fecha:'',marca:'',modelo:'',tipo:' '};      }
+          this.maquinaria = {DESCRIPCION:'',MARCA:'',NroVehiculo:'',OBSERVACION:'',Patentedelvehiculo:'',TIPO:'',id:''}     }
   }
 
   findIndexById(id: string|number): number {

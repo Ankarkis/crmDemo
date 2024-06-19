@@ -1,0 +1,133 @@
+# this is an auto generated file. This will be overwritten
+
+subscription OnCreateMaquinaria(
+  $filter: ModelSubscriptionMaquinariaFilterInput
+) {
+  onCreateMaquinaria(filter: $filter) {
+    NroVehiculo
+    Patentedelvehiculo
+    TIPO
+    MARCA
+    DESCRIPCION
+    OBSERVACION
+    id
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnUpdateMaquinaria(
+  $filter: ModelSubscriptionMaquinariaFilterInput
+) {
+  onUpdateMaquinaria(filter: $filter) {
+    NroVehiculo
+    Patentedelvehiculo
+    TIPO
+    MARCA
+    DESCRIPCION
+    OBSERVACION
+    id
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnDeleteMaquinaria(
+  $filter: ModelSubscriptionMaquinariaFilterInput
+) {
+  onDeleteMaquinaria(filter: $filter) {
+    NroVehiculo
+    Patentedelvehiculo
+    TIPO
+    MARCA
+    DESCRIPCION
+    OBSERVACION
+    id
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+subscription OnCreateOPERATIVIDAD(
+  $filter: ModelSubscriptionOPERATIVIDADFilterInput
+) {
+  onCreateOPERATIVIDAD(filter: $filter) {
+    ID
+    FECHA
+    DESCRIPCION
+    vehiculo {
+      NroVehiculo
+      Patentedelvehiculo
+      TIPO
+      MARCA
+      DESCRIPCION
+      OBSERVACION
+      id
+      createdAt
+      updatedAt
+      __typename
+    }
+    id
+    createdAt
+    updatedAt
+    oPERATIVIDADVehiculoId
+    __typename
+  }
+}
+
+subscription OnUpdateOPERATIVIDAD(
+  $filter: ModelSubscriptionOPERATIVIDADFilterInput
+) {
+  onUpdateOPERATIVIDAD(filter: $filter) {
+    ID
+    FECHA
+    DESCRIPCION
+    vehiculo {
+      NroVehiculo
+      Patentedelvehiculo
+      TIPO
+      MARCA
+      DESCRIPCION
+      OBSERVACION
+      id
+      createdAt
+      updatedAt
+      __typename
+    }
+    id
+    createdAt
+    updatedAt
+    oPERATIVIDADVehiculoId
+    __typename
+  }
+}
+
+subscription OnDeleteOPERATIVIDAD(
+  $filter: ModelSubscriptionOPERATIVIDADFilterInput
+) {
+  onDeleteOPERATIVIDAD(filter: $filter) {
+    ID
+    FECHA
+    DESCRIPCION
+    vehiculo {
+      NroVehiculo
+      Patentedelvehiculo
+      TIPO
+      MARCA
+      DESCRIPCION
+      OBSERVACION
+      id
+      createdAt
+      updatedAt
+      __typename
+    }
+    id
+    createdAt
+    updatedAt
+    oPERATIVIDADVehiculoId
+    __typename
+  }
+}

@@ -41,23 +41,23 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th pSortableColumn="codigo" style="min-width:15rem">
-                Nro Vehiculo <p-sortIcon field="codigo" />
+            <th pSortableColumn="NroVehiculo" style="min-width:15rem">
+                Nro Vehiculo <p-sortIcon field="NroVehiculo" />
             </th>
             <th>
                 Patente del vehiculo
             </th>
-            <th pSortableColumn="tipo">
-                Tipo <p-sortIcon field="tipo" />
+            <th pSortableColumn="TIPO">
+                Tipo <p-sortIcon field="TIPO" />
             </th>
-            <th pSortableColumn="marca" style="min-width:10rem">
-                Marca <p-sortIcon field="marca" />
+            <th pSortableColumn="MARCA" style="min-width:10rem">
+                Marca <p-sortIcon field="MARCA" />
             </th>
-            <th pSortableColumn="modelo">
-                Modelo <p-sortIcon field="modelo" />
+            <th pSortableColumn="OBSERVACION">
+                Modelo <p-sortIcon field="OBSERVACION" />
             </th>
-            <th pSortableColumn="inventoryStatus" style="min-width:10rem">
-                Fecha <p-sortIcon field="inventoryStatus" />
+            <th pSortableColumn="updatedAt" style="min-width:10rem">
+                Fecha <p-sortIcon field="updatedAt" />
             </th>
             <th></th>
         </tr>
@@ -65,22 +65,22 @@
     <ng-template pTemplate="body" let-maquinaria>
         <tr>
             <td>
-                {{ maquinaria.codigo }}
+                {{ maquinaria.NroVehiculo }}
             </td>
             <td>
-                {{ maquinaria.patente }}
+                {{ maquinaria.Patentedelvehiculo }}
             </td>
             <td>
-                {{ maquinaria.tipo }}
+                {{ maquinaria.TIPO }}
             </td>
             <td>
-                {{ maquinaria.marca }}
+                {{ maquinaria.MARCA }}
             </td>
             <td>
-                {{ maquinaria.modelo }}
+                {{ maquinaria.DESCRIPCION }}
             </td>
             <td>
-                {{ maquinaria.fecha }}
+                {{ maquinaria.createdAt }}
             </td>
             <td>
                 <p-button 
@@ -121,10 +121,10 @@ styleClass="p-fluid">
                 type="text" 
                 pInputText 
                 id="Nvehiculo" 
-                [(ngModel)]="maquinaria!.codigo" 
+                [(ngModel)]="maquinaria!.NroVehiculo" 
                 required 
                 autofocus />
-            <small class="p-error" *ngIf="submitted && !maquinaria!.codigo">
+            <small class="p-error" *ngIf="submitted && !maquinaria!.NroVehiculo">
               Debes ingresar el Nro de vehiculo
             </small>
         </div>
@@ -134,9 +134,9 @@ styleClass="p-fluid">
                 type="text" 
                 pInputText 
                 id="patente" 
-                [(ngModel)]="maquinaria!.patente" 
+                [(ngModel)]="maquinaria!.Patentedelvehiculo" 
                 required />
-            <small class="p-error" *ngIf="submitted && !maquinaria!.patente">
+            <small class="p-error" *ngIf="submitted && !maquinaria!.Patentedelvehiculo">
               Debes ingresar la patente del vehiculo
             </small>
         </div>
@@ -146,9 +146,9 @@ styleClass="p-fluid">
                 type="text" 
                 pInputText 
                 id="tipo" 
-                [(ngModel)]="maquinaria!.tipo" 
+                [(ngModel)]="maquinaria!.TIPO" 
                 required />
-            <small class="p-error" *ngIf="submitted && !maquinaria!.tipo">
+            <small class="p-error" *ngIf="submitted && !maquinaria!.TIPO">
               Debes ingresar el tipo de maquinaria
             </small>
         </div>
@@ -158,9 +158,9 @@ styleClass="p-fluid">
                 type="text" 
                 pInputText 
                 id="marca" 
-                [(ngModel)]="maquinaria!.marca" 
+                [(ngModel)]="maquinaria!.MARCA" 
                 required />
-            <small class="p-error" *ngIf="submitted && !maquinaria!.marca">
+            <small class="p-error" *ngIf="submitted && !maquinaria!.MARCA">
               Debes ingresar la marca de la maquinaria
             </small>
         </div>
@@ -170,9 +170,9 @@ styleClass="p-fluid">
                 type="text" 
                 pInputText 
                 id="modelo" 
-                [(ngModel)]="maquinaria!.modelo" 
+                [(ngModel)]="maquinaria!.DESCRIPCION" 
                 required />
-            <small class="p-error" *ngIf="submitted && !maquinaria!.modelo">
+            <small class="p-error" *ngIf="submitted && !maquinaria!.DESCRIPCION">
               Debes ingresar el modelo de la maquinaria
             </small>
         </div>

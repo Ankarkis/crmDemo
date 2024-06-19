@@ -9,20 +9,10 @@ export const getMaquinaria = /* GraphQL */ `
       TIPO
       MARCA
       DESCRIPCION
-      OPERATIVIDAD {
-        ID
-        FECHA
-        DESCRIPCION
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
       OBSERVACION
       id
       createdAt
       updatedAt
-      maquinariaOPERATIVIDADId
       __typename
     }
   }
@@ -44,7 +34,6 @@ export const listMaquinarias = /* GraphQL */ `
         id
         createdAt
         updatedAt
-        maquinariaOPERATIVIDADId
         __typename
       }
       nextToken
@@ -58,9 +47,22 @@ export const getOPERATIVIDAD = /* GraphQL */ `
       ID
       FECHA
       DESCRIPCION
+      vehiculo {
+        NroVehiculo
+        Patentedelvehiculo
+        TIPO
+        MARCA
+        DESCRIPCION
+        OBSERVACION
+        id
+        createdAt
+        updatedAt
+        __typename
+      }
       id
       createdAt
       updatedAt
+      oPERATIVIDADVehiculoId
       __typename
     }
   }
@@ -79,6 +81,7 @@ export const listOPERATIVIDADS = /* GraphQL */ `
         id
         createdAt
         updatedAt
+        oPERATIVIDADVehiculoId
         __typename
       }
       nextToken

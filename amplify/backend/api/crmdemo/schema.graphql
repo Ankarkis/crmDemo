@@ -8,12 +8,12 @@ NroVehiculo: ID!
 Patentedelvehiculo: String!
 TIPO: String!
 MARCA: String!
-DESCRIPCION: String!
-OPERATIVIDAD: OPERATIVIDAD @hasOne	
+DESCRIPCION: String!	
 OBSERVACION: String!	
 }
 type OPERATIVIDAD @model {
 ID: ID!
 FECHA: String!
 DESCRIPCION: String!
+vehiculo: Maquinaria @hasOne
 }
