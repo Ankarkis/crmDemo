@@ -95,8 +95,11 @@ deleteMaquinaria(maquinaria:CreateMaquinariaInput){
 
 
   hideDialog() {
-      this.maquinariaDialog = false;
-      this.submitted = false;
+
+  }
+  hideDialogOperatividad(){
+    this.maquinariaDialog = false;
+    this.submitted = false;
   }
 
   search(event:Event){
