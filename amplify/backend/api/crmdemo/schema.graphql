@@ -9,11 +9,11 @@ Patentedelvehiculo: String!
 TIPO: String!
 MARCA: String!
 DESCRIPCION: String!	
-OBSERVACION: String!	
+OBSERVACION: String!
+OPERATIVIDAD:[OPERATIVIDAD] @hasMany	
 }
 type OPERATIVIDAD @model {
-ID: ID!
 FECHA: String!
 DESCRIPCION: String!
-vehiculo: Maquinaria @hasOne
+ACTIVO:Boolean!
 }

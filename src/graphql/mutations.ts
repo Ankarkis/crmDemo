@@ -19,6 +19,10 @@ export const createMaquinaria = /* GraphQL */ `mutation CreateMaquinaria(
     MARCA
     DESCRIPCION
     OBSERVACION
+    OPERATIVIDAD {
+      nextToken
+      __typename
+    }
     id
     createdAt
     updatedAt
@@ -40,6 +44,10 @@ export const updateMaquinaria = /* GraphQL */ `mutation UpdateMaquinaria(
     MARCA
     DESCRIPCION
     OBSERVACION
+    OPERATIVIDAD {
+      nextToken
+      __typename
+    }
     id
     createdAt
     updatedAt
@@ -61,6 +69,10 @@ export const deleteMaquinaria = /* GraphQL */ `mutation DeleteMaquinaria(
     MARCA
     DESCRIPCION
     OBSERVACION
+    OPERATIVIDAD {
+      nextToken
+      __typename
+    }
     id
     createdAt
     updatedAt
@@ -76,25 +88,13 @@ export const createOPERATIVIDAD = /* GraphQL */ `mutation CreateOPERATIVIDAD(
   $condition: ModelOPERATIVIDADConditionInput
 ) {
   createOPERATIVIDAD(input: $input, condition: $condition) {
-    ID
     FECHA
     DESCRIPCION
-    vehiculo {
-      NroVehiculo
-      Patentedelvehiculo
-      TIPO
-      MARCA
-      DESCRIPCION
-      OBSERVACION
-      id
-      createdAt
-      updatedAt
-      __typename
-    }
+    ACTIVO
     id
     createdAt
     updatedAt
-    oPERATIVIDADVehiculoId
+    maquinariaOPERATIVIDADId
     __typename
   }
 }
@@ -107,25 +107,13 @@ export const updateOPERATIVIDAD = /* GraphQL */ `mutation UpdateOPERATIVIDAD(
   $condition: ModelOPERATIVIDADConditionInput
 ) {
   updateOPERATIVIDAD(input: $input, condition: $condition) {
-    ID
     FECHA
     DESCRIPCION
-    vehiculo {
-      NroVehiculo
-      Patentedelvehiculo
-      TIPO
-      MARCA
-      DESCRIPCION
-      OBSERVACION
-      id
-      createdAt
-      updatedAt
-      __typename
-    }
+    ACTIVO
     id
     createdAt
     updatedAt
-    oPERATIVIDADVehiculoId
+    maquinariaOPERATIVIDADId
     __typename
   }
 }
@@ -138,25 +126,13 @@ export const deleteOPERATIVIDAD = /* GraphQL */ `mutation DeleteOPERATIVIDAD(
   $condition: ModelOPERATIVIDADConditionInput
 ) {
   deleteOPERATIVIDAD(input: $input, condition: $condition) {
-    ID
     FECHA
     DESCRIPCION
-    vehiculo {
-      NroVehiculo
-      Patentedelvehiculo
-      TIPO
-      MARCA
-      DESCRIPCION
-      OBSERVACION
-      id
-      createdAt
-      updatedAt
-      __typename
-    }
+    ACTIVO
     id
     createdAt
     updatedAt
-    oPERATIVIDADVehiculoId
+    maquinariaOPERATIVIDADId
     __typename
   }
 }

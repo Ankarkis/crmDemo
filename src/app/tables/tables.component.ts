@@ -19,13 +19,16 @@ import { TagModule } from 'primeng/tag';
 import { ToastModule } from 'primeng/toast';
 import { ToolbarModule } from 'primeng/toolbar';
 import { MaquinariasService } from '../services/maquinarias.service';
-import { CreateMaquinariaInput, UpdateMaquinariaInput } from '../API.service';
+import { CreateMaquinariaInput, CreateOPERATIVIDADInput, UpdateMaquinariaInput } from '../API.service';
+import { CalendarModule } from 'primeng/calendar';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { OperatividadService } from '../services/operatividad-service.service';
 
 
 @Component({
   selector: 'app-tables',
   standalone: true,
-  imports: [TableModule, DialogModule, RippleModule, ButtonModule, ToastModule, ToolbarModule, ConfirmDialogModule, InputTextModule, InputTextareaModule, CommonModule, FileUploadModule, DropdownModule, TagModule, RadioButtonModule, RatingModule, InputTextModule, FormsModule, InputNumberModule],
+  imports: [TableModule, DialogModule, RippleModule, ButtonModule, ToastModule, ToolbarModule, ConfirmDialogModule, InputTextModule, InputTextareaModule, CommonModule, FileUploadModule, DropdownModule, TagModule, RadioButtonModule, RatingModule, InputTextModule, FormsModule, InputNumberModule,CalendarModule,FloatLabelModule],
   templateUrl: './tables.component.html',
   styleUrl: './tables.component.css',
   providers: [MessageService, ConfirmationService]
@@ -33,27 +36,22 @@ import { CreateMaquinariaInput, UpdateMaquinariaInput } from '../API.service';
 export class TablesComponent {
   @ViewChild('dt') private dt!:Table|null;
   maquinariaDialog: boolean = false;
+  operatividadDialgo:boolean=false;
   maquinarias:CreateMaquinariaInput[]=[]
   maquinaria?: CreateMaquinariaInput;
-
-  selectedProducts!: any[] | null;
-
+  operatividadMaquinaria:CreateOPERATIVIDADInput={
+    ACTIVO: true, DESCRIPCION: '',
+    ID: '',
+    FECHA: ''
+  }
   submitted: boolean = false;
-
-  statuses!: any[];
-
   private messageService=inject(MessageService);
   private confirmationService=inject(ConfirmationService);
   private maquinariaService=inject(MaquinariasService);
+  private operatividadService=inject(OperatividadService)
 
   ngOnInit() {
       // this.productService.getProducts().then((data) => (this.products = data));
-
-      this.statuses = [
-          { label: 'INSTOCK', value: 'instock' },
-          { label: 'LOWSTOCK', value: 'lowstock' },
-          { label: 'OUTOFSTOCK', value: 'outofstock' }
-      ];
     this.maquinariaService.getMaquinaria().then(data=>{
         this.maquinarias=data.data.listMaquinarias.items
     })
@@ -67,9 +65,10 @@ export class TablesComponent {
 
 
 
-  editProduct(maquinaria: CreateMaquinariaInput) {
-      this.maquinaria = { ...maquinaria };
-      this.maquinariaDialog = true;
+  addStatusOperatividad(maquinaria:CreateMaquinariaInput) {
+    this.maquinaria={... maquinaria}
+    this.operatividadMaquinaria={ACTIVO: true, DESCRIPCION: '',ID: '',FECHA: ''}
+      this.operatividadDialgo = true;
   }
 
   deleteProduct(maquinaria: CreateMaquinariaInput) {
@@ -123,9 +122,8 @@ deleteMaquinaria(maquinaria:CreateMaquinariaInput){
             // })
                   } else {
               this.maquinaria.id = this.createId();
-              this.maquinariaService.saveMaquinaria(this.maquinaria).then(()=>{
-                if(this.maquinaria)
-                    this.maquinarias.push(this.maquinaria)
+              this.maquinariaService.saveMaquinaria(this.maquinaria).then(maquinaria=>{
+                this.maquinarias.push(maquinaria.data.createMaquinaria);
                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: `Se registro la maquinaria ${this.maquinaria?.NroVehiculo}`, life: 3000 });
               }).catch(()=>{
             this.messageService.add({ severity: 'error', summary: 'Error', detail: `hubo un problema con el  registro de la maquinaria ${this.maquinaria?.NroVehiculo}`, life: 3000 });
@@ -148,6 +146,20 @@ deleteMaquinaria(maquinaria:CreateMaquinariaInput){
     }
 
     return index;
+}
+
+saveOperatividad(){
+  this.operatividadMaquinaria.id=this.createId();
+  this.operatividadMaquinaria.maquinariaOPERATIVIDADId=this.maquinaria?.id
+  this.operatividadService.saveOperatividad(this.operatividadMaquinaria).then(()=>{
+    this.operatividadDialgo=false;
+    this.messageService.add({ severity: 'success', summary: 'Successful', detail: `Se registro un nuevo estado de operatividad para la maquina ${this.maquinaria?.NroVehiculo}`, life: 3000 });
+   
+  }).catch(()=>{
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: `Ha occurrido un error registrando el estado de operatividad para la maquina ${this.maquinaria?.NroVehiculo}`, life: 3000 });
+   
+  })
+  
 }
 
   createId(): string {

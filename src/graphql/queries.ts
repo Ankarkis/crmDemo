@@ -16,6 +16,10 @@ export const getMaquinaria = /* GraphQL */ `query GetMaquinaria($id: ID!) {
     MARCA
     DESCRIPCION
     OBSERVACION
+    OPERATIVIDAD {
+      nextToken
+      __typename
+    }
     id
     createdAt
     updatedAt
@@ -54,25 +58,13 @@ export const listMaquinarias = /* GraphQL */ `query ListMaquinarias(
 >;
 export const getOPERATIVIDAD = /* GraphQL */ `query GetOPERATIVIDAD($id: ID!) {
   getOPERATIVIDAD(id: $id) {
-    ID
     FECHA
     DESCRIPCION
-    vehiculo {
-      NroVehiculo
-      Patentedelvehiculo
-      TIPO
-      MARCA
-      DESCRIPCION
-      OBSERVACION
-      id
-      createdAt
-      updatedAt
-      __typename
-    }
+    ACTIVO
     id
     createdAt
     updatedAt
-    oPERATIVIDADVehiculoId
+    maquinariaOPERATIVIDADId
     __typename
   }
 }
@@ -87,13 +79,13 @@ export const listOPERATIVIDADS = /* GraphQL */ `query ListOPERATIVIDADS(
 ) {
   listOPERATIVIDADS(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      ID
       FECHA
       DESCRIPCION
+      ACTIVO
       id
       createdAt
       updatedAt
-      oPERATIVIDADVehiculoId
+      maquinariaOPERATIVIDADId
       __typename
     }
     nextToken
