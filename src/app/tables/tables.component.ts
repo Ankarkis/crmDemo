@@ -41,7 +41,6 @@ export class TablesComponent {
   maquinaria?: CreateMaquinariaInput;
   operatividadMaquinaria:CreateOPERATIVIDADInput={
     ACTIVO: true, DESCRIPCION: '',
-    ID: '',
     FECHA: ''
   }
   submitted: boolean = false;
@@ -67,7 +66,7 @@ export class TablesComponent {
 
   addStatusOperatividad(maquinaria:CreateMaquinariaInput) {
     this.maquinaria={... maquinaria}
-    this.operatividadMaquinaria={ACTIVO: true, DESCRIPCION: '',ID: '',FECHA: ''}
+    this.operatividadMaquinaria={ACTIVO: true, DESCRIPCION: '',FECHA: ''}
       this.operatividadDialgo = true;
   }
 
