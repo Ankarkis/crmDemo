@@ -9,11 +9,13 @@ Patentedelvehiculo: String!
 TIPO: String!
 MARCA: String!
 DESCRIPCION: String!	
-OBSERVACION: String!
 OPERATIVIDAD:[OPERATIVIDAD] @hasMany	
 }
-type OPERATIVIDAD @model {
-FECHA: String!
+
+type OPERATIVIDAD @model  
+{
+    id:ID! @primaryKey(sortKeyFields: ["FECHA"])
 DESCRIPCION: String!
 ACTIVO:Boolean!
+FECHA: String! 
 }

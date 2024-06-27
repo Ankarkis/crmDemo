@@ -18,7 +18,6 @@ export const createMaquinaria = /* GraphQL */ `mutation CreateMaquinaria(
     TIPO
     MARCA
     DESCRIPCION
-    OBSERVACION
     OPERATIVIDAD {
       nextToken
       __typename
@@ -43,7 +42,6 @@ export const updateMaquinaria = /* GraphQL */ `mutation UpdateMaquinaria(
     TIPO
     MARCA
     DESCRIPCION
-    OBSERVACION
     OPERATIVIDAD {
       nextToken
       __typename
@@ -68,7 +66,6 @@ export const deleteMaquinaria = /* GraphQL */ `mutation DeleteMaquinaria(
     TIPO
     MARCA
     DESCRIPCION
-    OBSERVACION
     OPERATIVIDAD {
       nextToken
       __typename
@@ -88,10 +85,10 @@ export const createOPERATIVIDAD = /* GraphQL */ `mutation CreateOPERATIVIDAD(
   $condition: ModelOPERATIVIDADConditionInput
 ) {
   createOPERATIVIDAD(input: $input, condition: $condition) {
-    FECHA
+    id
     DESCRIPCION
     ACTIVO
-    id
+    FECHA
     createdAt
     updatedAt
     maquinariaOPERATIVIDADId
@@ -107,10 +104,10 @@ export const updateOPERATIVIDAD = /* GraphQL */ `mutation UpdateOPERATIVIDAD(
   $condition: ModelOPERATIVIDADConditionInput
 ) {
   updateOPERATIVIDAD(input: $input, condition: $condition) {
-    FECHA
+    id
     DESCRIPCION
     ACTIVO
-    id
+    FECHA
     createdAt
     updatedAt
     maquinariaOPERATIVIDADId
@@ -126,10 +123,10 @@ export const deleteOPERATIVIDAD = /* GraphQL */ `mutation DeleteOPERATIVIDAD(
   $condition: ModelOPERATIVIDADConditionInput
 ) {
   deleteOPERATIVIDAD(input: $input, condition: $condition) {
-    FECHA
+    id
     DESCRIPCION
     ACTIVO
-    id
+    FECHA
     createdAt
     updatedAt
     maquinariaOPERATIVIDADId

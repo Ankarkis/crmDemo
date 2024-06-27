@@ -15,11 +15,16 @@ export const getMaquinaria = /* GraphQL */ `query GetMaquinaria($id: ID!) {
     TIPO
     MARCA
     DESCRIPCION
-    OBSERVACION
-    OPERATIVIDAD {
-      nextToken
-      __typename
-    }
+      OPERATIVIDAD(sortDirection: DESC) {
+        items {
+        id
+          FECHA
+          ACTIVO
+          DESCRIPCION
+          createdAt
+          updatedAt
+        }
+      }
     id
     createdAt
     updatedAt
@@ -42,7 +47,13 @@ export const listMaquinarias = /* GraphQL */ `query ListMaquinarias(
       TIPO
       MARCA
       DESCRIPCION
-      OBSERVACION
+      OPERATIVIDAD(sortDirection: DESC) {
+        items {
+          FECHA
+          ACTIVO
+          
+        }
+      }
       id
       createdAt
       updatedAt
@@ -56,12 +67,12 @@ export const listMaquinarias = /* GraphQL */ `query ListMaquinarias(
   APITypes.ListMaquinariasQueryVariables,
   APITypes.ListMaquinariasQuery
 >;
-export const getOPERATIVIDAD = /* GraphQL */ `query GetOPERATIVIDAD($id: ID!) {
-  getOPERATIVIDAD(id: $id) {
-    FECHA
+export const getOPERATIVIDAD = /* GraphQL */ `query GetOPERATIVIDAD($id: ID!, $FECHA: String!) {
+  getOPERATIVIDAD(id: $id, FECHA: $FECHA) {
+    id
     DESCRIPCION
     ACTIVO
-    id
+    FECHA
     createdAt
     updatedAt
     maquinariaOPERATIVIDADId
@@ -73,16 +84,26 @@ export const getOPERATIVIDAD = /* GraphQL */ `query GetOPERATIVIDAD($id: ID!) {
   APITypes.GetOPERATIVIDADQuery
 >;
 export const listOPERATIVIDADS = /* GraphQL */ `query ListOPERATIVIDADS(
+  $id: ID
+  $FECHA: ModelStringKeyConditionInput
   $filter: ModelOPERATIVIDADFilterInput
   $limit: Int
   $nextToken: String
+  $sortDirection: ModelSortDirection
 ) {
-  listOPERATIVIDADS(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listOPERATIVIDADS(
+    id: $id
+    FECHA: $FECHA
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    sortDirection: $sortDirection
+  ) {
     items {
-      FECHA
+      id
       DESCRIPCION
       ACTIVO
-      id
+      FECHA
       createdAt
       updatedAt
       maquinariaOPERATIVIDADId

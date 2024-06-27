@@ -28,6 +28,14 @@ export class MaquinariasService {
     })
   }
 
+  getMaquinariaById(id:string){
+    return this.client.graphql({
+      query:query.getMaquinaria,
+      variables:{id:id},
+      authMode:'apiKey'
+    })
+  }
+
   updateMaquinaria(maquinaria:UpdateMaquinariaInput){
     return this.client.graphql({
       query:mutations.updateMaquinaria,

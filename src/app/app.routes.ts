@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
-import { TablesComponent } from './tables/tables.component';
 
 export const routes: Routes = [
     {
         path:'',
-        component:TablesComponent
+        loadComponent:()=>import('./pages/maquinaria-page/maquinaria-page.component')
+    },{
+        path:'operatividad/:id',
+        loadComponent:()=>import('./pages/operatividad-page/operatividad-page.component')
     }
 ];

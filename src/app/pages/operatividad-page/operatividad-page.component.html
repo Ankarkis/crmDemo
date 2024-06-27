@@ -1,0 +1,128 @@
+<p-toast />
+<p-toolbar styleClass="mb-4 gap-2">
+    <ng-template pTemplate="left">
+        <p-button pRipple severity="success" label="New" icon="pi pi-plus" class="mr-2" (click)="openNew()" />
+    </ng-template>
+    <ng-template pTemplate="center">
+        <h2>Historial de operatividad para la maquina {{maquinaria?.getMaquinaria?.NroVehiculo}}</h2>
+    </ng-template>
+    <ng-template pTemplate="right">
+
+    </ng-template>
+
+
+</p-toolbar>
+
+ <p-table #dt [value]="maquinaria?.getMaquinaria?.OPERATIVIDAD?.items || []" [rows]="10" [paginator]="true" [globalFilterFields]="['FECHA','ACTIVO']"
+    [tableStyle]="{ 'min-width': '75rem' }" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            <h5 class="m-0">Maquinaria</h5>
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="search" (input)="search($event)" placeholder="Search..." />
+            </span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="FECHA" style="min-width:5rem">
+                Fecha <p-sortIcon field="FECHA" />
+            </th>
+            <th style="max-width:50rem">
+                Descripción
+            </th>
+            <th pSortableColumn="ACTIVO" style="min-width:5rem">
+                Estado <p-sortIcon field="ACTIVO" />
+            </th>
+            <th style="min-width:5rem"></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-maquinaria>
+        <tr>
+            <td>
+                {{ maquinaria.FECHA | date:'dd/MM/yyyy'}}
+            </td>
+            <td>
+                {{ maquinaria.DESCRIPCION }}
+            </td>
+            <td>
+                {{ maquinaria.ACTIVO | state }}
+            </td>
+            <td>
+                {{ maquinaria.MARCA }}
+            </td>
+            <td>
+                <p-button pRipple icon="pi pi-trash" class="mr-2" [rounded]="true" [outlined]="true" severity="danger"
+                (onClick)="deleteOperatividad(maquinaria)"
+                     />
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+    </ng-template>
+</p-table>
+
+<p-dialog [(visible)]="operatividadDialgo"  [header]="'Operatividad maquina '+maquinaria?.getMaquinaria?.NroVehiculo" [modal]="true"
+    styleClass="p-fluid">
+    <ng-template pTemplate="content">
+
+        <div class="field p-3">
+        <label for="operatividad">¿Esta operativa la maquina {{maquinaria?.getMaquinaria?.NroVehiculo}}?</label>
+        <div class="flex flex-row gap-3 w-full ">
+            <div class="flex align-items-center">
+                <p-radioButton [value]="true" [(ngModel)]="operatividadMaquinaria.ACTIVO" inputId="si" />
+                <label for="si" class="ml-2">
+                    Si
+                </label>
+            </div>
+            <div class="flex flex-row gap-3 w-full ">
+                <div class="flex align-items-center">
+                    <p-radioButton [value]="false" [(ngModel)]="operatividadMaquinaria.ACTIVO" inputId="no" />
+                    <label for="no" class="ml-2">
+                        No
+                    </label>
+                </div>
+
+
+        </div>
+        </div>
+        </div>
+        @if (!operatividadMaquinaria.ACTIVO) {
+            <div class="w-full flex gap-3 p-3 flex-column">
+
+            <div class="flex w-full fler- ">
+                <p-floatLabel>
+                <textarea 
+                inputId="descripcion"
+                rows="5"
+                cols="30" 
+                pInputTextarea 
+                [autoResize]="true"
+                [(ngModel)]="operatividadMaquinaria.DESCRIPCION">
+            </textarea>
+            <label for="descripcion">¿Por que no esta operativa?</label>
+        </p-floatLabel>
+         </div>
+         <div class="flex-auto ">
+            <label for="buttondisplay" class="font-bold block mb-2"> Fecha desde dejo de ser operativa </label>
+    
+            <p-calendar  
+                appendTo="body"
+                [(ngModel)]="operatividadMaquinaria.FECHA"
+                [showIcon]="true" 
+                inputId="buttondisplay" 
+                [showOnFocus]="false" />
+         </div>
+        </div>
+        }
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <p-button pRipple label="Cancel" icon="pi pi-times" [text]="true" (click)="hideDialogOperatividad()"></p-button>
+        <p-button pRipple label="Save" icon="pi pi-check" [text]="true" (click)="saveOperatividad()"></p-button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{ width: '450px' }" /> 

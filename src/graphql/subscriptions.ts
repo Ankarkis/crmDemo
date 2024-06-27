@@ -17,7 +17,6 @@ export const onCreateMaquinaria = /* GraphQL */ `subscription OnCreateMaquinaria
     TIPO
     MARCA
     DESCRIPCION
-    OBSERVACION
     OPERATIVIDAD {
       nextToken
       __typename
@@ -41,7 +40,6 @@ export const onUpdateMaquinaria = /* GraphQL */ `subscription OnUpdateMaquinaria
     TIPO
     MARCA
     DESCRIPCION
-    OBSERVACION
     OPERATIVIDAD {
       nextToken
       __typename
@@ -65,7 +63,6 @@ export const onDeleteMaquinaria = /* GraphQL */ `subscription OnDeleteMaquinaria
     TIPO
     MARCA
     DESCRIPCION
-    OBSERVACION
     OPERATIVIDAD {
       nextToken
       __typename
@@ -84,10 +81,10 @@ export const onCreateOPERATIVIDAD = /* GraphQL */ `subscription OnCreateOPERATIV
   $filter: ModelSubscriptionOPERATIVIDADFilterInput
 ) {
   onCreateOPERATIVIDAD(filter: $filter) {
-    FECHA
+    id
     DESCRIPCION
     ACTIVO
-    id
+    FECHA
     createdAt
     updatedAt
     maquinariaOPERATIVIDADId
@@ -102,10 +99,10 @@ export const onUpdateOPERATIVIDAD = /* GraphQL */ `subscription OnUpdateOPERATIV
   $filter: ModelSubscriptionOPERATIVIDADFilterInput
 ) {
   onUpdateOPERATIVIDAD(filter: $filter) {
-    FECHA
+    id
     DESCRIPCION
     ACTIVO
-    id
+    FECHA
     createdAt
     updatedAt
     maquinariaOPERATIVIDADId
@@ -120,10 +117,10 @@ export const onDeleteOPERATIVIDAD = /* GraphQL */ `subscription OnDeleteOPERATIV
   $filter: ModelSubscriptionOPERATIVIDADFilterInput
 ) {
   onDeleteOPERATIVIDAD(filter: $filter) {
-    FECHA
+    id
     DESCRIPCION
     ACTIVO
-    id
+    FECHA
     createdAt
     updatedAt
     maquinariaOPERATIVIDADId

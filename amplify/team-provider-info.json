@@ -16,5 +16,23 @@
         "crmdemo": {}
       }
     }
+  },
+  "main": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-crmdemo-main-d9184-authRole",
+      "UnauthRoleArn": "arn:aws:iam::905418286065:role/amplify-crmdemo-main-d9184-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::905418286065:role/amplify-crmdemo-main-d9184-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-crmdemo-main-d9184-deployment",
+      "UnauthRoleName": "amplify-crmdemo-main-d9184-unauthRole",
+      "StackName": "amplify-crmdemo-main-d9184",
+      "StackId": "arn:aws:cloudformation:us-east-1:905418286065:stack/amplify-crmdemo-main-d9184/72dbfb50-341d-11ef-9e00-128447ae2053",
+      "AmplifyAppId": "d2ywgwdyg1qpdw"
+    },
+    "categories": {
+      "api": {
+        "crmdemo": {}
+      }
+    }
   }
 }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TablesComponent } from './tables.component';
+import { MaquinariaPageComponent } from './maquinaria-page.component';
 
 describe('TablesComponent', () => {
-  let component: TablesComponent;
-  let fixture: ComponentFixture<TablesComponent>;
+  let component: MaquinariaPageComponent;
+  let fixture: ComponentFixture<MaquinariaPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TablesComponent]
+      imports: [MaquinariaPageComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TablesComponent);
+    fixture = TestBed.createComponent(MaquinariaPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

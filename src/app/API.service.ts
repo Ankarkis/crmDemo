@@ -8,7 +8,6 @@ export type CreateMaquinariaInput = {
   TIPO: string,
   MARCA: string,
   DESCRIPCION: string,
-  OBSERVACION: string,
   id?: string | null,
 };
 
@@ -18,7 +17,6 @@ export type ModelMaquinariaConditionInput = {
   TIPO?: ModelStringInput | null,
   MARCA?: ModelStringInput | null,
   DESCRIPCION?: ModelStringInput | null,
-  OBSERVACION?: ModelStringInput | null,
   and?: Array< ModelMaquinariaConditionInput | null > | null,
   or?: Array< ModelMaquinariaConditionInput | null > | null,
   not?: ModelMaquinariaConditionInput | null,
@@ -89,7 +87,6 @@ export type Maquinaria = {
   TIPO: string,
   MARCA: string,
   DESCRIPCION: string,
-  OBSERVACION: string,
   OPERATIVIDAD?: ModelOPERATIVIDADConnection | null,
   id: string,
   createdAt: string,
@@ -104,10 +101,10 @@ export type ModelOPERATIVIDADConnection = {
 
 export type OPERATIVIDAD = {
   __typename: "OPERATIVIDAD",
-  FECHA: string,
+  id: string,
   DESCRIPCION: string,
   ACTIVO: boolean,
-  id: string,
+  FECHA: string,
   createdAt: string,
   updatedAt: string,
   maquinariaOPERATIVIDADId?: string | null,
@@ -119,7 +116,6 @@ export type UpdateMaquinariaInput = {
   TIPO?: string | null,
   MARCA?: string | null,
   DESCRIPCION?: string | null,
-  OBSERVACION?: string | null,
   id: string,
 };
 
@@ -128,15 +124,14 @@ export type DeleteMaquinariaInput = {
 };
 
 export type CreateOPERATIVIDADInput = {
-  FECHA: string,
+  id?: string | null,
   DESCRIPCION: string,
   ACTIVO: boolean,
-  id?: string | null,
+  FECHA: string,
   maquinariaOPERATIVIDADId?: string | null,
 };
 
 export type ModelOPERATIVIDADConditionInput = {
-  FECHA?: ModelStringInput | null,
   DESCRIPCION?: ModelStringInput | null,
   ACTIVO?: ModelBooleanInput | null,
   and?: Array< ModelOPERATIVIDADConditionInput | null > | null,
@@ -155,15 +150,16 @@ export type ModelBooleanInput = {
 };
 
 export type UpdateOPERATIVIDADInput = {
-  FECHA?: string | null,
+  id: string,
   DESCRIPCION?: string | null,
   ACTIVO?: boolean | null,
-  id: string,
+  FECHA: string,
   maquinariaOPERATIVIDADId?: string | null,
 };
 
 export type DeleteOPERATIVIDADInput = {
   id: string,
+  FECHA: string,
 };
 
 export type ModelMaquinariaFilterInput = {
@@ -172,7 +168,6 @@ export type ModelMaquinariaFilterInput = {
   TIPO?: ModelStringInput | null,
   MARCA?: ModelStringInput | null,
   DESCRIPCION?: ModelStringInput | null,
-  OBSERVACION?: ModelStringInput | null,
   id?: ModelIDInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
@@ -187,11 +182,21 @@ export type ModelMaquinariaConnection = {
   nextToken?: string | null,
 };
 
+export type ModelStringKeyConditionInput = {
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+};
+
 export type ModelOPERATIVIDADFilterInput = {
-  FECHA?: ModelStringInput | null,
+  id?: ModelIDInput | null,
   DESCRIPCION?: ModelStringInput | null,
   ACTIVO?: ModelBooleanInput | null,
-  id?: ModelIDInput | null,
+  FECHA?: ModelStringInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
   and?: Array< ModelOPERATIVIDADFilterInput | null > | null,
@@ -200,13 +205,18 @@ export type ModelOPERATIVIDADFilterInput = {
   maquinariaOPERATIVIDADId?: ModelIDInput | null,
 };
 
+export enum ModelSortDirection {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+
+
 export type ModelSubscriptionMaquinariaFilterInput = {
   NroVehiculo?: ModelSubscriptionIDInput | null,
   Patentedelvehiculo?: ModelSubscriptionStringInput | null,
   TIPO?: ModelSubscriptionStringInput | null,
   MARCA?: ModelSubscriptionStringInput | null,
   DESCRIPCION?: ModelSubscriptionStringInput | null,
-  OBSERVACION?: ModelSubscriptionStringInput | null,
   id?: ModelSubscriptionIDInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
@@ -246,10 +256,10 @@ export type ModelSubscriptionStringInput = {
 };
 
 export type ModelSubscriptionOPERATIVIDADFilterInput = {
-  FECHA?: ModelSubscriptionStringInput | null,
+  id?: ModelSubscriptionIDInput | null,
   DESCRIPCION?: ModelSubscriptionStringInput | null,
   ACTIVO?: ModelSubscriptionBooleanInput | null,
-  id?: ModelSubscriptionIDInput | null,
+  FECHA?: ModelSubscriptionStringInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionOPERATIVIDADFilterInput | null > | null,
@@ -274,7 +284,6 @@ export type CreateMaquinariaMutation = {
     TIPO: string,
     MARCA: string,
     DESCRIPCION: string,
-    OBSERVACION: string,
     OPERATIVIDAD?:  {
       __typename: "ModelOPERATIVIDADConnection",
       nextToken?: string | null,
@@ -298,7 +307,6 @@ export type UpdateMaquinariaMutation = {
     TIPO: string,
     MARCA: string,
     DESCRIPCION: string,
-    OBSERVACION: string,
     OPERATIVIDAD?:  {
       __typename: "ModelOPERATIVIDADConnection",
       nextToken?: string | null,
@@ -322,7 +330,6 @@ export type DeleteMaquinariaMutation = {
     TIPO: string,
     MARCA: string,
     DESCRIPCION: string,
-    OBSERVACION: string,
     OPERATIVIDAD?:  {
       __typename: "ModelOPERATIVIDADConnection",
       nextToken?: string | null,
@@ -341,10 +348,10 @@ export type CreateOPERATIVIDADMutationVariables = {
 export type CreateOPERATIVIDADMutation = {
   createOPERATIVIDAD?:  {
     __typename: "OPERATIVIDAD",
-    FECHA: string,
+    id: string,
     DESCRIPCION: string,
     ACTIVO: boolean,
-    id: string,
+    FECHA: string,
     createdAt: string,
     updatedAt: string,
     maquinariaOPERATIVIDADId?: string | null,
@@ -359,10 +366,10 @@ export type UpdateOPERATIVIDADMutationVariables = {
 export type UpdateOPERATIVIDADMutation = {
   updateOPERATIVIDAD?:  {
     __typename: "OPERATIVIDAD",
-    FECHA: string,
+    id: string,
     DESCRIPCION: string,
     ACTIVO: boolean,
-    id: string,
+    FECHA: string,
     createdAt: string,
     updatedAt: string,
     maquinariaOPERATIVIDADId?: string | null,
@@ -377,10 +384,10 @@ export type DeleteOPERATIVIDADMutationVariables = {
 export type DeleteOPERATIVIDADMutation = {
   deleteOPERATIVIDAD?:  {
     __typename: "OPERATIVIDAD",
-    FECHA: string,
+    id: string,
     DESCRIPCION: string,
     ACTIVO: boolean,
-    id: string,
+    FECHA: string,
     createdAt: string,
     updatedAt: string,
     maquinariaOPERATIVIDADId?: string | null,
@@ -399,9 +406,9 @@ export type GetMaquinariaQuery = {
     TIPO: string,
     MARCA: string,
     DESCRIPCION: string,
-    OBSERVACION: string,
     OPERATIVIDAD?:  {
       __typename: "ModelOPERATIVIDADConnection",
+      items?:OPERATIVIDAD[],
       nextToken?: string | null,
     } | null,
     id: string,
@@ -426,7 +433,6 @@ export type ListMaquinariasQuery = {
       TIPO: string,
       MARCA: string,
       DESCRIPCION: string,
-      OBSERVACION: string,
       id: string,
       createdAt: string,
       updatedAt: string,
@@ -437,15 +443,16 @@ export type ListMaquinariasQuery = {
 
 export type GetOPERATIVIDADQueryVariables = {
   id: string,
+  FECHA: string,
 };
 
 export type GetOPERATIVIDADQuery = {
   getOPERATIVIDAD?:  {
     __typename: "OPERATIVIDAD",
-    FECHA: string,
+    id: string,
     DESCRIPCION: string,
     ACTIVO: boolean,
-    id: string,
+    FECHA: string,
     createdAt: string,
     updatedAt: string,
     maquinariaOPERATIVIDADId?: string | null,
@@ -453,9 +460,12 @@ export type GetOPERATIVIDADQuery = {
 };
 
 export type ListOPERATIVIDADSQueryVariables = {
+  id?: string | null,
+  FECHA?: ModelStringKeyConditionInput | null,
   filter?: ModelOPERATIVIDADFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
+  sortDirection?: ModelSortDirection | null,
 };
 
 export type ListOPERATIVIDADSQuery = {
@@ -463,10 +473,10 @@ export type ListOPERATIVIDADSQuery = {
     __typename: "ModelOPERATIVIDADConnection",
     items:  Array< {
       __typename: "OPERATIVIDAD",
-      FECHA: string,
+      id: string,
       DESCRIPCION: string,
       ACTIVO: boolean,
-      id: string,
+      FECHA: string,
       createdAt: string,
       updatedAt: string,
       maquinariaOPERATIVIDADId?: string | null,
@@ -487,7 +497,6 @@ export type OnCreateMaquinariaSubscription = {
     TIPO: string,
     MARCA: string,
     DESCRIPCION: string,
-    OBSERVACION: string,
     OPERATIVIDAD?:  {
       __typename: "ModelOPERATIVIDADConnection",
       nextToken?: string | null,
@@ -510,7 +519,6 @@ export type OnUpdateMaquinariaSubscription = {
     TIPO: string,
     MARCA: string,
     DESCRIPCION: string,
-    OBSERVACION: string,
     OPERATIVIDAD?:  {
       __typename: "ModelOPERATIVIDADConnection",
       nextToken?: string | null,
@@ -533,7 +541,6 @@ export type OnDeleteMaquinariaSubscription = {
     TIPO: string,
     MARCA: string,
     DESCRIPCION: string,
-    OBSERVACION: string,
     OPERATIVIDAD?:  {
       __typename: "ModelOPERATIVIDADConnection",
       nextToken?: string | null,
@@ -551,10 +558,10 @@ export type OnCreateOPERATIVIDADSubscriptionVariables = {
 export type OnCreateOPERATIVIDADSubscription = {
   onCreateOPERATIVIDAD?:  {
     __typename: "OPERATIVIDAD",
-    FECHA: string,
+    id: string,
     DESCRIPCION: string,
     ACTIVO: boolean,
-    id: string,
+    FECHA: string,
     createdAt: string,
     updatedAt: string,
     maquinariaOPERATIVIDADId?: string | null,
@@ -568,10 +575,10 @@ export type OnUpdateOPERATIVIDADSubscriptionVariables = {
 export type OnUpdateOPERATIVIDADSubscription = {
   onUpdateOPERATIVIDAD?:  {
     __typename: "OPERATIVIDAD",
-    FECHA: string,
+    id: string,
     DESCRIPCION: string,
     ACTIVO: boolean,
-    id: string,
+    FECHA: string,
     createdAt: string,
     updatedAt: string,
     maquinariaOPERATIVIDADId?: string | null,
@@ -585,10 +592,10 @@ export type OnDeleteOPERATIVIDADSubscriptionVariables = {
 export type OnDeleteOPERATIVIDADSubscription = {
   onDeleteOPERATIVIDAD?:  {
     __typename: "OPERATIVIDAD",
-    FECHA: string,
+    id: string,
     DESCRIPCION: string,
     ACTIVO: boolean,
-    id: string,
+    FECHA: string,
     createdAt: string,
     updatedAt: string,
     maquinariaOPERATIVIDADId?: string | null,
