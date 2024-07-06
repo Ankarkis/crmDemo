@@ -32,6 +32,14 @@
     "categories": {
       "api": {
         "crmdemo": {}
+      },
+      "auth": {
+        "crmdemo2dfc7f7e": {}
+      },
+      "function": {
+        "crmdemo2dfc7f7ePostConfirmation": {
+          "GROUP": "Admin"
+        }
       }
     }
   }

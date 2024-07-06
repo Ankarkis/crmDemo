@@ -28,7 +28,6 @@ import { RouterModule } from '@angular/router';
 
 
 @Component({
-    selector: 'app-tables',
     standalone: true,
     templateUrl: './maquinaria-page.component.html',
     styleUrl: './maquinaria-page.component.css',
