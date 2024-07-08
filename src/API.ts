@@ -406,7 +406,7 @@ export type GetMaquinariaQuery = {
     TIPO: string,
     MARCA: string,
     DESCRIPCION: string,
-    OPERATIVIDAD?: ModelOPERATIVIDADConnection | null,
+    OPERATIVIDAD?: ModelOPERATIVIDADConnection| null,
     id: string,
     createdAt: string,
     updatedAt: string,

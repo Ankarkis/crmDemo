@@ -12,7 +12,10 @@ export const createMaquinaria = /* GraphQL */ `
       TIPO
       MARCA
       DESCRIPCION
-      OBSERVACION
+      OPERATIVIDAD {
+        nextToken
+        __typename
+      }
       id
       createdAt
       updatedAt
@@ -31,7 +34,10 @@ export const updateMaquinaria = /* GraphQL */ `
       TIPO
       MARCA
       DESCRIPCION
-      OBSERVACION
+      OPERATIVIDAD {
+        nextToken
+        __typename
+      }
       id
       createdAt
       updatedAt
@@ -50,7 +56,10 @@ export const deleteMaquinaria = /* GraphQL */ `
       TIPO
       MARCA
       DESCRIPCION
-      OBSERVACION
+      OPERATIVIDAD {
+        nextToken
+        __typename
+      }
       id
       createdAt
       updatedAt
@@ -64,25 +73,13 @@ export const createOPERATIVIDAD = /* GraphQL */ `
     $condition: ModelOPERATIVIDADConditionInput
   ) {
     createOPERATIVIDAD(input: $input, condition: $condition) {
-      ID
-      FECHA
-      DESCRIPCION
-      vehiculo {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        OBSERVACION
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
       id
+      DESCRIPCION
+      ACTIVO
+      FECHA
       createdAt
       updatedAt
-      oPERATIVIDADVehiculoId
+      maquinariaOPERATIVIDADId
       __typename
     }
   }
@@ -93,25 +90,13 @@ export const updateOPERATIVIDAD = /* GraphQL */ `
     $condition: ModelOPERATIVIDADConditionInput
   ) {
     updateOPERATIVIDAD(input: $input, condition: $condition) {
-      ID
-      FECHA
-      DESCRIPCION
-      vehiculo {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        OBSERVACION
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
       id
+      DESCRIPCION
+      ACTIVO
+      FECHA
       createdAt
       updatedAt
-      oPERATIVIDADVehiculoId
+      maquinariaOPERATIVIDADId
       __typename
     }
   }
@@ -122,25 +107,13 @@ export const deleteOPERATIVIDAD = /* GraphQL */ `
     $condition: ModelOPERATIVIDADConditionInput
   ) {
     deleteOPERATIVIDAD(input: $input, condition: $condition) {
-      ID
-      FECHA
-      DESCRIPCION
-      vehiculo {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        OBSERVACION
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
       id
+      DESCRIPCION
+      ACTIVO
+      FECHA
       createdAt
       updatedAt
-      oPERATIVIDADVehiculoId
+      maquinariaOPERATIVIDADId
       __typename
     }
   }

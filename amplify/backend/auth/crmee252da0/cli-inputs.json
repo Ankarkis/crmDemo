@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "crmdemo2dfc7f7e_identitypool_2dfc7f7e",
+    "identityPoolName": "crmee252da0_identitypool_ee252da0",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "crmdem2dfc7f7e",
-    "userPoolName": "crmdemo2dfc7f7e_userpool_2dfc7f7e",
+    "resourceNameTruncated": "crmee252da0",
+    "userPoolName": "crmee252da0_userpool_ee252da0",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -20,8 +20,7 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-      "email",
-      "name"
+      "email"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
@@ -32,17 +31,12 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "crmdem2dfc7f7e_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "crmee2ee252da0_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "2dfc7f7e",
-    "resourceName": "crmdemo2dfc7f7e",
+    "sharedId": "ee252da0",
+    "resourceName": "crmee252da0",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
-    "triggers": {
-      "PostConfirmation": [
-        "add-to-group"
-      ]
-    },
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,

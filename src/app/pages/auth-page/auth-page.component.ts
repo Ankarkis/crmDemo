@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { AmplifyAuthenticatorModule,translations } from '@aws-amplify/ui-angular';
+import { I18n } from 'aws-amplify/utils';
+I18n.putVocabularies(translations);
+I18n.setLanguage('es');
 @Component({
   standalone: true,
   imports: [AmplifyAuthenticatorModule],

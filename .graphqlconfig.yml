@@ -1,17 +1,12 @@
 projects:
-  crmdemo:
+  crm:
     schemaPath: src/graphql/schema.json
     includes:
-      - src/graphql/**/*.ts
+      - src/graphql/**/*.js
     excludes:
       - ./amplify/**
-      - src/app/API.service.ts
     extensions:
       amplify:
-        codeGenTarget: typescript
-        generatedFileName: src/app/API.service.ts
+        codeGenTarget: javascript
+        generatedFileName: ''
         docsFilePath: src/graphql
-        maxDepth: 2
-extensions:
-  amplify:
-    version: 3

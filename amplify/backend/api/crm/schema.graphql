@@ -3,7 +3,6 @@
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
 type Maquinaria @model {
-	
 NroVehiculo: ID!	
 Patentedelvehiculo: String!
 TIPO: String!
@@ -14,7 +13,7 @@ OPERATIVIDAD:[OPERATIVIDAD] @hasMany
 
 type OPERATIVIDAD @model  
 {
-    id:ID! @primaryKey(sortKeyFields: ["FECHA"])
+id:ID! @primaryKey(sortKeyFields: ["FECHA"])
 DESCRIPCION: String!
 ACTIVO:Boolean!
 FECHA: String! 

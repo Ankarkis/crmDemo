@@ -1,45 +1,22 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-crmdemo-dev-458e9-authRole",
-      "UnauthRoleArn": "arn:aws:iam::905418286065:role/amplify-crmdemo-dev-458e9-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::905418286065:role/amplify-crmdemo-dev-458e9-authRole",
+      "AuthRoleName": "amplify-crm-dev-f0d09-authRole",
+      "UnauthRoleArn": "arn:aws:iam::913045965320:role/amplify-crm-dev-f0d09-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::913045965320:role/amplify-crm-dev-f0d09-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-crmdemo-dev-458e9-deployment",
-      "UnauthRoleName": "amplify-crmdemo-dev-458e9-unauthRole",
-      "StackName": "amplify-crmdemo-dev-458e9",
-      "StackId": "arn:aws:cloudformation:us-east-1:905418286065:stack/amplify-crmdemo-dev-458e9/34ee11f0-2d6c-11ef-8ee8-0affcc0a0a5d",
-      "AmplifyAppId": "d2ywgwdyg1qpdw"
+      "DeploymentBucketName": "amplify-crm-dev-f0d09-deployment",
+      "UnauthRoleName": "amplify-crm-dev-f0d09-unauthRole",
+      "StackName": "amplify-crm-dev-f0d09",
+      "StackId": "arn:aws:cloudformation:us-east-1:913045965320:stack/amplify-crm-dev-f0d09/4b122c70-3cc9-11ef-b021-0e03d1c30c91",
+      "AmplifyAppId": "d1d62vuiyqnbsv"
     },
     "categories": {
-      "api": {
-        "crmdemo": {}
-      }
-    }
-  },
-  "main": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-crmdemo-main-d9184-authRole",
-      "UnauthRoleArn": "arn:aws:iam::905418286065:role/amplify-crmdemo-main-d9184-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::905418286065:role/amplify-crmdemo-main-d9184-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-crmdemo-main-d9184-deployment",
-      "UnauthRoleName": "amplify-crmdemo-main-d9184-unauthRole",
-      "StackName": "amplify-crmdemo-main-d9184",
-      "StackId": "arn:aws:cloudformation:us-east-1:905418286065:stack/amplify-crmdemo-main-d9184/72dbfb50-341d-11ef-9e00-128447ae2053",
-      "AmplifyAppId": "d2ywgwdyg1qpdw"
-    },
-    "categories": {
-      "api": {
-        "crmdemo": {}
-      },
       "auth": {
-        "crmdemo2dfc7f7e": {}
+        "crmee252da0": {}
       },
-      "function": {
-        "crmdemo2dfc7f7ePostConfirmation": {
-          "GROUP": "Admin"
-        }
+      "api": {
+        "crm": {}
       }
     }
   }

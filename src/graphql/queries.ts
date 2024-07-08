@@ -2,7 +2,7 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-import * as APITypes from "../app/API.service";
+import * as APITypes from "../API";
 type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryInput: InputType;
   __generatedQueryOutput: OutputType;
@@ -15,16 +15,10 @@ export const getMaquinaria = /* GraphQL */ `query GetMaquinaria($id: ID!) {
     TIPO
     MARCA
     DESCRIPCION
-      OPERATIVIDAD(sortDirection: DESC) {
-        items {
-        id
-          FECHA
-          ACTIVO
-          DESCRIPCION
-          createdAt
-          updatedAt
-        }
-      }
+    OPERATIVIDAD {
+      nextToken
+      __typename
+    }
     id
     createdAt
     updatedAt
@@ -47,13 +41,6 @@ export const listMaquinarias = /* GraphQL */ `query ListMaquinarias(
       TIPO
       MARCA
       DESCRIPCION
-      OPERATIVIDAD(sortDirection: DESC) {
-        items {
-          FECHA
-          ACTIVO
-          
-        }
-      }
       id
       createdAt
       updatedAt

@@ -9,7 +9,10 @@ export const getMaquinaria = /* GraphQL */ `
       TIPO
       MARCA
       DESCRIPCION
-      OBSERVACION
+      OPERATIVIDAD {
+        nextToken
+        __typename
+      }
       id
       createdAt
       updatedAt
@@ -30,7 +33,6 @@ export const listMaquinarias = /* GraphQL */ `
         TIPO
         MARCA
         DESCRIPCION
-        OBSERVACION
         id
         createdAt
         updatedAt
@@ -42,46 +44,44 @@ export const listMaquinarias = /* GraphQL */ `
   }
 `;
 export const getOPERATIVIDAD = /* GraphQL */ `
-  query GetOPERATIVIDAD($id: ID!) {
-    getOPERATIVIDAD(id: $id) {
-      ID
-      FECHA
-      DESCRIPCION
-      vehiculo {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        OBSERVACION
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
+  query GetOPERATIVIDAD($id: ID!, $FECHA: String!) {
+    getOPERATIVIDAD(id: $id, FECHA: $FECHA) {
       id
+      DESCRIPCION
+      ACTIVO
+      FECHA
       createdAt
       updatedAt
-      oPERATIVIDADVehiculoId
+      maquinariaOPERATIVIDADId
       __typename
     }
   }
 `;
 export const listOPERATIVIDADS = /* GraphQL */ `
   query ListOPERATIVIDADS(
+    $id: ID
+    $FECHA: ModelStringKeyConditionInput
     $filter: ModelOPERATIVIDADFilterInput
     $limit: Int
     $nextToken: String
+    $sortDirection: ModelSortDirection
   ) {
-    listOPERATIVIDADS(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listOPERATIVIDADS(
+      id: $id
+      FECHA: $FECHA
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
       items {
-        ID
-        FECHA
-        DESCRIPCION
         id
+        DESCRIPCION
+        ACTIVO
+        FECHA
         createdAt
         updatedAt
-        oPERATIVIDADVehiculoId
+        maquinariaOPERATIVIDADId
         __typename
       }
       nextToken

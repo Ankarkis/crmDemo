@@ -11,7 +11,10 @@ export const onCreateMaquinaria = /* GraphQL */ `
       TIPO
       MARCA
       DESCRIPCION
-      OBSERVACION
+      OPERATIVIDAD {
+        nextToken
+        __typename
+      }
       id
       createdAt
       updatedAt
@@ -29,7 +32,10 @@ export const onUpdateMaquinaria = /* GraphQL */ `
       TIPO
       MARCA
       DESCRIPCION
-      OBSERVACION
+      OPERATIVIDAD {
+        nextToken
+        __typename
+      }
       id
       createdAt
       updatedAt
@@ -47,7 +53,10 @@ export const onDeleteMaquinaria = /* GraphQL */ `
       TIPO
       MARCA
       DESCRIPCION
-      OBSERVACION
+      OPERATIVIDAD {
+        nextToken
+        __typename
+      }
       id
       createdAt
       updatedAt
@@ -60,25 +69,13 @@ export const onCreateOPERATIVIDAD = /* GraphQL */ `
     $filter: ModelSubscriptionOPERATIVIDADFilterInput
   ) {
     onCreateOPERATIVIDAD(filter: $filter) {
-      ID
-      FECHA
-      DESCRIPCION
-      vehiculo {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        OBSERVACION
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
       id
+      DESCRIPCION
+      ACTIVO
+      FECHA
       createdAt
       updatedAt
-      oPERATIVIDADVehiculoId
+      maquinariaOPERATIVIDADId
       __typename
     }
   }
@@ -88,25 +85,13 @@ export const onUpdateOPERATIVIDAD = /* GraphQL */ `
     $filter: ModelSubscriptionOPERATIVIDADFilterInput
   ) {
     onUpdateOPERATIVIDAD(filter: $filter) {
-      ID
-      FECHA
-      DESCRIPCION
-      vehiculo {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        OBSERVACION
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
       id
+      DESCRIPCION
+      ACTIVO
+      FECHA
       createdAt
       updatedAt
-      oPERATIVIDADVehiculoId
+      maquinariaOPERATIVIDADId
       __typename
     }
   }
@@ -116,25 +101,13 @@ export const onDeleteOPERATIVIDAD = /* GraphQL */ `
     $filter: ModelSubscriptionOPERATIVIDADFilterInput
   ) {
     onDeleteOPERATIVIDAD(filter: $filter) {
-      ID
-      FECHA
-      DESCRIPCION
-      vehiculo {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        OBSERVACION
-        id
-        createdAt
-        updatedAt
-        __typename
-      }
       id
+      DESCRIPCION
+      ACTIVO
+      FECHA
       createdAt
       updatedAt
-      oPERATIVIDADVehiculoId
+      maquinariaOPERATIVIDADId
       __typename
     }
   }
