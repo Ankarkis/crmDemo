@@ -1,0 +1,26 @@
+<div class="col-12 md:col-6 xl:col-6 ">
+    <div class="card p-0">
+        <img appNoPhoto [image]="maquinariaData.PHOTO || ''" alt="maquinaria" class="w-full border-round-top-2xl">
+        <div class="p-4">
+            <div class="flex  gap-1 flex-column mb-3">
+                <div class="flex flex-column ">
+                    <span class="font-bold">Numero de vehiculo:</span>
+                    <span>{{maquinariaData.NroVehiculo}}</span>
+                </div>
+                <div class="flex flex-column ">
+                    <span class="font-bold">Descripción:</span>
+                    <span>{{maquinariaData.DESCRIPCION}}</span>
+                </div>
+                <div class="flex flex-column ">
+                    <span class="font-bold">Tipo:</span>
+                    <span>{{maquinariaData.TIPO}}</span>
+                </div>
+            </div>
+        
+            <div class="flex flex-column gap-1  justify-content-between">
+				<button pButton pRipple label="Actualizar imagen" icon="pi pi-upload" class="p-button-outlined" (click)="openDialogImage(maquinariaData.id)"></button>
+				<button pButton pRipple label="Agregar costos" icon="pi pi-plus" class="p-button-outlined" (click)="openDialogCost(maquinariaData.id)"></button>
+            </div>
+        </div>
+    </div>
+</div>

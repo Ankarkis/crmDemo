@@ -116,6 +116,7 @@ export type UpdateMaquinariaInput = {
   TIPO?: string | null,
   MARCA?: string | null,
   DESCRIPCION?: string | null,
+  PHOTO?: string | null,
   id: string,
 };
 

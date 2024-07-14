@@ -1,0 +1,13 @@
+{
+  "resourceName": "MaquinariaBucket",
+  "policyUUID": "2f92e6f1",
+  "bucketName": "crmdemoc1a32fa6def94d9a894c9816b769957c",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

@@ -1,15 +1,21 @@
 {
   "api": {
-    "crm": {
+    "crmdemo": {
       "dependsOn": [],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [],
+          "additionalAuthenticationProviders": [
+            {
+              "apiKeyConfig": {
+                "apiKeyExpirationDate": "2024-07-19T01:28:08.995Z",
+                "apiKeyExpirationDays": 7,
+                "description": ""
+              },
+              "authenticationType": "API_KEY"
+            }
+          ],
           "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
-            },
-            "authenticationType": "API_KEY"
+            "authenticationType": "AWS_IAM"
           }
         }
       },
@@ -18,9 +24,19 @@
     }
   },
   "auth": {
-    "crmee252da0": {
+    "crmdemo5a8c3e1d": {
       "customAuth": false,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "crmdemo5a8c3e1dPostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
         "mfaTypes": [
@@ -31,16 +47,120 @@
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
-          "EMAIL"
+          "EMAIL",
+          "NAME"
         ],
         "socialProviders": [],
-        "usernameAttributes": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
         "verificationMechanisms": [
           "EMAIL"
         ]
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    }
+  },
+  "function": {
+    "addOperadorPostConfirmation": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ],
+          "category": "api",
+          "resourceName": "crmdemo"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "crmdemo5a8c3e1dPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "crmdemoe806d6a0PostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_addOperadorPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addOperadorPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_addOperadorPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addOperadorPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_crmdemo5a8c3e1dPostConfirmation_GROUP": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "crmdemo5a8c3e1dPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_crmdemo5a8c3e1dPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "crmdemo5a8c3e1dPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_crmdemo5a8c3e1dPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "crmdemo5a8c3e1dPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_crmdemoe806d6a0PostConfirmation_GROUP": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "crmdemoe806d6a0PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_crmdemoe806d6a0PostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "crmdemoe806d6a0PostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_crmdemoe806d6a0PostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "crmdemoe806d6a0PostConfirmation"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "MaquinariaBucket": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }

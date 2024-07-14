@@ -1,0 +1,48 @@
+<p-toast></p-toast>
+<div class="grid  p-4 w-full ">
+    @for (maquinaria of maquinariaItems; track $index) {
+    <app-card class="col-4" [maquinaria]="maquinaria" [(openDialogUpdateImage)]="openDialogUpdateImage" [(openDialogUpdateCost)]="openDialogUpdateCost"></app-card>
+}
+</div>
+<p-dialog header="Actualizar imagen de la maquina" (visibleChange)="closeDialogImage()" [modal]="true" [visible]="openDialogUpdateImage()?.openDialog || false" [style]="{ width: '25rem' }">
+    <app-upload-file (imagesChange)="images.set($event)" [multipleFile]="false" ></app-upload-file>
+    <div class="flex justify-content-end gap-2">
+        <p-button label="Cancelar" severity="secondary" (click)="closeDialogImage()" />
+        <p-button label="Actualizar imagen" (click)="updateImage()" />
+    </div>
+</p-dialog>
+
+<p-dialog header="Agregar costos" [visible]="openDialogUpdateCost()?.openDialog || false"  [modal]="true"
+    styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="flex-auto ">
+            <label for="buttondisplay" class="font-bold block mb-2"> Ingrese una fecha </label>
+
+            <p-calendar  
+                appendTo="body"
+                [(ngModel)]="costos.Date"
+                [showIcon]="true" 
+                inputId="buttondisplay" 
+                [showOnFocus]="false" />
+        </div>
+        <div class="flex-auto ">
+            <label for="integeronly" class="font-bold block mb-value12"> Ingrese una valor </label>
+
+            <p-inputNumber 
+            inputId="integeronly" 
+            [(ngModel)]="costos.Price" /> 
+        </div>
+        <div class="flex-auto ">
+            <label for="evidencia"  class="font-bold block mb-value12"> Sube la evidencia </label>
+            <app-upload-file inputId="evidencia" (imagesChange)="images.set($event)"  [multipleFile]="false" ></app-upload-file>
+        </div>
+
+
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <p-button pRipple label="Cancelar" icon="pi pi-times" [text]="true" ></p-button>
+        <p-button pRipple label="Guardar" icon="pi pi-check" (click)="addCost()" [text]="true" ></p-button>
+    </ng-template>
+</p-dialog>

@@ -15,13 +15,42 @@ export const getMaquinaria = /* GraphQL */ `query GetMaquinaria($id: ID!) {
     TIPO
     MARCA
     DESCRIPCION
+    PHOTO
     OPERATIVIDAD {
+      items {
+        id
+        DESCRIPCION
+        ACTIVO
+        FECHA
+        createdAt
+        updatedAt
+        maquinariaOPERATIVIDADId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    COSTOS {
+      items {
+        id
+        Price
+        Date
+        ADJUNTOS {
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        maquinariaCOSTOSId
+        __typename
+      }
       nextToken
       __typename
     }
     id
     createdAt
     updatedAt
+    oPERARIOMAQUINARIAId
     __typename
   }
 }
@@ -41,9 +70,38 @@ export const listMaquinarias = /* GraphQL */ `query ListMaquinarias(
       TIPO
       MARCA
       DESCRIPCION
+      PHOTO
+      OPERATIVIDAD {
+        items {
+          id
+          DESCRIPCION
+          ACTIVO
+          FECHA
+          createdAt
+          updatedAt
+          maquinariaOPERATIVIDADId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      COSTOS {
+        items {
+          id
+          Price
+          Date
+          createdAt
+          updatedAt
+          maquinariaCOSTOSId
+          __typename
+        }
+        nextToken
+        __typename
+      }
       id
       createdAt
       updatedAt
+      oPERARIOMAQUINARIAId
       __typename
     }
     nextToken
@@ -103,4 +161,181 @@ export const listOPERATIVIDADS = /* GraphQL */ `query ListOPERATIVIDADS(
 ` as GeneratedQuery<
   APITypes.ListOPERATIVIDADSQueryVariables,
   APITypes.ListOPERATIVIDADSQuery
+>;
+export const getOPERARIO = /* GraphQL */ `query GetOPERARIO($id: ID!) {
+  getOPERARIO(id: $id) {
+    id
+    NOMBRE
+    EMAIL
+    TELEFONO
+    DIRECCION
+    MAQUINARIA {
+      items {
+        NroVehiculo
+        Patentedelvehiculo
+        TIPO
+        MARCA
+        DESCRIPCION
+        PHOTO
+        OPERATIVIDAD {
+          nextToken
+          __typename
+        }
+        COSTOS {
+          nextToken
+          __typename
+        }
+        id
+        createdAt
+        updatedAt
+        oPERARIOMAQUINARIAId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetOPERARIOQueryVariables,
+  APITypes.GetOPERARIOQuery
+>;
+export const listOPERARIOS = /* GraphQL */ `query ListOPERARIOS(
+  $filter: ModelOPERARIOFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listOPERARIOS(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      NOMBRE
+      EMAIL
+      TELEFONO
+      DIRECCION
+      MAQUINARIA {
+        items {
+          NroVehiculo
+          Patentedelvehiculo
+          TIPO
+          MARCA
+          DESCRIPCION
+          PHOTO
+          id
+          createdAt
+          updatedAt
+          oPERARIOMAQUINARIAId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListOPERARIOSQueryVariables,
+  APITypes.ListOPERARIOSQuery
+>;
+export const getCOSTO = /* GraphQL */ `query GetCOSTO($id: ID!) {
+  getCOSTO(id: $id) {
+    id
+    Price
+    Date
+    ADJUNTOS {
+      items {
+        id
+        URL
+        createdAt
+        updatedAt
+        cOSTOADJUNTOSId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    maquinariaCOSTOSId
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.GetCOSTOQueryVariables, APITypes.GetCOSTOQuery>;
+export const listCOSTOS = /* GraphQL */ `query ListCOSTOS(
+  $filter: ModelCOSTOFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listCOSTOS(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      Price
+      Date
+      ADJUNTOS {
+        items {
+          id
+          URL
+          createdAt
+          updatedAt
+          cOSTOADJUNTOSId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      maquinariaCOSTOSId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListCOSTOSQueryVariables,
+  APITypes.ListCOSTOSQuery
+>;
+export const getADJUNTO = /* GraphQL */ `query GetADJUNTO($id: ID!) {
+  getADJUNTO(id: $id) {
+    id
+    URL
+    createdAt
+    updatedAt
+    cOSTOADJUNTOSId
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetADJUNTOQueryVariables,
+  APITypes.GetADJUNTOQuery
+>;
+export const listADJUNTOS = /* GraphQL */ `query ListADJUNTOS(
+  $filter: ModelADJUNTOFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listADJUNTOS(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      URL
+      createdAt
+      updatedAt
+      cOSTOADJUNTOSId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListADJUNTOSQueryVariables,
+  APITypes.ListADJUNTOSQuery
 >;
