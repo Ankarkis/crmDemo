@@ -26,7 +26,6 @@ import { StatePipe } from "../../../shared/pipes/state.pipe";
 import { RouterModule } from '@angular/router';
 import { MaquinariasService } from '../../../shared/service/maquinarias.service';
 
-
 @Component({
     standalone: true,
     templateUrl: './maquinaria-page.component.html',
@@ -55,14 +54,15 @@ export default class  MaquinariaPageComponent {
       this.createId()
     this.maquinariaService.getMaquinaria().then(data=>{
         this.maquinarias=data.sort((a,b)=>this.tranformDateToUnix(b.updatedAt)-this.tranformDateToUnix(a.updatedAt));
-    })
-
+    })   
+    
   }
 
   openNew() {
       this.maquinaria = {DESCRIPCION:'',MARCA:'',NroVehiculo:'',Patentedelvehiculo:'',TIPO:'',id:''}
       this.submitted = false;
       this.maquinariaDialog = true;
+   
   }
 
 

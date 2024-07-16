@@ -1,9 +1,10 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from '../../services/app.layout.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { StyleClassModule } from 'primeng/styleclass';
+import { AuthenticatedServiceService } from '../../../shared/service/authenticated-service.service';
 
 
 @Component({
@@ -14,6 +15,9 @@ import { StyleClassModule } from 'primeng/styleclass';
   styleUrl: './top-bar.component.css'
 })
 export class TopBarComponent {
+    private authenticatedService=inject(AuthenticatedServiceService);
+    private router=inject(Router);
+    name:string=''
 
   menu: MenuItem[] = [];
 
@@ -24,6 +28,12 @@ export class TopBarComponent {
   searchActive: boolean = false;
 
   constructor(public layoutService: LayoutService) {}
+
+  async ngOnInit(): Promise<void> {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.name=''
+  }
 
   onMenuButtonClick() {
       this.layoutService.onMenuToggle();
@@ -61,5 +71,10 @@ export class TopBarComponent {
 
   get tabs(): MenuItem[] {
       return this.layoutService.tabs;
+  }
+
+  logout(){
+    this.authenticatedService.logOut();
+    this.router.navigate([''])
   }
 }

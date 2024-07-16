@@ -8,6 +8,7 @@ import { TopBarComponent } from '../top-bar/top-bar.component';
 import { MenuService } from '../../services/app.menu.service';
 import { LayoutService } from '../../services/app.layout.service';
 import { TabCloseEvent } from '../../interfaces/tab-close-event';
+import { AuthenticatedServiceService } from '../../../shared/service/authenticated-service.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -17,6 +18,8 @@ import { TabCloseEvent } from '../../interfaces/tab-close-event';
   styleUrl: './main-layout.component.css'
 })
 export class MainLayoutComponent {
+
+
   overlayMenuOpenSubscription: Subscription;
 
   tabOpenSubscription: Subscription;

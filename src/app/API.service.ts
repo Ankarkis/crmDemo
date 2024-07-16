@@ -111,6 +111,7 @@ export type OPERATIVIDAD = {
 };
 
 export type UpdateMaquinariaInput = {
+  oPERARIOMAQUINARIAId?:string|null,
   NroVehiculo?: string | null,
   Patentedelvehiculo?: string | null,
   TIPO?: string | null,
@@ -156,6 +157,7 @@ export type UpdateOPERATIVIDADInput = {
   ACTIVO?: boolean | null,
   FECHA: string,
   maquinariaOPERATIVIDADId?: string | null,
+  oPERARIOMAQUINARIAId?:string|null
 };
 
 export type DeleteOPERATIVIDADInput = {

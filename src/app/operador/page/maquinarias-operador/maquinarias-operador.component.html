@@ -2,6 +2,8 @@
 <div class="grid  p-4 w-full ">
     @for (maquinaria of maquinariaItems; track $index) {
     <app-card class="col-4" [maquinaria]="maquinaria" [(openDialogUpdateImage)]="openDialogUpdateImage" [(openDialogUpdateCost)]="openDialogUpdateCost"></app-card>
+}@empty {
+    <div class="col-12">No tienes todavia una maquina asignada, por favor ponte en contacto con el administrador.</div>
 }
 </div>
 <p-dialog header="Actualizar imagen de la maquina" (visibleChange)="closeDialogImage()" [modal]="true" [visible]="openDialogUpdateImage()?.openDialog || false" [style]="{ width: '25rem' }">

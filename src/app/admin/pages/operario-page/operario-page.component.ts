@@ -36,6 +36,7 @@ export default class OperarioPageComponent {
   maquinariaSelect!:CreateMaquinariaInput;
   filteredMaquinaria:CreateMaquinariaInput[]=[];
   private idUser:string='';
+  private messageService=inject(MessageService);
   get operadores(){
     return [...this.operadoresPrivate]
   }
@@ -62,12 +63,21 @@ export default class OperarioPageComponent {
   }
 
   saveMaquinariaOperador(){
-    if(this.maquinariaSelect){
+    if(!this.maquinariaSelect.id){
       return;
     }
     const {id}=this.maquinariaSelect;
-    const maquinariaOperador:UpdateMaquinariaInput={id,}
-    // this.maquinariaService.updateMaquinaria()
+    const maquinariaOperador:UpdateMaquinariaInput={id,oPERARIOMAQUINARIAId:this.idUser}
+    this.maquinariaService.updateMaquinaria(maquinariaOperador).then(()=>{
+      location.reload()
+  this.messageService.add({ severity: 'success', summary: 'Successful', detail: `Se ha asiganido la maquina al usuario con exito`, life: 3000 });
+ 
+    }).catch(()=>{
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: `Ha Ocurrio un error`, life: 3000 });
+    })
+  }
+  close(){
+    this.isOpenDialog=false;
   }
 
 

@@ -18,6 +18,7 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { CostService } from '../../service/cost.service';
 import { AdjuntosService } from '../../service/adjuntos.service';
+import { AuthenticatedServiceService } from '../../../shared/service/authenticated-service.service';
 
 
 
@@ -30,6 +31,7 @@ import { AdjuntosService } from '../../service/adjuntos.service';
   styleUrl: './maquinarias-operador.component.css'
 })
 export default class MaquinariasOperadorComponent {
+  private authenticatedService=inject(AuthenticatedServiceService);
   images=model<Image[]>([]);
   costos:CreateCOSTOInput=this.resetCost();
   private maquinariUserService=inject(MaquinariaUserService);

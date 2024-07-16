@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './admin/layout/main-layout/main-layout.component';
+import { isAuthenticatedGuard } from './shared/guards/is-authenticated.guard';
+import { isAdminGuard } from './shared/guards/is-admin.guard';
+import { isOperadorGuard } from './shared/guards/is-operador.guard';
 
 export const routes: Routes = [
     {
@@ -8,6 +11,7 @@ export const routes: Routes = [
     },
     {
         path:'admin',
+        canActivateChild:[isAuthenticatedGuard,isAdminGuard],
         component:MainLayoutComponent,
         children:[
             {
@@ -28,6 +32,7 @@ export const routes: Routes = [
         ]
     },{
         path:'maquinaria-operador',
+        canActivate:[isAuthenticatedGuard,isOperadorGuard],
         loadComponent:()=>import('./operador/page/maquinarias-operador/maquinarias-operador.component')
     }
 
