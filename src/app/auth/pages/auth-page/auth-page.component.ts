@@ -28,11 +28,11 @@ export default class AuthPageComponent {
 
   async redirect(){
     const isAdmin=await this.authenticatedService.isAdmin();
-
+      console.log(isAdmin)
     if(isAdmin){
       this.router.navigate(['/admin']);
-      
-  }
+      return;  
+  } 
     this.router.navigate(['/maquinaria-operador'])
   }
 

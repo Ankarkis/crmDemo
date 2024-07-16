@@ -6,9 +6,9 @@ export const isOperadorGuard: CanActivateFn = async (route, state) => {
   const authenticatedService=inject(AuthenticatedServiceService);
   const router=inject(Router);
   const isOperador=await authenticatedService.isOperador();
-
   if(!isOperador){
     router.navigateByUrl('');
+    return false;
   }
   return true;
 };

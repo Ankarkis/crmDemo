@@ -13,13 +13,14 @@ export class AuthenticatedServiceService {
      return currentUser ? true: false;
   }
   async isAdmin(){
-    return (await fetchAuthSession()).tokens?.accessToken.payload.scope?.includes('admin')
+    const roles=(await fetchAuthSession()).tokens?.accessToken.payload["cognito:groups"] 
+    return roles?.toString().includes('admin')
 
   }
 
   async isOperador(){
-    return (await fetchAuthSession()).tokens?.accessToken.payload.scope?.includes('operador')
-
+    const roles=(await fetchAuthSession()).tokens?.accessToken.payload["cognito:groups"] 
+    return roles?.toString().includes('operador')
   }
   
 
