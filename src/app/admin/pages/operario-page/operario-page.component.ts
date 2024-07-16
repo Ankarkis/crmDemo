@@ -14,6 +14,7 @@ import { CreateMaquinariaInput, Maquinaria, UpdateMaquinariaInput } from '../../
 import { DialogModule } from 'primeng/dialog';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 interface AutoCompleteCompleteEvent {
   originalEvent: Event;
   query: string;
@@ -35,6 +36,7 @@ export default class OperarioPageComponent {
   isOpenDialog:boolean=false;
   maquinariaSelect!:CreateMaquinariaInput;
   filteredMaquinaria:CreateMaquinariaInput[]=[];
+  router=inject(Router);
   private idUser:string='';
   private messageService=inject(MessageService);
   get operadores(){
@@ -69,9 +71,9 @@ export default class OperarioPageComponent {
     const {id}=this.maquinariaSelect;
     const maquinariaOperador:UpdateMaquinariaInput={id,oPERARIOMAQUINARIAId:this.idUser}
     this.maquinariaService.updateMaquinaria(maquinariaOperador).then(()=>{
-      location.reload()
+      this.router.navigateByUrl('admin/operario',{skipLocationChange:true})
   this.messageService.add({ severity: 'success', summary: 'Successful', detail: `Se ha asiganido la maquina al usuario con exito`, life: 3000 });
- 
+      
     }).catch(()=>{
       this.messageService.add({ severity: 'error', summary: 'Error', detail: `Ha Ocurrio un error`, life: 3000 });
     })

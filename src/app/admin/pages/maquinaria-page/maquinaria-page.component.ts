@@ -23,7 +23,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { OperatividadService } from '../../services/operatividad-service.service';
 import { StatePipe } from "../../../shared/pipes/state.pipe";
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MaquinariasService } from '../../../shared/service/maquinarias.service';
 
 @Component({
@@ -38,6 +38,8 @@ export default class  MaquinariaPageComponent {
    maquinariaDialog: boolean = false;
   operatividadDialgo:boolean=false;
   maquinarias:CreateMaquinariaInput[]=[]
+  router=inject(Router);
+
   maquinaria?: CreateMaquinariaInput;
   operatividadMaquinaria:CreateOPERATIVIDADInput={
     ACTIVO: true, DESCRIPCION: '',
@@ -133,7 +135,7 @@ deleteMaquinaria(maquinaria:CreateMaquinariaInput){
                   } else {
               this.maquinaria.id = this.createId();
               this.maquinariaService.saveMaquinaria(this.maquinaria).then(maquinaria=>{
-                location.reload()
+                this.router.navigateByUrl('admin/maquinarias')
                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: `Se registro la maquinaria ${this.maquinaria?.NroVehiculo}`, life: 3000 });
               }).catch(()=>{
             this.messageService.add({ severity: 'error', summary: 'Error', detail: `hubo un problema con el  registro de la maquinaria ${this.maquinaria?.NroVehiculo}`, life: 3000 });
@@ -165,7 +167,7 @@ saveOperatividad(){
   this.operatividadMaquinaria.maquinariaOPERATIVIDADId=this.maquinaria?.id
   this.operatividadService.saveOperatividad(this.operatividadMaquinaria).then(()=>{
     this.operatividadDialgo=false;
-    location.reload()
+    this.router.navigateByUrl('admin/maquinarias')
     this.messageService.add({ severity: 'success', summary: 'Successful', detail: `Se registro un nuevo estado de operatividad para la maquina ${this.maquinaria?.NroVehiculo}`, life: 3000 });
    
   }).catch(()=>{

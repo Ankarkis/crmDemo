@@ -14,7 +14,7 @@
     </div>
 </p-dialog>
 
-<p-dialog header="Agregar costos" [visible]="openDialogUpdateCost()?.openDialog || false"  [modal]="true"
+<p-dialog header="Agregar costos" (visibleChange)="closeDialogAdjunto()"  [visible]="openDialogUpdateCost()?.openDialog || false"  [modal]="true"
     styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="flex-auto ">
@@ -44,7 +44,7 @@
     </ng-template>
 
     <ng-template pTemplate="footer">
-        <p-button pRipple label="Cancelar" icon="pi pi-times" [text]="true" ></p-button>
+        <p-button pRipple label="Cancelar" icon="pi pi-times" [text]="true"  (click)="closeDialogAdjunto()"></p-button>
         <p-button pRipple label="Guardar" icon="pi pi-check" (click)="addCost()" [text]="true" ></p-button>
     </ng-template>
 </p-dialog>
