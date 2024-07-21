@@ -20,7 +20,6 @@ export class MaquinariasService {
     )
     
   }
-
   getMaquinaria(){
     return this.client.graphql({
       query:query.listMaquinarias,
