@@ -1,7 +1,15 @@
 {
   "api": {
     "crmdemo": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "crmdemo5a8c3e1d"
+        }
+      ],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [
@@ -12,6 +20,12 @@
                 "description": ""
               },
               "authenticationType": "API_KEY"
+            },
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authcrmdemo5a8c3e1d"
+              }
             }
           ],
           "defaultAuthentication": {

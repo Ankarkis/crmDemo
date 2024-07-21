@@ -1,10 +1,11 @@
 # This "input" configures a global authorization rule to enable public access to
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 # This rule is applied to all models in this schema.
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+#input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
 
-type Maquinaria @model {
+type Maquinaria @model 
+@auth(rules: [{ allow: private, provider: iam },{allow:groups,groups:["admin"]},{allow:groups,groups:["operador"],operations:[read,update]}]){
 NroVehiculo: ID!	
 Patentedelvehiculo: String!
 TIPO: String!
@@ -16,6 +17,7 @@ COSTOS:[COSTO] @hasMany
 }
 
 type OPERATIVIDAD @model  
+@auth(rules: [{ allow: private, provider: iam },{allow:groups,groups:["admin"]},{allow:groups,groups:["operador"],operations:[read]}])
 {
 id:ID! @primaryKey(sortKeyFields: ["FECHA"])
 DESCRIPCION: String!
@@ -25,7 +27,7 @@ FECHA: String!
 }
 
 type OPERARIO 
-@auth(rules: [{ allow: private, provider: iam },{allow:public}]) 
+@auth(rules: [{ allow: private, provider: iam },{allow:groups,groups:["admin"]},{allow:groups,groups:["operador"],operations:[read,update]}])
 @model{
     id:ID!
     NOMBRE: String!
@@ -37,7 +39,7 @@ type OPERARIO
 
 
 type COSTO 
-@auth(rules: [{ allow: private, provider: iam },{allow:public}]) 
+@auth(rules: [{ allow: private, provider: iam },{allow:groups,groups:["admin"]},{allow:groups,groups:["operador"],operations:[read,create,update]}])
 @model{
     id:ID!
     Price:String!
@@ -46,7 +48,7 @@ type COSTO
 }
 
 type ADJUNTO 
-@auth(rules: [{ allow: private, provider: iam },{allow:public}]) 
+@auth(rules: [{ allow: private, provider: iam },{allow:groups,groups:["admin"]},{allow:groups,groups:["operador"],operations:[read,create,update]}]) 
 @model{
     id:ID!
     URL:String!

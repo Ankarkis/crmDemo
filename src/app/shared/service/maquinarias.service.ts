@@ -15,7 +15,7 @@ export class MaquinariasService {
       {
         query:mutations.createMaquinaria,
         variables:{input:maquinaria},
-        authMode:'apiKey'
+        authMode:'userPool'
       }
     )
     
@@ -24,7 +24,7 @@ export class MaquinariasService {
   getMaquinaria(){
     return this.client.graphql({
       query:query.listMaquinarias,
-      authMode:'apiKey'
+      authMode:'userPool'
     }).then(maquinaria=>{
       return maquinaria.data.listMaquinarias.items
     })
@@ -34,7 +34,7 @@ export class MaquinariasService {
     return this.client.graphql({
       query:query.getMaquinaria,
       variables:{id:id},
-      authMode:'apiKey'
+      authMode:'userPool'
     })
   }
 
@@ -42,7 +42,7 @@ export class MaquinariasService {
     return this.client.graphql({
       query:mutations.updateMaquinaria,
       variables:{input:maquinaria},
-        authMode:'apiKey'
+        authMode:'userPool'
 
     })
   }

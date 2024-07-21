@@ -13,6 +13,10 @@
         "expirationTime": 7,
         "apiKeyExpirationDate": "2024-07-19T01:28:08.995Z",
         "keyDescription": ""
+      },
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authcrmdemo5a8c3e1d"
       }
     ]
   }

@@ -12,7 +12,7 @@ export class OperarioServiceService {
     return this.client.graphql(
        {
          query:query.listOPERARIOS,
-         authMode:'apiKey'
+         authMode:'userPool'
        }
      ).then(operadores=>operadores.data.listOPERARIOS.items)
      
