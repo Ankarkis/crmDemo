@@ -1,0 +1,539 @@
+mutation CreateMaquinariaW1UY1 {
+  createMaquinaria(input: {
+    id: "W1UY1", 
+    Patentedelvehiculo: "MI105798", 
+    TIPO: "TELEHANDLER", 
+    NroVehiculo: "533-105", 
+    MARCA: "JCB", 
+    DESCRIPCION: "TELHANDLAER-07"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaVdxfz {
+  createMaquinaria(input: {
+    id: "vdxfz", 
+    Patentedelvehiculo: "HWL-500R.", 
+    TIPO: "HINCADORA", 
+    NroVehiculo: "HW500R", 
+    MARCA: "JINING HENGWANG MINING MACHINERY", 
+    DESCRIPCION: "HINCA-01"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaJIEBN {
+  createMaquinaria(input: {
+    id: "JIEBN", 
+    Patentedelvehiculo: "MC0611129", 
+    TIPO: "EXCAVADORA", 
+    NroVehiculo: "SK200-8", 
+    MARCA: "KOBELCO", 
+    DESCRIPCION: "EXC-01"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaBbSwP {
+  createMaquinaria(input: {
+    id: "bbSwP", 
+    Patentedelvehiculo: "WTN353", 
+    TIPO: "CAMABAJA", 
+    NroVehiculo: "9400", 
+    MARCA: "INTERNATIONAL", 
+    DESCRIPCION: "CAMABAJA-01"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaCb9hU {
+  createMaquinaria(input: {
+    id: "cb9hU", 
+    Patentedelvehiculo: "MC082930", 
+    TIPO: "MINICARGADOR", 
+    NroVehiculo: "232D", 
+    MARCA: "CATERPILLAR", 
+    DESCRIPCION: "MINI-03"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaI2aB1 {
+  createMaquinaria(input: {
+    id: "I2aB1", 
+    Patentedelvehiculo: "SQL017", 
+    TIPO: "CAMIÓN GRÚA", 
+    NroVehiculo: "KODIAK 241", 
+    MARCA: "CHEVROLET", 
+    DESCRIPCION: "GRUA-02"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaBucx8 {
+  createMaquinaria(input: {
+    id: "bucx8", 
+    Patentedelvehiculo: "SXU804", 
+    TIPO: "CAMIÓN GRÚA", 
+    NroVehiculo: "7300", 
+    MARCA: "INTERNATIONAL", 
+    DESCRIPCION: "GRUA-01"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaUn6DQ {
+  createMaquinaria(input: {
+    id: "Un6DQ", 
+    Patentedelvehiculo: "MC664606 L38", 
+    TIPO: "MINICARGADOR", 
+    NroVehiculo: "L318", 
+    MARCA: "NEW HOLLAND", 
+    DESCRIPCION: "MINI-01"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaHbanl {
+  createMaquinaria(input: {
+    id: "hbanl", 
+    Patentedelvehiculo: "MC644360", 
+    TIPO: "EXCAVADORA", 
+    NroVehiculo: "PC70-8", 
+    MARCA: "KOMATSU", 
+    DESCRIPCION: "EXC-07"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaXpYiV {
+  createMaquinaria(input: {
+    id: "XpYiV", 
+    Patentedelvehiculo: "FEX100", 
+    TIPO: "HINCADORA", 
+    NroVehiculo: "FEX100", 
+    MARCA: "ORTECO", 
+    DESCRIPCION: "HINCA-03"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaOqE4Q {
+  createMaquinaria(input: {
+    id: "OqE4Q", 
+    Patentedelvehiculo: "16003068", 
+    TIPO: "TELEHANDLER", 
+    NroVehiculo: "10042", 
+    MARCA: "SKY TRAK", 
+    DESCRIPCION: "TELHANDLAER-03"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinaria4qvfW {
+  createMaquinaria(input: {
+    id: "4qvfW", 
+    Patentedelvehiculo: "MI014699", 
+    TIPO: "MINICARGADOR", 
+    NroVehiculo: "236D", 
+    MARCA: "CATERPILLAR", 
+    DESCRIPCION: "MINI-04"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinaria1s3WB {
+  createMaquinaria(input: {
+    id: "1s3WB", 
+    Patentedelvehiculo: "MI050905", 
+    TIPO: "TELEHANDLER", 
+    NroVehiculo: "T40140", 
+    MARCA: "BOBCAT", 
+    DESCRIPCION: "TELHANDLAER-04"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaSVnVk {
+  createMaquinaria(input: {
+    id: "SVnVk", 
+    Patentedelvehiculo: "MI361695", 
+    TIPO: "TELEHANDLER", 
+    NroVehiculo: "VR 843C", 
+    MARCA: "INGERSOLL RAND", 
+    DESCRIPCION: "TELHANDLAER-06"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaMnsp2 {
+  createMaquinaria(input: {
+    id: "Mnsp2", 
+    Patentedelvehiculo: "MC019663", 
+    TIPO: "TELEHANDLER", 
+    NroVehiculo: "TL642C", 
+    MARCA: "CATERPILLAR", 
+    DESCRIPCION: "TELHANDLAER-08"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaGsRuM {
+  createMaquinaria(input: {
+    id: "GsRuM", 
+    Patentedelvehiculo: "MC352706", 
+    TIPO: "EXCAVADORA", 
+    NroVehiculo: "VIO35-6B", 
+    MARCA: "YANMAR", 
+    DESCRIPCION: "EXC-05"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaSIVn6 {
+  createMaquinaria(input: {
+    id: "SIVn6", 
+    Patentedelvehiculo: "MI108600", 
+    TIPO: "TELEHANDLER", 
+    NroVehiculo: "GTH 844", 
+    MARCA: "GENIE", 
+    DESCRIPCION: "TELHANDLAER-02"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinaria0HrBJ {
+  createMaquinaria(input: {
+    id: "0HrBJ", 
+    Patentedelvehiculo: "MC382717", 
+    TIPO: "TELEHANDLER", 
+    NroVehiculo: "TH514D", 
+    MARCA: "CATERPILLAR", 
+    DESCRIPCION: "TELHANDLAER-01"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaTLQZ6 {
+  createMaquinaria(input: {
+    id: "TLQZ6", 
+    Patentedelvehiculo: "MC0971369", 
+    TIPO: "EXCAVADORA", 
+    NroVehiculo: "120-2", 
+    MARCA: "HITACHI", 
+    DESCRIPCION: "EXC-06"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaGm2vT {
+  createMaquinaria(input: {
+    id: "Gm2vT", 
+    Patentedelvehiculo: "H2000M32", 
+    TIPO: "HINCADORA", 
+    NroVehiculo: "H2000", 
+    MARCA: "VERMEER", 
+    DESCRIPCION: "HINCA-05"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaUpXvW {
+  createMaquinaria(input: {
+    id: "UpXvW", 
+    Patentedelvehiculo: "MC693067", 
+    TIPO: "EXCAVADORA", 
+    NroVehiculo: "E70B", 
+    MARCA: "CATERPILLAR", 
+    DESCRIPCION: "EXC-02"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaWn5YF {
+  createMaquinaria(input: {
+    id: "Wn5YF", 
+    Patentedelvehiculo: "C021588", 
+    TIPO: "TELEHANDLER", 
+    NroVehiculo: "512-56", 
+    MARCA: "JCB", 
+    DESCRIPCION: "TELHANDLAER-05"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariat4lIp {
+  createMaquinaria(input: {
+    id: "t4lIp", 
+    Patentedelvehiculo: "MC354520", 
+    TIPO: "TELEHANDLER", 
+    NroVehiculo: "842", 
+    MARCA: "GENIE", 
+    DESCRIPCION: "TELHANDLAER-09"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaLPuYN {
+  createMaquinaria(input: {
+    id: "LPuYN", 
+    Patentedelvehiculo: "MINC02130", 
+    TIPO: "MINICARGADOR", 
+    NroVehiculo: "MC230", 
+    MARCA: "CASE", 
+    DESCRIPCION: "MINI-05"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariap1izD {
+  createMaquinaria(input: {
+    id: "p1izD", 
+    Patentedelvehiculo: "MC063372", 
+    TIPO: "EXCAVADORA", 
+    NroVehiculo: "EC140DL", 
+    MARCA: "VOLVO", 
+    DESCRIPCION: "EXC-03"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinaria5TwJH {
+  createMaquinaria(input: {
+    id: "5TwJH", 
+    Patentedelvehiculo: "BSP658", 
+    TIPO: "CAMIÓN", 
+    NroVehiculo: "HD78", 
+    MARCA: "HYUNDAI", 
+    DESCRIPCION: "CAMION-01"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}
+
+mutation CreateMaquinariaWJAzR {
+  createMaquinaria(input: {
+    id: "WJAzR", 
+    Patentedelvehiculo: "MC104105", 
+    TIPO: "EXCAVADORA", 
+    NroVehiculo: "PC138US", 
+    MARCA: "KOMATSU", 
+    DESCRIPCION: "EXC-04"
+  }) {
+    DESCRIPCION
+    NroVehiculo
+    MARCA
+    updatedAt
+    id
+    createdAt
+    TIPO
+    Patentedelvehiculo
+  }
+}

@@ -1,5 +1,8 @@
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+#@auth(rules: [{ allow: public, provider: iam,operations:[read,update,create,update] },{allow:groups,groups:["admin"]},{allow:groups,groups:["operador"],operations:[read,update]}])
 type Maquinaria @model 
-@auth(rules: [{ allow: private, provider: iam },{allow:groups,groups:["admin"]},{allow:groups,groups:["operador"],operations:[read,update]}]){
+{
 NroVehiculo: ID!	
 Patentedelvehiculo: String!
 TIPO: String!
