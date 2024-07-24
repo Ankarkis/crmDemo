@@ -113,48 +113,6 @@
       "service": "Lambda"
     }
   },
-  "parameters": {
-    "AMPLIFY_function_addUserToDB_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "addUserToDB"
-        }
-      ]
-    },
-    "AMPLIFY_function_addUserToDB_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "addUserToDB"
-        }
-      ]
-    },
-    "AMPLIFY_function_backendedfd398fPostConfirmation_GROUP": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "backendedfd398fPostConfirmation"
-        }
-      ]
-    },
-    "AMPLIFY_function_backendedfd398fPostConfirmation_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "backendedfd398fPostConfirmation"
-        }
-      ]
-    },
-    "AMPLIFY_function_backendedfd398fPostConfirmation_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "backendedfd398fPostConfirmation"
-        }
-      ]
-    }
-  },
   "storage": {
     "s3c2bab592": {
       "dependsOn": [],
