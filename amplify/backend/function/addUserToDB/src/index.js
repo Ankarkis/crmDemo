@@ -1,11 +1,10 @@
 /* Amplify Params - DO NOT EDIT
-	API_CRMDEMO_GRAPHQLAPIENDPOINTOUTPUT
-	API_CRMDEMO_GRAPHQLAPIIDOUTPUT
-	API_CRMDEMO_GRAPHQLAPIKEYOUTPUT
+	API_BACKEND_GRAPHQLAPIENDPOINTOUTPUT
+	API_BACKEND_GRAPHQLAPIIDOUTPUT
+	API_BACKEND_GRAPHQLAPIKEYOUTPUT
 	ENV
 	REGION
 Amplify Params - DO NOT EDIT */
-
 import crypto from '@aws-crypto/sha256-js';
 import { defaultProvider } from '@aws-sdk/credential-provider-node';
 import { SignatureV4 } from '@aws-sdk/signature-v4';
@@ -13,7 +12,7 @@ import { HttpRequest } from '@aws-sdk/protocol-http';
 import { default as fetch, Request } from 'node-fetch';
 
 
-const GRAPHQL_ENDPOINT = process.env.API_CRMDEMO_GRAPHQLAPIENDPOINTOUTPUT;
+const GRAPHQL_ENDPOINT = process.env.API_BACKEND_GRAPHQLAPIENDPOINTOUTPUT;
 const AWS_REGION = process.env.AWS_REGION || 'us-east-1';
 const { Sha256 } = crypto;
 

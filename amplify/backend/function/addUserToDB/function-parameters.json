@@ -1,11 +1,11 @@
 {
-  "lambdaLayers": [],
   "permissions": {
     "api": {
-      "crmdemo": [
+      "backend": [
         "Query",
         "Mutation"
       ]
     }
-  }
+  },
+  "lambdaLayers": []
 }

@@ -1,12 +1,13 @@
 {
-  "resourceName": "MaquinariaBucket",
-  "policyUUID": "2f92e6f1",
-  "bucketName": "crmdemoc1a32fa6def94d9a894c9816b769957c",
+  "resourceName": "s3c2bab592",
+  "policyUUID": "c2bab592",
+  "bucketName": "backend41bd549dbd80457d86476f78b9b76080",
   "storageAccess": "auth",
   "guestAccess": [],
   "authAccess": [
     "CREATE_AND_UPDATE",
-    "READ"
+    "READ",
+    "DELETE"
   ],
   "triggerFunction": "NONE",
   "groupAccess": {}
