@@ -14,7 +14,7 @@ export class OperatividadService {
        {
          query:mutations.createOPERATIVIDAD,
          variables:{input:operatividad},
-         authMode:'apiKey'
+         authMode:'userPool'
        }
      )
      

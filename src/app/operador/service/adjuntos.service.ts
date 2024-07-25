@@ -13,7 +13,7 @@ export class AdjuntosService {
     return this.client.graphql({
       query:mutations.createADJUNTO,
       variables:{input:adjunto},
-      authMode:'apiKey'
+      authMode:'userPool'
     })
   }
 }

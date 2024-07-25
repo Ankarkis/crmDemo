@@ -15,7 +15,7 @@ export class MaquinariaUserService {
     return this.client.graphql({
       query:query.getOPERARIO,
       variables:{id:id},
-      authMode:'apiKey'
+      authMode:'userPool'
     }).then(operador=>{
       return operador.data.getOPERARIO?.MAQUINARIA?.items as Maquinaria[];
     })
