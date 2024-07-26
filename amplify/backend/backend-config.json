@@ -1,35 +1,33 @@
 {
   "api": {
-    "crmdemo": {
+    "backend": {
       "dependsOn": [
         {
           "attributes": [
             "UserPoolId"
           ],
           "category": "auth",
-          "resourceName": "crmdemo5a8c3e1d"
+          "resourceName": "backendedfd398f"
         }
       ],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
-              "apiKeyConfig": {
-                "apiKeyExpirationDate": "2024-07-19T01:28:08.995Z",
-                "apiKeyExpirationDays": 7,
-                "description": ""
-              },
-              "authenticationType": "API_KEY"
+              "authenticationType": "AWS_IAM"
             },
             {
               "authenticationType": "AMAZON_COGNITO_USER_POOLS",
               "userPoolConfig": {
-                "userPoolId": "authcrmdemo5a8c3e1d"
+                "userPoolId": "authbackendedfd398f"
               }
             }
           ],
           "defaultAuthentication": {
-            "authenticationType": "AWS_IAM"
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            },
+            "authenticationType": "API_KEY"
           }
         }
       },
@@ -38,7 +36,7 @@
     }
   },
   "auth": {
-    "crmdemo5a8c3e1d": {
+    "backendedfd398f": {
       "customAuth": false,
       "dependsOn": [
         {
@@ -47,7 +45,7 @@
             "Name"
           ],
           "category": "function",
-          "resourceName": "crmdemo5a8c3e1dPostConfirmation",
+          "resourceName": "backendedfd398fPostConfirmation",
           "triggerProvider": "Cognito"
         }
       ],
@@ -74,10 +72,26 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "backendedfd398f"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
     }
   },
   "function": {
-    "addOperadorPostConfirmation": {
+    "addUserToDB": {
       "build": true,
       "dependsOn": [
         {
@@ -87,25 +101,64 @@
             "GraphQLAPIKeyOutput"
           ],
           "category": "api",
-          "resourceName": "crmdemo"
+          "resourceName": "backend"
         }
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "crmdemo5a8c3e1dPostConfirmation": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "crmdemoe806d6a0PostConfirmation": {
+    "backendedfd398fPostConfirmation": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
+
+  "parameters": {
+    "AMPLIFY_function_addUserToDB_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addUserToDB"
+        }
+      ]
+    },
+    "AMPLIFY_function_addUserToDB_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "addUserToDB"
+        }
+      ]
+    },
+    "AMPLIFY_function_backendedfd398fPostConfirmation_GROUP": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "backendedfd398fPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_backendedfd398fPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "backendedfd398fPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_backendedfd398fPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "backendedfd398fPostConfirmation"
+        }
+      ]
+    }
+  },
+
   "storage": {
-    "MaquinariaBucket": {
+    "s3c2bab592": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"

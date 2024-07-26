@@ -1,13 +1,13 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "crmdemo": {
+    "backend": {
       "GraphQLAPIEndpointOutput": "string",
       "GraphQLAPIIdOutput": "string",
       "GraphQLAPIKeyOutput": "string"
     }
   },
   "auth": {
-    "crmdemo5a8c3e1d": {
+    "backendedfd398f": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
       "IdentityPoolId": "string",
@@ -15,24 +15,21 @@ export type AmplifyDependentResourcesAttributes = {
       "UserPoolArn": "string",
       "UserPoolId": "string",
       "UserPoolName": "string"
+    },
+    "userPoolGroups": {
+      "adminGroupRole": "string",
+      "operadorGroupRole": "string"
     }
   },
   "function": {
-    "addOperadorPostConfirmation": {
+    "addUserToDB": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
       "Name": "string",
       "Region": "string"
     },
-    "crmdemo5a8c3e1dPostConfirmation": {
-      "Arn": "string",
-      "LambdaExecutionRole": "string",
-      "LambdaExecutionRoleArn": "string",
-      "Name": "string",
-      "Region": "string"
-    },
-    "crmdemoe806d6a0PostConfirmation": {
+    "backendedfd398fPostConfirmation": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -41,7 +38,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
-    "MaquinariaBucket": {
+    "s3c2bab592": {
       "BucketName": "string",
       "Region": "string"
     }

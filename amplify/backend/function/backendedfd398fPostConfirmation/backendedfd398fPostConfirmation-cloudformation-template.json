@@ -67,12 +67,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "crmdemo5a8c3e1dPostConfirmation",
+            "backendedfd398fPostConfirmation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "crmdemo5a8c3e1dPostConfirmation",
+                  "backendedfd398fPostConfirmation",
                   "-",
                   {
                     "Ref": "env"
@@ -122,12 +122,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "crmdemo5a8c3e1dPostConfirmation",
+            "backendedfd398fPostConfirmation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "crmdemo5a8c3e1dPostConfirmation",
+                  "backendedfd398fPostConfirmation",
                   "-",
                   {
                     "Ref": "env"

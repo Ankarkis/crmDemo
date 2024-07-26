@@ -13,7 +13,7 @@ export class CostService {
     return this.client.graphql({
       query:mutations.createCOSTO,
       variables:{input:cost},
-      authMode:'apiKey'
+      authMode:'userPool'
     })
   }
 

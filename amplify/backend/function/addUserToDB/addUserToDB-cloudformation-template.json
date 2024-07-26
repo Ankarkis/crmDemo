@@ -16,17 +16,17 @@
     "s3Key": {
       "Type": "String"
     },
-    "apicrmdemoGraphQLAPIIdOutput": {
+    "apibackendGraphQLAPIIdOutput": {
       "Type": "String",
-      "Default": "apicrmdemoGraphQLAPIIdOutput"
+      "Default": "apibackendGraphQLAPIIdOutput"
     },
-    "apicrmdemoGraphQLAPIEndpointOutput": {
+    "apibackendGraphQLAPIEndpointOutput": {
       "Type": "String",
-      "Default": "apicrmdemoGraphQLAPIEndpointOutput"
+      "Default": "apibackendGraphQLAPIEndpointOutput"
     },
-    "apicrmdemoGraphQLAPIKeyOutput": {
+    "apibackendGraphQLAPIKeyOutput": {
       "Type": "String",
-      "Default": "apicrmdemoGraphQLAPIKeyOutput"
+      "Default": "apibackendGraphQLAPIKeyOutput"
     }
   },
   "Conditions": {
@@ -59,12 +59,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "addOperadorPostConfirmation",
+            "addUserToDB",
             {
               "Fn::Join": [
                 "",
                 [
-                  "addOperadorPostConfirmation",
+                  "addUserToDB",
                   "-",
                   {
                     "Ref": "env"
@@ -82,14 +82,14 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "API_CRMDEMO_GRAPHQLAPIIDOUTPUT": {
-              "Ref": "apicrmdemoGraphQLAPIIdOutput"
+            "API_BACKEND_GRAPHQLAPIIDOUTPUT": {
+              "Ref": "apibackendGraphQLAPIIdOutput"
             },
-            "API_CRMDEMO_GRAPHQLAPIENDPOINTOUTPUT": {
-              "Ref": "apicrmdemoGraphQLAPIEndpointOutput"
+            "API_BACKEND_GRAPHQLAPIENDPOINTOUTPUT": {
+              "Ref": "apibackendGraphQLAPIEndpointOutput"
             },
-            "API_CRMDEMO_GRAPHQLAPIKEYOUTPUT": {
-              "Ref": "apicrmdemoGraphQLAPIKeyOutput"
+            "API_BACKEND_GRAPHQLAPIKEYOUTPUT": {
+              "Ref": "apibackendGraphQLAPIKeyOutput"
             }
           }
         },
@@ -110,12 +110,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "crmdemoLambdaRoleb95896c9",
+            "backendLambdaRole90e50c8c",
             {
               "Fn::Join": [
                 "",
                 [
-                  "crmdemoLambdaRoleb95896c9",
+                  "backendLambdaRole90e50c8c",
                   "-",
                   {
                     "Ref": "env"
@@ -221,7 +221,7 @@
                       },
                       ":apis/",
                       {
-                        "Ref": "apicrmdemoGraphQLAPIIdOutput"
+                        "Ref": "apibackendGraphQLAPIIdOutput"
                       },
                       "/types/Query/*"
                     ]
@@ -241,7 +241,7 @@
                       },
                       ":apis/",
                       {
-                        "Ref": "apicrmdemoGraphQLAPIIdOutput"
+                        "Ref": "apibackendGraphQLAPIIdOutput"
                       },
                       "/types/Mutation/*"
                     ]
