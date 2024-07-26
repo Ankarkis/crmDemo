@@ -113,6 +113,7 @@
       "service": "Lambda"
     }
   },
+
   "parameters": {
     "AMPLIFY_function_addUserToDB_deploymentBucketName": {
       "usedBy": [
@@ -155,6 +156,7 @@
       ]
     }
   },
+
   "storage": {
     "s3c2bab592": {
       "dependsOn": [],
