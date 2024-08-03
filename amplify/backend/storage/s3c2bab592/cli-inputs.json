@@ -9,6 +9,16 @@
     "READ",
     "DELETE"
   ],
-  "triggerFunction": "NONE",
-  "groupAccess": {}
+  "groupAccess": {
+    "admin": [
+      "CREATE_AND_UPDATE",
+      "READ",
+      "DELETE"
+    ],
+    "operador": [
+      "CREATE_AND_UPDATE",
+      "READ",
+      "DELETE"
+    ]
+  }
 }

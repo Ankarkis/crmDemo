@@ -1,16 +1,16 @@
 {
-  "dev": {
+  "master": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-backend-dev-4dd8c-authRole",
-      "UnauthRoleArn": "arn:aws:iam::905418286065:role/amplify-backend-dev-4dd8c-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::905418286065:role/amplify-backend-dev-4dd8c-authRole",
+      "AuthRoleName": "amplify-crmdemo-master-afd85-authRole",
+      "UnauthRoleArn": "arn:aws:iam::905418286065:role/amplify-crmdemo-master-afd85-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::905418286065:role/amplify-crmdemo-master-afd85-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-backend-dev-4dd8c-deployment",
-      "UnauthRoleName": "amplify-backend-dev-4dd8c-unauthRole",
-      "StackName": "amplify-backend-dev-4dd8c",
-      "StackId": "arn:aws:cloudformation:us-east-1:905418286065:stack/amplify-backend-dev-4dd8c/df41f220-495a-11ef-8ce3-0affeddc0395",
+      "DeploymentBucketName": "amplify-crmdemo-master-afd85-deployment",
+      "UnauthRoleName": "amplify-crmdemo-master-afd85-unauthRole",
+      "StackName": "amplify-crmdemo-master-afd85",
+      "StackId": "arn:aws:cloudformation:us-east-1:905418286065:stack/amplify-crmdemo-master-afd85/6577d9e0-4a05-11ef-bd6b-12e245fc459d",
       "AmplifyAppId": "d24kwjvsj52ozq",
-      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-backend-dev-4dd8c-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-crmdemo-master-afd85-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
@@ -18,14 +18,13 @@
         "userPoolGroups": {}
       },
       "function": {
-        "backendedfd398fPostConfirmation": {
-          "GROUP": "operador",
-          "deploymentBucketName": "amplify-backend-dev-4dd8c-deployment",
-          "s3Key": "amplify-builds/backendedfd398fPostConfirmation-66633150515270693970-build.zip"
-        },
         "addUserToDB": {
-          "deploymentBucketName": "amplify-backend-dev-4dd8c-deployment",
+          "deploymentBucketName": "amplify-crmdemo-master-afd85-deployment",
           "s3Key": "amplify-builds/addUserToDB-4156546d78646b2b686f-build.zip"
+        },
+        "backendedfd398fPostConfirmation": {
+          "deploymentBucketName": "amplify-crmdemo-master-afd85-deployment",
+          "s3Key": "amplify-builds/backendedfd398fPostConfirmation-66633150515270693970-build.zip"
         }
       },
       "storage": {

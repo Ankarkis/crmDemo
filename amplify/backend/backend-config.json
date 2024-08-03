@@ -131,14 +131,6 @@
         }
       ]
     },
-    "AMPLIFY_function_backendedfd398fPostConfirmation_GROUP": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "backendedfd398fPostConfirmation"
-        }
-      ]
-    },
     "AMPLIFY_function_backendedfd398fPostConfirmation_deploymentBucketName": {
       "usedBy": [
         {
@@ -159,7 +151,29 @@
 
   "storage": {
     "s3c2bab592": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "backendedfd398f"
+        },
+        {
+          "attributes": [
+            "adminGroupRole"
+          ],
+          "category": "auth",
+          "resourceName": "userPoolGroups"
+        },
+        {
+          "attributes": [
+            "operadorGroupRole"
+          ],
+          "category": "auth",
+          "resourceName": "userPoolGroups"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "S3"
     }
