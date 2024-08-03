@@ -18,21 +18,15 @@
     styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="flex-auto ">
-            <label for="buttondisplay" class="font-bold block mb-2"> Ingrese una fecha </label>
+            <label for="buttondisplay" class="font-bold block mb-2"> Horometro </label>
 
             <p-calendar  
                 appendTo="body"
                 [(ngModel)]="costos.Date"
-                [showIcon]="true" 
+                [showIcon]="true"
+                [showTime]="true"  
                 inputId="buttondisplay" 
                 [showOnFocus]="false" />
-        </div>
-        <div class="flex-auto ">
-            <label for="integeronly" class="font-bold block mb-value12"> Ingrese una valor </label>
-
-            <p-inputNumber 
-            inputId="integeronly" 
-            [(ngModel)]="costos.Price" /> 
         </div>
         <div class="flex-auto ">
             <label for="evidencia"  class="font-bold block mb-value12"> Sube la evidencia </label>
