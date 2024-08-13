@@ -10,7 +10,7 @@ MARCA: String!
 DESCRIPCION: String!
 PHOTO:String	
 OPERATIVIDAD:[OPERATIVIDAD] @hasMany
-COSTOS:[COSTO] @hasMany	
+HOROMETRO:[Horometro] @hasMany	
 }
 
 type OPERATIVIDAD @model  
@@ -35,12 +35,12 @@ type OPERARIO
 }
 
 
-type COSTO 
+type Horometro 
 @auth(rules: [{ allow: private, provider: iam },{allow:groups,groups:["admin"]},{allow:groups,groups:["operador"],operations:[read,create,update]}])
 @model{
     id:ID!
-    Price:String!
-    Date:String!
+    Horometro:Float!
+    Date:String
     ADJUNTOS:[ADJUNTO] @hasMany
 }
 

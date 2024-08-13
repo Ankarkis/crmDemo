@@ -33,10 +33,10 @@ export const createMaquinaria = /* GraphQL */ `mutation CreateMaquinaria(
       nextToken
       __typename
     }
-    COSTOS {
+    HOROMETRO {
       items {
         id
-        Price
+        Horometro
         Date
         ADJUNTOS {
           nextToken
@@ -44,7 +44,7 @@ export const createMaquinaria = /* GraphQL */ `mutation CreateMaquinaria(
         }
         createdAt
         updatedAt
-        maquinariaCOSTOSId
+        maquinariaHOROMETROId
         __typename
       }
       nextToken
@@ -86,10 +86,10 @@ export const updateMaquinaria = /* GraphQL */ `mutation UpdateMaquinaria(
       nextToken
       __typename
     }
-    COSTOS {
+    HOROMETRO {
       items {
         id
-        Price
+        Horometro
         Date
         ADJUNTOS {
           nextToken
@@ -97,7 +97,7 @@ export const updateMaquinaria = /* GraphQL */ `mutation UpdateMaquinaria(
         }
         createdAt
         updatedAt
-        maquinariaCOSTOSId
+        maquinariaHOROMETROId
         __typename
       }
       nextToken
@@ -139,10 +139,10 @@ export const deleteMaquinaria = /* GraphQL */ `mutation DeleteMaquinaria(
       nextToken
       __typename
     }
-    COSTOS {
+    HOROMETRO {
       items {
         id
-        Price
+        Horometro
         Date
         ADJUNTOS {
           nextToken
@@ -150,7 +150,7 @@ export const deleteMaquinaria = /* GraphQL */ `mutation DeleteMaquinaria(
         }
         createdAt
         updatedAt
-        maquinariaCOSTOSId
+        maquinariaHOROMETROId
         __typename
       }
       nextToken
@@ -246,7 +246,7 @@ export const createOPERARIO = /* GraphQL */ `mutation CreateOPERARIO(
           nextToken
           __typename
         }
-        COSTOS {
+        HOROMETRO {
           nextToken
           __typename
         }
@@ -290,7 +290,7 @@ export const updateOPERARIO = /* GraphQL */ `mutation UpdateOPERARIO(
           nextToken
           __typename
         }
-        COSTOS {
+        HOROMETRO {
           nextToken
           __typename
         }
@@ -334,7 +334,7 @@ export const deleteOPERARIO = /* GraphQL */ `mutation DeleteOPERARIO(
           nextToken
           __typename
         }
-        COSTOS {
+        HOROMETRO {
           nextToken
           __typename
         }
@@ -356,13 +356,13 @@ export const deleteOPERARIO = /* GraphQL */ `mutation DeleteOPERARIO(
   APITypes.DeleteOPERARIOMutationVariables,
   APITypes.DeleteOPERARIOMutation
 >;
-export const createCOSTO = /* GraphQL */ `mutation CreateCOSTO(
-  $input: CreateCOSTOInput!
-  $condition: ModelCOSTOConditionInput
+export const createHorometro = /* GraphQL */ `mutation CreateHorometro(
+  $input: CreateHorometroInput!
+  $condition: ModelHorometroConditionInput
 ) {
-  createCOSTO(input: $input, condition: $condition) {
+  createHorometro(input: $input, condition: $condition) {
     id
-    Price
+    Horometro
     Date
     ADJUNTOS {
       items {
@@ -370,7 +370,7 @@ export const createCOSTO = /* GraphQL */ `mutation CreateCOSTO(
         URL
         createdAt
         updatedAt
-        cOSTOADJUNTOSId
+        horometroADJUNTOSId
         __typename
       }
       nextToken
@@ -378,21 +378,21 @@ export const createCOSTO = /* GraphQL */ `mutation CreateCOSTO(
     }
     createdAt
     updatedAt
-    maquinariaCOSTOSId
+    maquinariaHOROMETROId
     __typename
   }
 }
 ` as GeneratedMutation<
-  APITypes.CreateCOSTOMutationVariables,
-  APITypes.CreateCOSTOMutation
+  APITypes.CreateHorometroMutationVariables,
+  APITypes.CreateHorometroMutation
 >;
-export const updateCOSTO = /* GraphQL */ `mutation UpdateCOSTO(
-  $input: UpdateCOSTOInput!
-  $condition: ModelCOSTOConditionInput
+export const updateHorometro = /* GraphQL */ `mutation UpdateHorometro(
+  $input: UpdateHorometroInput!
+  $condition: ModelHorometroConditionInput
 ) {
-  updateCOSTO(input: $input, condition: $condition) {
+  updateHorometro(input: $input, condition: $condition) {
     id
-    Price
+    Horometro
     Date
     ADJUNTOS {
       items {
@@ -400,7 +400,7 @@ export const updateCOSTO = /* GraphQL */ `mutation UpdateCOSTO(
         URL
         createdAt
         updatedAt
-        cOSTOADJUNTOSId
+        horometroADJUNTOSId
         __typename
       }
       nextToken
@@ -408,21 +408,21 @@ export const updateCOSTO = /* GraphQL */ `mutation UpdateCOSTO(
     }
     createdAt
     updatedAt
-    maquinariaCOSTOSId
+    maquinariaHOROMETROId
     __typename
   }
 }
 ` as GeneratedMutation<
-  APITypes.UpdateCOSTOMutationVariables,
-  APITypes.UpdateCOSTOMutation
+  APITypes.UpdateHorometroMutationVariables,
+  APITypes.UpdateHorometroMutation
 >;
-export const deleteCOSTO = /* GraphQL */ `mutation DeleteCOSTO(
-  $input: DeleteCOSTOInput!
-  $condition: ModelCOSTOConditionInput
+export const deleteHorometro = /* GraphQL */ `mutation DeleteHorometro(
+  $input: DeleteHorometroInput!
+  $condition: ModelHorometroConditionInput
 ) {
-  deleteCOSTO(input: $input, condition: $condition) {
+  deleteHorometro(input: $input, condition: $condition) {
     id
-    Price
+    Horometro
     Date
     ADJUNTOS {
       items {
@@ -430,7 +430,7 @@ export const deleteCOSTO = /* GraphQL */ `mutation DeleteCOSTO(
         URL
         createdAt
         updatedAt
-        cOSTOADJUNTOSId
+        horometroADJUNTOSId
         __typename
       }
       nextToken
@@ -438,13 +438,13 @@ export const deleteCOSTO = /* GraphQL */ `mutation DeleteCOSTO(
     }
     createdAt
     updatedAt
-    maquinariaCOSTOSId
+    maquinariaHOROMETROId
     __typename
   }
 }
 ` as GeneratedMutation<
-  APITypes.DeleteCOSTOMutationVariables,
-  APITypes.DeleteCOSTOMutation
+  APITypes.DeleteHorometroMutationVariables,
+  APITypes.DeleteHorometroMutation
 >;
 export const createADJUNTO = /* GraphQL */ `mutation CreateADJUNTO(
   $input: CreateADJUNTOInput!
@@ -455,7 +455,7 @@ export const createADJUNTO = /* GraphQL */ `mutation CreateADJUNTO(
     URL
     createdAt
     updatedAt
-    cOSTOADJUNTOSId
+    horometroADJUNTOSId
     __typename
   }
 }
@@ -472,7 +472,7 @@ export const updateADJUNTO = /* GraphQL */ `mutation UpdateADJUNTO(
     URL
     createdAt
     updatedAt
-    cOSTOADJUNTOSId
+    horometroADJUNTOSId
     __typename
   }
 }
@@ -489,7 +489,7 @@ export const deleteADJUNTO = /* GraphQL */ `mutation DeleteADJUNTO(
     URL
     createdAt
     updatedAt
-    cOSTOADJUNTOSId
+    horometroADJUNTOSId
     __typename
   }
 }

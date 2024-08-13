@@ -30,10 +30,10 @@ export const getMaquinaria = /* GraphQL */ `query GetMaquinaria($id: ID!) {
       nextToken
       __typename
     }
-    COSTOS {
+    HOROMETRO {
       items {
         id
-        Price
+        Horometro
         Date
         ADJUNTOS {
           nextToken
@@ -41,7 +41,7 @@ export const getMaquinaria = /* GraphQL */ `query GetMaquinaria($id: ID!) {
         }
         createdAt
         updatedAt
-        maquinariaCOSTOSId
+        maquinariaHOROMETROId
         __typename
       }
       nextToken
@@ -85,14 +85,14 @@ export const listMaquinarias = /* GraphQL */ `query ListMaquinarias(
         nextToken
         __typename
       }
-      COSTOS {
+      HOROMETRO {
         items {
           id
-          Price
+          Horometro
           Date
           createdAt
           updatedAt
-          maquinariaCOSTOSId
+          maquinariaHOROMETROId
           __typename
         }
         nextToken
@@ -181,7 +181,7 @@ export const getOPERARIO = /* GraphQL */ `query GetOPERARIO($id: ID!) {
           nextToken
           __typename
         }
-        COSTOS {
+        HOROMETRO {
           nextToken
           __typename
         }
@@ -244,10 +244,10 @@ export const listOPERARIOS = /* GraphQL */ `query ListOPERARIOS(
   APITypes.ListOPERARIOSQueryVariables,
   APITypes.ListOPERARIOSQuery
 >;
-export const getCOSTO = /* GraphQL */ `query GetCOSTO($id: ID!) {
-  getCOSTO(id: $id) {
+export const getHorometro = /* GraphQL */ `query GetHorometro($id: ID!) {
+  getHorometro(id: $id) {
     id
-    Price
+    Horometro
     Date
     ADJUNTOS {
       items {
@@ -255,7 +255,7 @@ export const getCOSTO = /* GraphQL */ `query GetCOSTO($id: ID!) {
         URL
         createdAt
         updatedAt
-        cOSTOADJUNTOSId
+        horometroADJUNTOSId
         __typename
       }
       nextToken
@@ -263,20 +263,23 @@ export const getCOSTO = /* GraphQL */ `query GetCOSTO($id: ID!) {
     }
     createdAt
     updatedAt
-    maquinariaCOSTOSId
+    maquinariaHOROMETROId
     __typename
   }
 }
-` as GeneratedQuery<APITypes.GetCOSTOQueryVariables, APITypes.GetCOSTOQuery>;
-export const listCOSTOS = /* GraphQL */ `query ListCOSTOS(
-  $filter: ModelCOSTOFilterInput
+` as GeneratedQuery<
+  APITypes.GetHorometroQueryVariables,
+  APITypes.GetHorometroQuery
+>;
+export const listHorometros = /* GraphQL */ `query ListHorometros(
+  $filter: ModelHorometroFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listCOSTOS(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listHorometros(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      Price
+      Horometro
       Date
       ADJUNTOS {
         items {
@@ -284,7 +287,7 @@ export const listCOSTOS = /* GraphQL */ `query ListCOSTOS(
           URL
           createdAt
           updatedAt
-          cOSTOADJUNTOSId
+          horometroADJUNTOSId
           __typename
         }
         nextToken
@@ -292,7 +295,7 @@ export const listCOSTOS = /* GraphQL */ `query ListCOSTOS(
       }
       createdAt
       updatedAt
-      maquinariaCOSTOSId
+      maquinariaHOROMETROId
       __typename
     }
     nextToken
@@ -300,8 +303,8 @@ export const listCOSTOS = /* GraphQL */ `query ListCOSTOS(
   }
 }
 ` as GeneratedQuery<
-  APITypes.ListCOSTOSQueryVariables,
-  APITypes.ListCOSTOSQuery
+  APITypes.ListHorometrosQueryVariables,
+  APITypes.ListHorometrosQuery
 >;
 export const getADJUNTO = /* GraphQL */ `query GetADJUNTO($id: ID!) {
   getADJUNTO(id: $id) {
@@ -309,7 +312,7 @@ export const getADJUNTO = /* GraphQL */ `query GetADJUNTO($id: ID!) {
     URL
     createdAt
     updatedAt
-    cOSTOADJUNTOSId
+    horometroADJUNTOSId
     __typename
   }
 }
@@ -328,7 +331,7 @@ export const listADJUNTOS = /* GraphQL */ `query ListADJUNTOS(
       URL
       createdAt
       updatedAt
-      cOSTOADJUNTOSId
+      horometroADJUNTOSId
       __typename
     }
     nextToken

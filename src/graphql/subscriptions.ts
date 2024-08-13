@@ -32,10 +32,10 @@ export const onCreateMaquinaria = /* GraphQL */ `subscription OnCreateMaquinaria
       nextToken
       __typename
     }
-    COSTOS {
+    HOROMETRO {
       items {
         id
-        Price
+        Horometro
         Date
         ADJUNTOS {
           nextToken
@@ -43,7 +43,7 @@ export const onCreateMaquinaria = /* GraphQL */ `subscription OnCreateMaquinaria
         }
         createdAt
         updatedAt
-        maquinariaCOSTOSId
+        maquinariaHOROMETROId
         __typename
       }
       nextToken
@@ -84,10 +84,10 @@ export const onUpdateMaquinaria = /* GraphQL */ `subscription OnUpdateMaquinaria
       nextToken
       __typename
     }
-    COSTOS {
+    HOROMETRO {
       items {
         id
-        Price
+        Horometro
         Date
         ADJUNTOS {
           nextToken
@@ -95,7 +95,7 @@ export const onUpdateMaquinaria = /* GraphQL */ `subscription OnUpdateMaquinaria
         }
         createdAt
         updatedAt
-        maquinariaCOSTOSId
+        maquinariaHOROMETROId
         __typename
       }
       nextToken
@@ -136,10 +136,10 @@ export const onDeleteMaquinaria = /* GraphQL */ `subscription OnDeleteMaquinaria
       nextToken
       __typename
     }
-    COSTOS {
+    HOROMETRO {
       items {
         id
-        Price
+        Horometro
         Date
         ADJUNTOS {
           nextToken
@@ -147,7 +147,7 @@ export const onDeleteMaquinaria = /* GraphQL */ `subscription OnDeleteMaquinaria
         }
         createdAt
         updatedAt
-        maquinariaCOSTOSId
+        maquinariaHOROMETROId
         __typename
       }
       nextToken
@@ -237,7 +237,7 @@ export const onCreateOPERARIO = /* GraphQL */ `subscription OnCreateOPERARIO($fi
           nextToken
           __typename
         }
-        COSTOS {
+        HOROMETRO {
           nextToken
           __typename
         }
@@ -278,7 +278,7 @@ export const onUpdateOPERARIO = /* GraphQL */ `subscription OnUpdateOPERARIO($fi
           nextToken
           __typename
         }
-        COSTOS {
+        HOROMETRO {
           nextToken
           __typename
         }
@@ -319,7 +319,7 @@ export const onDeleteOPERARIO = /* GraphQL */ `subscription OnDeleteOPERARIO($fi
           nextToken
           __typename
         }
-        COSTOS {
+        HOROMETRO {
           nextToken
           __typename
         }
@@ -341,10 +341,10 @@ export const onDeleteOPERARIO = /* GraphQL */ `subscription OnDeleteOPERARIO($fi
   APITypes.OnDeleteOPERARIOSubscriptionVariables,
   APITypes.OnDeleteOPERARIOSubscription
 >;
-export const onCreateCOSTO = /* GraphQL */ `subscription OnCreateCOSTO($filter: ModelSubscriptionCOSTOFilterInput) {
-  onCreateCOSTO(filter: $filter) {
+export const onCreateHorometro = /* GraphQL */ `subscription OnCreateHorometro($filter: ModelSubscriptionHorometroFilterInput) {
+  onCreateHorometro(filter: $filter) {
     id
-    Price
+    Horometro
     Date
     ADJUNTOS {
       items {
@@ -352,7 +352,7 @@ export const onCreateCOSTO = /* GraphQL */ `subscription OnCreateCOSTO($filter: 
         URL
         createdAt
         updatedAt
-        cOSTOADJUNTOSId
+        horometroADJUNTOSId
         __typename
       }
       nextToken
@@ -360,18 +360,18 @@ export const onCreateCOSTO = /* GraphQL */ `subscription OnCreateCOSTO($filter: 
     }
     createdAt
     updatedAt
-    maquinariaCOSTOSId
+    maquinariaHOROMETROId
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnCreateCOSTOSubscriptionVariables,
-  APITypes.OnCreateCOSTOSubscription
+  APITypes.OnCreateHorometroSubscriptionVariables,
+  APITypes.OnCreateHorometroSubscription
 >;
-export const onUpdateCOSTO = /* GraphQL */ `subscription OnUpdateCOSTO($filter: ModelSubscriptionCOSTOFilterInput) {
-  onUpdateCOSTO(filter: $filter) {
+export const onUpdateHorometro = /* GraphQL */ `subscription OnUpdateHorometro($filter: ModelSubscriptionHorometroFilterInput) {
+  onUpdateHorometro(filter: $filter) {
     id
-    Price
+    Horometro
     Date
     ADJUNTOS {
       items {
@@ -379,7 +379,7 @@ export const onUpdateCOSTO = /* GraphQL */ `subscription OnUpdateCOSTO($filter: 
         URL
         createdAt
         updatedAt
-        cOSTOADJUNTOSId
+        horometroADJUNTOSId
         __typename
       }
       nextToken
@@ -387,18 +387,18 @@ export const onUpdateCOSTO = /* GraphQL */ `subscription OnUpdateCOSTO($filter: 
     }
     createdAt
     updatedAt
-    maquinariaCOSTOSId
+    maquinariaHOROMETROId
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnUpdateCOSTOSubscriptionVariables,
-  APITypes.OnUpdateCOSTOSubscription
+  APITypes.OnUpdateHorometroSubscriptionVariables,
+  APITypes.OnUpdateHorometroSubscription
 >;
-export const onDeleteCOSTO = /* GraphQL */ `subscription OnDeleteCOSTO($filter: ModelSubscriptionCOSTOFilterInput) {
-  onDeleteCOSTO(filter: $filter) {
+export const onDeleteHorometro = /* GraphQL */ `subscription OnDeleteHorometro($filter: ModelSubscriptionHorometroFilterInput) {
+  onDeleteHorometro(filter: $filter) {
     id
-    Price
+    Horometro
     Date
     ADJUNTOS {
       items {
@@ -406,7 +406,7 @@ export const onDeleteCOSTO = /* GraphQL */ `subscription OnDeleteCOSTO($filter: 
         URL
         createdAt
         updatedAt
-        cOSTOADJUNTOSId
+        horometroADJUNTOSId
         __typename
       }
       nextToken
@@ -414,13 +414,13 @@ export const onDeleteCOSTO = /* GraphQL */ `subscription OnDeleteCOSTO($filter: 
     }
     createdAt
     updatedAt
-    maquinariaCOSTOSId
+    maquinariaHOROMETROId
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnDeleteCOSTOSubscriptionVariables,
-  APITypes.OnDeleteCOSTOSubscription
+  APITypes.OnDeleteHorometroSubscriptionVariables,
+  APITypes.OnDeleteHorometroSubscription
 >;
 export const onCreateADJUNTO = /* GraphQL */ `subscription OnCreateADJUNTO($filter: ModelSubscriptionADJUNTOFilterInput) {
   onCreateADJUNTO(filter: $filter) {
@@ -428,7 +428,7 @@ export const onCreateADJUNTO = /* GraphQL */ `subscription OnCreateADJUNTO($filt
     URL
     createdAt
     updatedAt
-    cOSTOADJUNTOSId
+    horometroADJUNTOSId
     __typename
   }
 }
@@ -442,7 +442,7 @@ export const onUpdateADJUNTO = /* GraphQL */ `subscription OnUpdateADJUNTO($filt
     URL
     createdAt
     updatedAt
-    cOSTOADJUNTOSId
+    horometroADJUNTOSId
     __typename
   }
 }
@@ -456,7 +456,7 @@ export const onDeleteADJUNTO = /* GraphQL */ `subscription OnDeleteADJUNTO($filt
     URL
     createdAt
     updatedAt
-    cOSTOADJUNTOSId
+    horometroADJUNTOSId
     __typename
   }
 }
