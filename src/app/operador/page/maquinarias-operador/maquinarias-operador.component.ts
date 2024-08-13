@@ -1,7 +1,7 @@
 import { Component, inject, model } from '@angular/core';
 import { CardComponent } from "../../component/card/card.component";
 import { MaquinariaUserService } from '../../service/maquinaria-user.service';
-import { CreateADJUNTOInput, CreateCOSTOInput, Maquinaria } from '../../../../API';
+import { CreateADJUNTOInput, CreateHorometroInput, Maquinaria } from '../../../../API';
 import { UploadFileComponent } from '../../../shared/component/upload-file/upload-file.component';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
@@ -18,7 +18,7 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { CostService } from '../../service/cost.service';
 import { AdjuntosService } from '../../service/adjuntos.service';
-import { AuthenticatedServiceService } from '../../../shared/service/authenticated-service.service';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 
@@ -26,14 +26,13 @@ import { AuthenticatedServiceService } from '../../../shared/service/authenticat
   selector: 'app-maquinarias-operador',
   standalone: true,
   providers: [MessageService, ConfirmationService],
-  imports: [CardComponent,UploadFileComponent,DialogModule,ButtonModule,CalendarModule,FormsModule,CommonModule,InputNumberModule,ToastModule],
+  imports: [CardComponent,UploadFileComponent,DialogModule,ButtonModule,CalendarModule,FormsModule,CommonModule,InputNumberModule,ToastModule,InputTextModule],
   templateUrl: './maquinarias-operador.component.html',
   styleUrl: './maquinarias-operador.component.css'
 })
 export default class MaquinariasOperadorComponent {
-  private authenticatedService=inject(AuthenticatedServiceService);
   images=model<Image[]>([]);
-  costos:CreateCOSTOInput=this.resetCost();
+  costos:CreateHorometroInput=this.resetCost();
   private maquinariUserService=inject(MaquinariaUserService);
   maquinariaItems:Maquinaria[]=[];
   openDialogUpdateImage=model<OutputCard>();
@@ -79,16 +78,16 @@ export default class MaquinariasOperadorComponent {
    addCost(){
     const id=this.createId();;
     this.costos.id=id;
-    this.costos.maquinariaCOSTOSId=this.openDialogUpdateCost()?.id;
-   this.costService.saveCost(this.costos).catch(()=>{      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Ha ocurrido un error', life: 3000 });return})
+    this.costos.maquinariaHOROMETROId=this.openDialogUpdateCost()?.id;
+   this.costService.saveCost(this.costos).catch(()=>{      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Ha ocurrido un error', life: 3000 });})
    this.addAdjuntos(id)
   }
 
-  async addAdjuntos(cOSTOADJUNTOSId:string){
+  async addAdjuntos(horometroADJUNTOSId:string){
     const id=this.createId();
     const urlImages:string[]= await this.upload('public/costos',this.images());
     const allPromises=urlImages.map(URL=>{
-      const adjuntos:CreateADJUNTOInput={id,URL,cOSTOADJUNTOSId}
+      const adjuntos:CreateADJUNTOInput={id,URL,horometroADJUNTOSId}
       this.adjuntoService.saveAdjunto(adjuntos)
     })
     Promise.all(allPromises).then(()=>{
@@ -107,9 +106,8 @@ export default class MaquinariasOperadorComponent {
     this.openDialogUpdateImage.set({id:'',openDialog:false});
   }
 
-  resetCost():CreateCOSTOInput{
-    let fecha=new Date().toDateString();
-    return {Date:'',Price:''}
+  resetCost():CreateHorometroInput{
+    return {Date:'',Horometro:0};
   }
   createId(): string {
     let id = '';

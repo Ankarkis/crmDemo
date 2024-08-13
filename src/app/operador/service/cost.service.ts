@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { generateClient } from 'aws-amplify/api';
 import * as mutations from '../../../graphql/mutations';
-import { CreateCOSTOInput } from '../../../API';
+import { CreateHorometroInput } from '../../../API';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,9 +9,9 @@ export class CostService {
   client = generateClient();
 
 
-  saveCost(cost:CreateCOSTOInput){
+  saveCost(cost:CreateHorometroInput){
     return this.client.graphql({
-      query:mutations.createCOSTO,
+      query:mutations.createHorometro,
       variables:{input:cost},
       authMode:'userPool'
     })

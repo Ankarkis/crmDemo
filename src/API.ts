@@ -93,7 +93,7 @@ export type Maquinaria = {
   DESCRIPCION: string,
   PHOTO?: string | null,
   OPERATIVIDAD?: ModelOPERATIVIDADConnection | null,
-  COSTOS?: ModelCOSTOConnection | null,
+  HOROMETRO?: ModelHorometroConnection | null,
   id: string,
   createdAt: string,
   updatedAt: string,
@@ -117,21 +117,21 @@ export type OPERATIVIDAD = {
   maquinariaOPERATIVIDADId?: string | null,
 };
 
-export type ModelCOSTOConnection = {
-  __typename: "ModelCOSTOConnection",
-  items:  Array<COSTO | null >,
+export type ModelHorometroConnection = {
+  __typename: "ModelHorometroConnection",
+  items:  Array<Horometro | null >,
   nextToken?: string | null,
 };
 
-export type COSTO = {
-  __typename: "COSTO",
+export type Horometro = {
+  __typename: "Horometro",
   id: string,
-  Price: string,
-  Date: string,
+  Horometro: number,
+  Date?: string | null,
   ADJUNTOS?: ModelADJUNTOConnection | null,
   createdAt: string,
   updatedAt: string,
-  maquinariaCOSTOSId?: string | null,
+  maquinariaHOROMETROId?: string | null,
 };
 
 export type ModelADJUNTOConnection = {
@@ -146,7 +146,7 @@ export type ADJUNTO = {
   URL: string,
   createdAt: string,
   updatedAt: string,
-  cOSTOADJUNTOSId?: string | null,
+  horometroADJUNTOSId?: string | null,
 };
 
 export type UpdateMaquinariaInput = {
@@ -253,39 +253,51 @@ export type DeleteOPERARIOInput = {
   id: string,
 };
 
-export type CreateCOSTOInput = {
+export type CreateHorometroInput = {
   id?: string | null,
-  Price: string,
-  Date: string,
-  maquinariaCOSTOSId?: string | null,
+  Horometro: number,
+  Date?: string | null,
+  maquinariaHOROMETROId?: string | null,
 };
 
-export type ModelCOSTOConditionInput = {
-  Price?: ModelStringInput | null,
+export type ModelHorometroConditionInput = {
+  Horometro?: ModelIntInput | null,
   Date?: ModelStringInput | null,
-  and?: Array< ModelCOSTOConditionInput | null > | null,
-  or?: Array< ModelCOSTOConditionInput | null > | null,
-  not?: ModelCOSTOConditionInput | null,
+  and?: Array< ModelHorometroConditionInput | null > | null,
+  or?: Array< ModelHorometroConditionInput | null > | null,
+  not?: ModelHorometroConditionInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
-  maquinariaCOSTOSId?: ModelIDInput | null,
+  maquinariaHOROMETROId?: ModelIDInput | null,
 };
 
-export type UpdateCOSTOInput = {
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type UpdateHorometroInput = {
   id: string,
-  Price?: string | null,
+  Horometro?: number | null,
   Date?: string | null,
-  maquinariaCOSTOSId?: string | null,
+  maquinariaHOROMETROId?: string | null,
 };
 
-export type DeleteCOSTOInput = {
+export type DeleteHorometroInput = {
   id: string,
 };
 
 export type CreateADJUNTOInput = {
   id?: string | null,
   URL: string,
-  cOSTOADJUNTOSId?: string | null,
+  horometroADJUNTOSId?: string | null,
 };
 
 export type ModelADJUNTOConditionInput = {
@@ -295,13 +307,13 @@ export type ModelADJUNTOConditionInput = {
   not?: ModelADJUNTOConditionInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
-  cOSTOADJUNTOSId?: ModelIDInput | null,
+  horometroADJUNTOSId?: ModelIDInput | null,
 };
 
 export type UpdateADJUNTOInput = {
   id: string,
   URL?: string | null,
-  cOSTOADJUNTOSId?: string | null,
+  horometroADJUNTOSId?: string | null,
 };
 
 export type DeleteADJUNTOInput = {
@@ -372,16 +384,16 @@ export type ModelOPERARIOConnection = {
   nextToken?: string | null,
 };
 
-export type ModelCOSTOFilterInput = {
+export type ModelHorometroFilterInput = {
   id?: ModelIDInput | null,
-  Price?: ModelStringInput | null,
+  Horometro?: ModelIntInput | null,
   Date?: ModelStringInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
-  and?: Array< ModelCOSTOFilterInput | null > | null,
-  or?: Array< ModelCOSTOFilterInput | null > | null,
-  not?: ModelCOSTOFilterInput | null,
-  maquinariaCOSTOSId?: ModelIDInput | null,
+  and?: Array< ModelHorometroFilterInput | null > | null,
+  or?: Array< ModelHorometroFilterInput | null > | null,
+  not?: ModelHorometroFilterInput | null,
+  maquinariaHOROMETROId?: ModelIDInput | null,
 };
 
 export type ModelADJUNTOFilterInput = {
@@ -392,7 +404,7 @@ export type ModelADJUNTOFilterInput = {
   and?: Array< ModelADJUNTOFilterInput | null > | null,
   or?: Array< ModelADJUNTOFilterInput | null > | null,
   not?: ModelADJUNTOFilterInput | null,
-  cOSTOADJUNTOSId?: ModelIDInput | null,
+  horometroADJUNTOSId?: ModelIDInput | null,
 };
 
 export type ModelSubscriptionMaquinariaFilterInput = {
@@ -408,7 +420,7 @@ export type ModelSubscriptionMaquinariaFilterInput = {
   and?: Array< ModelSubscriptionMaquinariaFilterInput | null > | null,
   or?: Array< ModelSubscriptionMaquinariaFilterInput | null > | null,
   maquinariaOPERATIVIDADId?: ModelSubscriptionIDInput | null,
-  maquinariaCOSTOSId?: ModelSubscriptionIDInput | null,
+  maquinariaHOROMETROId?: ModelSubscriptionIDInput | null,
 };
 
 export type ModelSubscriptionIDInput = {
@@ -470,15 +482,27 @@ export type ModelSubscriptionOPERARIOFilterInput = {
   oPERARIOMAQUINARIAId?: ModelSubscriptionIDInput | null,
 };
 
-export type ModelSubscriptionCOSTOFilterInput = {
+export type ModelSubscriptionHorometroFilterInput = {
   id?: ModelSubscriptionIDInput | null,
-  Price?: ModelSubscriptionStringInput | null,
+  Horometro?: ModelSubscriptionIntInput | null,
   Date?: ModelSubscriptionStringInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionCOSTOFilterInput | null > | null,
-  or?: Array< ModelSubscriptionCOSTOFilterInput | null > | null,
-  cOSTOADJUNTOSId?: ModelSubscriptionIDInput | null,
+  and?: Array< ModelSubscriptionHorometroFilterInput | null > | null,
+  or?: Array< ModelSubscriptionHorometroFilterInput | null > | null,
+  horometroADJUNTOSId?: ModelSubscriptionIDInput | null,
+};
+
+export type ModelSubscriptionIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  in?: Array< number | null > | null,
+  notIn?: Array< number | null > | null,
 };
 
 export type ModelSubscriptionADJUNTOFilterInput = {
@@ -518,20 +542,20 @@ export type CreateMaquinariaMutation = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    COSTOS?:  {
-      __typename: "ModelCOSTOConnection",
+    HOROMETRO?:  {
+      __typename: "ModelHorometroConnection",
       items:  Array< {
-        __typename: "COSTO",
+        __typename: "Horometro",
         id: string,
-        Price: string,
-        Date: string,
+        Horometro: number,
+        Date?: string | null,
         ADJUNTOS?:  {
           __typename: "ModelADJUNTOConnection",
           nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
-        maquinariaCOSTOSId?: string | null,
+        maquinariaHOROMETROId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
@@ -570,20 +594,20 @@ export type UpdateMaquinariaMutation = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    COSTOS?:  {
-      __typename: "ModelCOSTOConnection",
+    HOROMETRO?:  {
+      __typename: "ModelHorometroConnection",
       items:  Array< {
-        __typename: "COSTO",
+        __typename: "Horometro",
         id: string,
-        Price: string,
-        Date: string,
+        Horometro: number,
+        Date?: string | null,
         ADJUNTOS?:  {
           __typename: "ModelADJUNTOConnection",
           nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
-        maquinariaCOSTOSId?: string | null,
+        maquinariaHOROMETROId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
@@ -622,20 +646,20 @@ export type DeleteMaquinariaMutation = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    COSTOS?:  {
-      __typename: "ModelCOSTOConnection",
+    HOROMETRO?:  {
+      __typename: "ModelHorometroConnection",
       items:  Array< {
-        __typename: "COSTO",
+        __typename: "Horometro",
         id: string,
-        Price: string,
-        Date: string,
+        Horometro: number,
+        Date?: string | null,
         ADJUNTOS?:  {
           __typename: "ModelADJUNTOConnection",
           nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
-        maquinariaCOSTOSId?: string | null,
+        maquinariaHOROMETROId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
@@ -727,8 +751,8 @@ export type CreateOPERARIOMutation = {
           __typename: "ModelOPERATIVIDADConnection",
           nextToken?: string | null,
         } | null,
-        COSTOS?:  {
-          __typename: "ModelCOSTOConnection",
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
           nextToken?: string | null,
         } | null,
         id: string,
@@ -770,8 +794,8 @@ export type UpdateOPERARIOMutation = {
           __typename: "ModelOPERATIVIDADConnection",
           nextToken?: string | null,
         } | null,
-        COSTOS?:  {
-          __typename: "ModelCOSTOConnection",
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
           nextToken?: string | null,
         } | null,
         id: string,
@@ -813,8 +837,8 @@ export type DeleteOPERARIOMutation = {
           __typename: "ModelOPERATIVIDADConnection",
           nextToken?: string | null,
         } | null,
-        COSTOS?:  {
-          __typename: "ModelCOSTOConnection",
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
           nextToken?: string | null,
         } | null,
         id: string,
@@ -829,17 +853,17 @@ export type DeleteOPERARIOMutation = {
   } | null,
 };
 
-export type CreateCOSTOMutationVariables = {
-  input: CreateCOSTOInput,
-  condition?: ModelCOSTOConditionInput | null,
+export type CreateHorometroMutationVariables = {
+  input: CreateHorometroInput,
+  condition?: ModelHorometroConditionInput | null,
 };
 
-export type CreateCOSTOMutation = {
-  createCOSTO?:  {
-    __typename: "COSTO",
+export type CreateHorometroMutation = {
+  createHorometro?:  {
+    __typename: "Horometro",
     id: string,
-    Price: string,
-    Date: string,
+    Horometro: number,
+    Date?: string | null,
     ADJUNTOS?:  {
       __typename: "ModelADJUNTOConnection",
       items:  Array< {
@@ -848,27 +872,27 @@ export type CreateCOSTOMutation = {
         URL: string,
         createdAt: string,
         updatedAt: string,
-        cOSTOADJUNTOSId?: string | null,
+        horometroADJUNTOSId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    maquinariaCOSTOSId?: string | null,
+    maquinariaHOROMETROId?: string | null,
   } | null,
 };
 
-export type UpdateCOSTOMutationVariables = {
-  input: UpdateCOSTOInput,
-  condition?: ModelCOSTOConditionInput | null,
+export type UpdateHorometroMutationVariables = {
+  input: UpdateHorometroInput,
+  condition?: ModelHorometroConditionInput | null,
 };
 
-export type UpdateCOSTOMutation = {
-  updateCOSTO?:  {
-    __typename: "COSTO",
+export type UpdateHorometroMutation = {
+  updateHorometro?:  {
+    __typename: "Horometro",
     id: string,
-    Price: string,
-    Date: string,
+    Horometro: number,
+    Date?: string | null,
     ADJUNTOS?:  {
       __typename: "ModelADJUNTOConnection",
       items:  Array< {
@@ -877,27 +901,27 @@ export type UpdateCOSTOMutation = {
         URL: string,
         createdAt: string,
         updatedAt: string,
-        cOSTOADJUNTOSId?: string | null,
+        horometroADJUNTOSId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    maquinariaCOSTOSId?: string | null,
+    maquinariaHOROMETROId?: string | null,
   } | null,
 };
 
-export type DeleteCOSTOMutationVariables = {
-  input: DeleteCOSTOInput,
-  condition?: ModelCOSTOConditionInput | null,
+export type DeleteHorometroMutationVariables = {
+  input: DeleteHorometroInput,
+  condition?: ModelHorometroConditionInput | null,
 };
 
-export type DeleteCOSTOMutation = {
-  deleteCOSTO?:  {
-    __typename: "COSTO",
+export type DeleteHorometroMutation = {
+  deleteHorometro?:  {
+    __typename: "Horometro",
     id: string,
-    Price: string,
-    Date: string,
+    Horometro: number,
+    Date?: string | null,
     ADJUNTOS?:  {
       __typename: "ModelADJUNTOConnection",
       items:  Array< {
@@ -906,13 +930,13 @@ export type DeleteCOSTOMutation = {
         URL: string,
         createdAt: string,
         updatedAt: string,
-        cOSTOADJUNTOSId?: string | null,
+        horometroADJUNTOSId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    maquinariaCOSTOSId?: string | null,
+    maquinariaHOROMETROId?: string | null,
   } | null,
 };
 
@@ -928,7 +952,7 @@ export type CreateADJUNTOMutation = {
     URL: string,
     createdAt: string,
     updatedAt: string,
-    cOSTOADJUNTOSId?: string | null,
+    horometroADJUNTOSId?: string | null,
   } | null,
 };
 
@@ -944,7 +968,7 @@ export type UpdateADJUNTOMutation = {
     URL: string,
     createdAt: string,
     updatedAt: string,
-    cOSTOADJUNTOSId?: string | null,
+    horometroADJUNTOSId?: string | null,
   } | null,
 };
 
@@ -960,7 +984,7 @@ export type DeleteADJUNTOMutation = {
     URL: string,
     createdAt: string,
     updatedAt: string,
-    cOSTOADJUNTOSId?: string | null,
+    horometroADJUNTOSId?: string | null,
   } | null,
 };
 
@@ -991,20 +1015,20 @@ export type GetMaquinariaQuery = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    COSTOS?:  {
-      __typename: "ModelCOSTOConnection",
+    HOROMETRO?:  {
+      __typename: "ModelHorometroConnection",
       items:  Array< {
-        __typename: "COSTO",
+        __typename: "Horometro",
         id: string,
-        Price: string,
-        Date: string,
+        Horometro: number,
+        Date?: string | null,
         ADJUNTOS?:  {
           __typename: "ModelADJUNTOConnection",
           nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
-        maquinariaCOSTOSId?: string | null,
+        maquinariaHOROMETROId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
@@ -1046,16 +1070,16 @@ export type ListMaquinariasQuery = {
         } | null >,
         nextToken?: string | null,
       } | null,
-      COSTOS?:  {
-        __typename: "ModelCOSTOConnection",
+      HOROMETRO?:  {
+        __typename: "ModelHorometroConnection",
         items:  Array< {
-          __typename: "COSTO",
+          __typename: "Horometro",
           id: string,
-          Price: string,
-          Date: string,
+          Horometro: number,
+          Date?: string | null,
           createdAt: string,
           updatedAt: string,
-          maquinariaCOSTOSId?: string | null,
+          maquinariaHOROMETROId?: string | null,
         } | null >,
         nextToken?: string | null,
       } | null,
@@ -1138,8 +1162,8 @@ export type GetOPERARIOQuery = {
           __typename: "ModelOPERATIVIDADConnection",
           nextToken?: string | null,
         } | null,
-        COSTOS?:  {
-          __typename: "ModelCOSTOConnection",
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
           nextToken?: string | null,
         } | null,
         id: string,
@@ -1194,16 +1218,16 @@ export type ListOPERARIOSQuery = {
   } | null,
 };
 
-export type GetCOSTOQueryVariables = {
+export type GetHorometroQueryVariables = {
   id: string,
 };
 
-export type GetCOSTOQuery = {
-  getCOSTO?:  {
-    __typename: "COSTO",
+export type GetHorometroQuery = {
+  getHorometro?:  {
+    __typename: "Horometro",
     id: string,
-    Price: string,
-    Date: string,
+    Horometro: number,
+    Date?: string | null,
     ADJUNTOS?:  {
       __typename: "ModelADJUNTOConnection",
       items:  Array< {
@@ -1212,30 +1236,30 @@ export type GetCOSTOQuery = {
         URL: string,
         createdAt: string,
         updatedAt: string,
-        cOSTOADJUNTOSId?: string | null,
+        horometroADJUNTOSId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    maquinariaCOSTOSId?: string | null,
+    maquinariaHOROMETROId?: string | null,
   } | null,
 };
 
-export type ListCOSTOSQueryVariables = {
-  filter?: ModelCOSTOFilterInput | null,
+export type ListHorometrosQueryVariables = {
+  filter?: ModelHorometroFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListCOSTOSQuery = {
-  listCOSTOS?:  {
-    __typename: "ModelCOSTOConnection",
+export type ListHorometrosQuery = {
+  listHorometros?:  {
+    __typename: "ModelHorometroConnection",
     items:  Array< {
-      __typename: "COSTO",
+      __typename: "Horometro",
       id: string,
-      Price: string,
-      Date: string,
+      Horometro: number,
+      Date?: string | null,
       ADJUNTOS?:  {
         __typename: "ModelADJUNTOConnection",
         items:  Array< {
@@ -1244,13 +1268,13 @@ export type ListCOSTOSQuery = {
           URL: string,
           createdAt: string,
           updatedAt: string,
-          cOSTOADJUNTOSId?: string | null,
+          horometroADJUNTOSId?: string | null,
         } | null >,
         nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
-      maquinariaCOSTOSId?: string | null,
+      maquinariaHOROMETROId?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -1267,7 +1291,7 @@ export type GetADJUNTOQuery = {
     URL: string,
     createdAt: string,
     updatedAt: string,
-    cOSTOADJUNTOSId?: string | null,
+    horometroADJUNTOSId?: string | null,
   } | null,
 };
 
@@ -1286,7 +1310,7 @@ export type ListADJUNTOSQuery = {
       URL: string,
       createdAt: string,
       updatedAt: string,
-      cOSTOADJUNTOSId?: string | null,
+      horometroADJUNTOSId?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -1319,20 +1343,20 @@ export type OnCreateMaquinariaSubscription = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    COSTOS?:  {
-      __typename: "ModelCOSTOConnection",
+    HOROMETRO?:  {
+      __typename: "ModelHorometroConnection",
       items:  Array< {
-        __typename: "COSTO",
+        __typename: "Horometro",
         id: string,
-        Price: string,
-        Date: string,
+        Horometro: number,
+        Date?: string | null,
         ADJUNTOS?:  {
           __typename: "ModelADJUNTOConnection",
           nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
-        maquinariaCOSTOSId?: string | null,
+        maquinariaHOROMETROId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
@@ -1370,20 +1394,20 @@ export type OnUpdateMaquinariaSubscription = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    COSTOS?:  {
-      __typename: "ModelCOSTOConnection",
+    HOROMETRO?:  {
+      __typename: "ModelHorometroConnection",
       items:  Array< {
-        __typename: "COSTO",
+        __typename: "Horometro",
         id: string,
-        Price: string,
-        Date: string,
+        Horometro: number,
+        Date?: string | null,
         ADJUNTOS?:  {
           __typename: "ModelADJUNTOConnection",
           nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
-        maquinariaCOSTOSId?: string | null,
+        maquinariaHOROMETROId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
@@ -1421,20 +1445,20 @@ export type OnDeleteMaquinariaSubscription = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    COSTOS?:  {
-      __typename: "ModelCOSTOConnection",
+    HOROMETRO?:  {
+      __typename: "ModelHorometroConnection",
       items:  Array< {
-        __typename: "COSTO",
+        __typename: "Horometro",
         id: string,
-        Price: string,
-        Date: string,
+        Horometro: number,
+        Date?: string | null,
         ADJUNTOS?:  {
           __typename: "ModelADJUNTOConnection",
           nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
-        maquinariaCOSTOSId?: string | null,
+        maquinariaHOROMETROId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
@@ -1522,8 +1546,8 @@ export type OnCreateOPERARIOSubscription = {
           __typename: "ModelOPERATIVIDADConnection",
           nextToken?: string | null,
         } | null,
-        COSTOS?:  {
-          __typename: "ModelCOSTOConnection",
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
           nextToken?: string | null,
         } | null,
         id: string,
@@ -1564,8 +1588,8 @@ export type OnUpdateOPERARIOSubscription = {
           __typename: "ModelOPERATIVIDADConnection",
           nextToken?: string | null,
         } | null,
-        COSTOS?:  {
-          __typename: "ModelCOSTOConnection",
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
           nextToken?: string | null,
         } | null,
         id: string,
@@ -1606,8 +1630,8 @@ export type OnDeleteOPERARIOSubscription = {
           __typename: "ModelOPERATIVIDADConnection",
           nextToken?: string | null,
         } | null,
-        COSTOS?:  {
-          __typename: "ModelCOSTOConnection",
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
           nextToken?: string | null,
         } | null,
         id: string,
@@ -1622,16 +1646,16 @@ export type OnDeleteOPERARIOSubscription = {
   } | null,
 };
 
-export type OnCreateCOSTOSubscriptionVariables = {
-  filter?: ModelSubscriptionCOSTOFilterInput | null,
+export type OnCreateHorometroSubscriptionVariables = {
+  filter?: ModelSubscriptionHorometroFilterInput | null,
 };
 
-export type OnCreateCOSTOSubscription = {
-  onCreateCOSTO?:  {
-    __typename: "COSTO",
+export type OnCreateHorometroSubscription = {
+  onCreateHorometro?:  {
+    __typename: "Horometro",
     id: string,
-    Price: string,
-    Date: string,
+    Horometro: number,
+    Date?: string | null,
     ADJUNTOS?:  {
       __typename: "ModelADJUNTOConnection",
       items:  Array< {
@@ -1640,26 +1664,26 @@ export type OnCreateCOSTOSubscription = {
         URL: string,
         createdAt: string,
         updatedAt: string,
-        cOSTOADJUNTOSId?: string | null,
+        horometroADJUNTOSId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    maquinariaCOSTOSId?: string | null,
+    maquinariaHOROMETROId?: string | null,
   } | null,
 };
 
-export type OnUpdateCOSTOSubscriptionVariables = {
-  filter?: ModelSubscriptionCOSTOFilterInput | null,
+export type OnUpdateHorometroSubscriptionVariables = {
+  filter?: ModelSubscriptionHorometroFilterInput | null,
 };
 
-export type OnUpdateCOSTOSubscription = {
-  onUpdateCOSTO?:  {
-    __typename: "COSTO",
+export type OnUpdateHorometroSubscription = {
+  onUpdateHorometro?:  {
+    __typename: "Horometro",
     id: string,
-    Price: string,
-    Date: string,
+    Horometro: number,
+    Date?: string | null,
     ADJUNTOS?:  {
       __typename: "ModelADJUNTOConnection",
       items:  Array< {
@@ -1668,26 +1692,26 @@ export type OnUpdateCOSTOSubscription = {
         URL: string,
         createdAt: string,
         updatedAt: string,
-        cOSTOADJUNTOSId?: string | null,
+        horometroADJUNTOSId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    maquinariaCOSTOSId?: string | null,
+    maquinariaHOROMETROId?: string | null,
   } | null,
 };
 
-export type OnDeleteCOSTOSubscriptionVariables = {
-  filter?: ModelSubscriptionCOSTOFilterInput | null,
+export type OnDeleteHorometroSubscriptionVariables = {
+  filter?: ModelSubscriptionHorometroFilterInput | null,
 };
 
-export type OnDeleteCOSTOSubscription = {
-  onDeleteCOSTO?:  {
-    __typename: "COSTO",
+export type OnDeleteHorometroSubscription = {
+  onDeleteHorometro?:  {
+    __typename: "Horometro",
     id: string,
-    Price: string,
-    Date: string,
+    Horometro: number,
+    Date?: string | null,
     ADJUNTOS?:  {
       __typename: "ModelADJUNTOConnection",
       items:  Array< {
@@ -1696,13 +1720,13 @@ export type OnDeleteCOSTOSubscription = {
         URL: string,
         createdAt: string,
         updatedAt: string,
-        cOSTOADJUNTOSId?: string | null,
+        horometroADJUNTOSId?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
-    maquinariaCOSTOSId?: string | null,
+    maquinariaHOROMETROId?: string | null,
   } | null,
 };
 
@@ -1717,7 +1741,7 @@ export type OnCreateADJUNTOSubscription = {
     URL: string,
     createdAt: string,
     updatedAt: string,
-    cOSTOADJUNTOSId?: string | null,
+    horometroADJUNTOSId?: string | null,
   } | null,
 };
 
@@ -1732,7 +1756,7 @@ export type OnUpdateADJUNTOSubscription = {
     URL: string,
     createdAt: string,
     updatedAt: string,
-    cOSTOADJUNTOSId?: string | null,
+    horometroADJUNTOSId?: string | null,
   } | null,
 };
 
@@ -1747,6 +1771,6 @@ export type OnDeleteADJUNTOSubscription = {
     URL: string,
     createdAt: string,
     updatedAt: string,
-    cOSTOADJUNTOSId?: string | null,
+    horometroADJUNTOSId?: string | null,
   } | null,
 };

@@ -18,7 +18,7 @@
     styleClass="p-fluid">
     <ng-template pTemplate="content">
         <div class="flex-auto ">
-            <label for="buttondisplay" class="font-bold block mb-2"> Horometro </label>
+            <label for="buttondisplay" class="font-bold block mb-2"> Ingresa la fecha </label>
 
             <p-calendar  
                 appendTo="body"
@@ -28,6 +28,13 @@
                 inputId="buttondisplay" 
                 [showOnFocus]="false" />
         </div>
+
+        <div class="flex-auto">
+            <label for="horometro" class="font-bold block mb-2"> Ingresa el valor del horometro </label>  
+            <input type="number" pInputText  variant="filled" id="horometro" [(ngModel)]="costos.Horometro" />  
+        
+        </div>
+
         <div class="flex-auto ">
             <label for="evidencia"  class="font-bold block mb-value12"> Sube la evidencia </label>
             <app-upload-file inputId="evidencia" (imagesChange)="images.set($event)"  [multipleFile]="false" ></app-upload-file>
