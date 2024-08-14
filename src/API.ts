@@ -3,18 +3,18 @@
 //  This file was automatically generated and should not be edited.
 
 export type CreateMaquinariaInput = {
+  id?: string | null,
   NroVehiculo: string,
   Patentedelvehiculo: string,
   TIPO: string,
   MARCA: string,
   DESCRIPCION: string,
   PHOTO?: string | null,
-  id?: string | null,
   oPERARIOMAQUINARIAId?: string | null,
 };
 
 export type ModelMaquinariaConditionInput = {
-  NroVehiculo?: ModelIDInput | null,
+  NroVehiculo?: ModelStringInput | null,
   Patentedelvehiculo?: ModelStringInput | null,
   TIPO?: ModelStringInput | null,
   MARCA?: ModelStringInput | null,
@@ -28,7 +28,7 @@ export type ModelMaquinariaConditionInput = {
   oPERARIOMAQUINARIAId?: ModelIDInput | null,
 };
 
-export type ModelIDInput = {
+export type ModelStringInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -68,7 +68,7 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type ModelStringInput = {
+export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -86,6 +86,7 @@ export type ModelStringInput = {
 
 export type Maquinaria = {
   __typename: "Maquinaria",
+  id: string,
   NroVehiculo: string,
   Patentedelvehiculo: string,
   TIPO: string,
@@ -94,7 +95,7 @@ export type Maquinaria = {
   PHOTO?: string | null,
   OPERATIVIDAD?: ModelOPERATIVIDADConnection | null,
   HOROMETRO?: ModelHorometroConnection | null,
-  id: string,
+  OPERADOR?: OPERARIO | null,
   createdAt: string,
   updatedAt: string,
   oPERARIOMAQUINARIAId?: string | null,
@@ -149,18 +150,68 @@ export type ADJUNTO = {
   horometroADJUNTOSId?: string | null,
 };
 
+export type OPERARIO = {
+  __typename: "OPERARIO",
+  id: string,
+  NOMBRE: string,
+  EMAIL: string,
+  TELEFONO?: string | null,
+  DIRECCION?: string | null,
+  MAQUINARIA?: ModelMaquinariaConnection | null,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type ModelMaquinariaConnection = {
+  __typename: "ModelMaquinariaConnection",
+  items:  Array<Maquinaria | null >,
+  nextToken?: string | null,
+};
+
 export type UpdateMaquinariaInput = {
+  id: string,
   NroVehiculo?: string | null,
   Patentedelvehiculo?: string | null,
   TIPO?: string | null,
   MARCA?: string | null,
   DESCRIPCION?: string | null,
   PHOTO?: string | null,
-  id: string,
   oPERARIOMAQUINARIAId?: string | null,
 };
 
 export type DeleteMaquinariaInput = {
+  id: string,
+};
+
+export type CreateOPERARIOInput = {
+  id?: string | null,
+  NOMBRE: string,
+  EMAIL: string,
+  TELEFONO?: string | null,
+  DIRECCION?: string | null,
+};
+
+export type ModelOPERARIOConditionInput = {
+  NOMBRE?: ModelStringInput | null,
+  EMAIL?: ModelStringInput | null,
+  TELEFONO?: ModelStringInput | null,
+  DIRECCION?: ModelStringInput | null,
+  and?: Array< ModelOPERARIOConditionInput | null > | null,
+  or?: Array< ModelOPERARIOConditionInput | null > | null,
+  not?: ModelOPERARIOConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+};
+
+export type UpdateOPERARIOInput = {
+  id: string,
+  NOMBRE?: string | null,
+  EMAIL?: string | null,
+  TELEFONO?: string | null,
+  DIRECCION?: string | null,
+};
+
+export type DeleteOPERARIOInput = {
   id: string,
 };
 
@@ -203,56 +254,6 @@ export type DeleteOPERATIVIDADInput = {
   FECHA: string,
 };
 
-export type CreateOPERARIOInput = {
-  id?: string | null,
-  NOMBRE: string,
-  EMAIL: string,
-  TELEFONO?: string | null,
-  DIRECCION?: string | null,
-};
-
-export type ModelOPERARIOConditionInput = {
-  NOMBRE?: ModelStringInput | null,
-  EMAIL?: ModelStringInput | null,
-  TELEFONO?: ModelStringInput | null,
-  DIRECCION?: ModelStringInput | null,
-  and?: Array< ModelOPERARIOConditionInput | null > | null,
-  or?: Array< ModelOPERARIOConditionInput | null > | null,
-  not?: ModelOPERARIOConditionInput | null,
-  createdAt?: ModelStringInput | null,
-  updatedAt?: ModelStringInput | null,
-};
-
-export type OPERARIO = {
-  __typename: "OPERARIO",
-  id: string,
-  NOMBRE: string,
-  EMAIL: string,
-  TELEFONO?: string | null,
-  DIRECCION?: string | null,
-  MAQUINARIA?: ModelMaquinariaConnection | null,
-  createdAt: string,
-  updatedAt: string,
-};
-
-export type ModelMaquinariaConnection = {
-  __typename: "ModelMaquinariaConnection",
-  items:  Array<Maquinaria | null >,
-  nextToken?: string | null,
-};
-
-export type UpdateOPERARIOInput = {
-  id: string,
-  NOMBRE?: string | null,
-  EMAIL?: string | null,
-  TELEFONO?: string | null,
-  DIRECCION?: string | null,
-};
-
-export type DeleteOPERARIOInput = {
-  id: string,
-};
-
 export type CreateHorometroInput = {
   id?: string | null,
   Horometro: number,
@@ -261,7 +262,7 @@ export type CreateHorometroInput = {
 };
 
 export type ModelHorometroConditionInput = {
-  Horometro?: ModelIntInput | null,
+  Horometro?: ModelFloatInput | null,
   Date?: ModelStringInput | null,
   and?: Array< ModelHorometroConditionInput | null > | null,
   or?: Array< ModelHorometroConditionInput | null > | null,
@@ -271,7 +272,7 @@ export type ModelHorometroConditionInput = {
   maquinariaHOROMETROId?: ModelIDInput | null,
 };
 
-export type ModelIntInput = {
+export type ModelFloatInput = {
   ne?: number | null,
   eq?: number | null,
   le?: number | null,
@@ -321,19 +322,38 @@ export type DeleteADJUNTOInput = {
 };
 
 export type ModelMaquinariaFilterInput = {
-  NroVehiculo?: ModelIDInput | null,
+  id?: ModelIDInput | null,
+  NroVehiculo?: ModelStringInput | null,
   Patentedelvehiculo?: ModelStringInput | null,
   TIPO?: ModelStringInput | null,
   MARCA?: ModelStringInput | null,
   DESCRIPCION?: ModelStringInput | null,
   PHOTO?: ModelStringInput | null,
-  id?: ModelIDInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
   and?: Array< ModelMaquinariaFilterInput | null > | null,
   or?: Array< ModelMaquinariaFilterInput | null > | null,
   not?: ModelMaquinariaFilterInput | null,
   oPERARIOMAQUINARIAId?: ModelIDInput | null,
+};
+
+export type ModelOPERARIOFilterInput = {
+  id?: ModelIDInput | null,
+  NOMBRE?: ModelStringInput | null,
+  EMAIL?: ModelStringInput | null,
+  TELEFONO?: ModelStringInput | null,
+  DIRECCION?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelOPERARIOFilterInput | null > | null,
+  or?: Array< ModelOPERARIOFilterInput | null > | null,
+  not?: ModelOPERARIOFilterInput | null,
+};
+
+export type ModelOPERARIOConnection = {
+  __typename: "ModelOPERARIOConnection",
+  items:  Array<OPERARIO | null >,
+  nextToken?: string | null,
 };
 
 export type ModelStringKeyConditionInput = {
@@ -365,28 +385,9 @@ export enum ModelSortDirection {
 }
 
 
-export type ModelOPERARIOFilterInput = {
-  id?: ModelIDInput | null,
-  NOMBRE?: ModelStringInput | null,
-  EMAIL?: ModelStringInput | null,
-  TELEFONO?: ModelStringInput | null,
-  DIRECCION?: ModelStringInput | null,
-  createdAt?: ModelStringInput | null,
-  updatedAt?: ModelStringInput | null,
-  and?: Array< ModelOPERARIOFilterInput | null > | null,
-  or?: Array< ModelOPERARIOFilterInput | null > | null,
-  not?: ModelOPERARIOFilterInput | null,
-};
-
-export type ModelOPERARIOConnection = {
-  __typename: "ModelOPERARIOConnection",
-  items:  Array<OPERARIO | null >,
-  nextToken?: string | null,
-};
-
 export type ModelHorometroFilterInput = {
   id?: ModelIDInput | null,
-  Horometro?: ModelIntInput | null,
+  Horometro?: ModelFloatInput | null,
   Date?: ModelStringInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
@@ -408,13 +409,13 @@ export type ModelADJUNTOFilterInput = {
 };
 
 export type ModelSubscriptionMaquinariaFilterInput = {
-  NroVehiculo?: ModelSubscriptionIDInput | null,
+  id?: ModelSubscriptionIDInput | null,
+  NroVehiculo?: ModelSubscriptionStringInput | null,
   Patentedelvehiculo?: ModelSubscriptionStringInput | null,
   TIPO?: ModelSubscriptionStringInput | null,
   MARCA?: ModelSubscriptionStringInput | null,
   DESCRIPCION?: ModelSubscriptionStringInput | null,
   PHOTO?: ModelSubscriptionStringInput | null,
-  id?: ModelSubscriptionIDInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionMaquinariaFilterInput | null > | null,
@@ -453,6 +454,19 @@ export type ModelSubscriptionStringInput = {
   notIn?: Array< string | null > | null,
 };
 
+export type ModelSubscriptionOPERARIOFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  NOMBRE?: ModelSubscriptionStringInput | null,
+  EMAIL?: ModelSubscriptionStringInput | null,
+  TELEFONO?: ModelSubscriptionStringInput | null,
+  DIRECCION?: ModelSubscriptionStringInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionOPERARIOFilterInput | null > | null,
+  or?: Array< ModelSubscriptionOPERARIOFilterInput | null > | null,
+  oPERARIOMAQUINARIAId?: ModelSubscriptionIDInput | null,
+};
+
 export type ModelSubscriptionOPERATIVIDADFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   DESCRIPCION?: ModelSubscriptionStringInput | null,
@@ -469,22 +483,9 @@ export type ModelSubscriptionBooleanInput = {
   eq?: boolean | null,
 };
 
-export type ModelSubscriptionOPERARIOFilterInput = {
-  id?: ModelSubscriptionIDInput | null,
-  NOMBRE?: ModelSubscriptionStringInput | null,
-  EMAIL?: ModelSubscriptionStringInput | null,
-  TELEFONO?: ModelSubscriptionStringInput | null,
-  DIRECCION?: ModelSubscriptionStringInput | null,
-  createdAt?: ModelSubscriptionStringInput | null,
-  updatedAt?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionOPERARIOFilterInput | null > | null,
-  or?: Array< ModelSubscriptionOPERARIOFilterInput | null > | null,
-  oPERARIOMAQUINARIAId?: ModelSubscriptionIDInput | null,
-};
-
 export type ModelSubscriptionHorometroFilterInput = {
   id?: ModelSubscriptionIDInput | null,
-  Horometro?: ModelSubscriptionIntInput | null,
+  Horometro?: ModelSubscriptionFloatInput | null,
   Date?: ModelSubscriptionStringInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
@@ -493,7 +494,7 @@ export type ModelSubscriptionHorometroFilterInput = {
   horometroADJUNTOSId?: ModelSubscriptionIDInput | null,
 };
 
-export type ModelSubscriptionIntInput = {
+export type ModelSubscriptionFloatInput = {
   ne?: number | null,
   eq?: number | null,
   le?: number | null,
@@ -522,6 +523,7 @@ export type CreateMaquinariaMutationVariables = {
 export type CreateMaquinariaMutation = {
   createMaquinaria?:  {
     __typename: "Maquinaria",
+    id: string,
     NroVehiculo: string,
     Patentedelvehiculo: string,
     TIPO: string,
@@ -559,7 +561,33 @@ export type CreateMaquinariaMutation = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    id: string,
+    OPERADOR?:  {
+      __typename: "OPERARIO",
+      id: string,
+      NOMBRE: string,
+      EMAIL: string,
+      TELEFONO?: string | null,
+      DIRECCION?: string | null,
+      MAQUINARIA?:  {
+        __typename: "ModelMaquinariaConnection",
+        items:  Array< {
+          __typename: "Maquinaria",
+          id: string,
+          NroVehiculo: string,
+          Patentedelvehiculo: string,
+          TIPO: string,
+          MARCA: string,
+          DESCRIPCION: string,
+          PHOTO?: string | null,
+          createdAt: string,
+          updatedAt: string,
+          oPERARIOMAQUINARIAId?: string | null,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     createdAt: string,
     updatedAt: string,
     oPERARIOMAQUINARIAId?: string | null,
@@ -574,6 +602,7 @@ export type UpdateMaquinariaMutationVariables = {
 export type UpdateMaquinariaMutation = {
   updateMaquinaria?:  {
     __typename: "Maquinaria",
+    id: string,
     NroVehiculo: string,
     Patentedelvehiculo: string,
     TIPO: string,
@@ -611,7 +640,33 @@ export type UpdateMaquinariaMutation = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    id: string,
+    OPERADOR?:  {
+      __typename: "OPERARIO",
+      id: string,
+      NOMBRE: string,
+      EMAIL: string,
+      TELEFONO?: string | null,
+      DIRECCION?: string | null,
+      MAQUINARIA?:  {
+        __typename: "ModelMaquinariaConnection",
+        items:  Array< {
+          __typename: "Maquinaria",
+          id: string,
+          NroVehiculo: string,
+          Patentedelvehiculo: string,
+          TIPO: string,
+          MARCA: string,
+          DESCRIPCION: string,
+          PHOTO?: string | null,
+          createdAt: string,
+          updatedAt: string,
+          oPERARIOMAQUINARIAId?: string | null,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     createdAt: string,
     updatedAt: string,
     oPERARIOMAQUINARIAId?: string | null,
@@ -626,6 +681,7 @@ export type DeleteMaquinariaMutationVariables = {
 export type DeleteMaquinariaMutation = {
   deleteMaquinaria?:  {
     __typename: "Maquinaria",
+    id: string,
     NroVehiculo: string,
     Patentedelvehiculo: string,
     TIPO: string,
@@ -663,10 +719,195 @@ export type DeleteMaquinariaMutation = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    id: string,
+    OPERADOR?:  {
+      __typename: "OPERARIO",
+      id: string,
+      NOMBRE: string,
+      EMAIL: string,
+      TELEFONO?: string | null,
+      DIRECCION?: string | null,
+      MAQUINARIA?:  {
+        __typename: "ModelMaquinariaConnection",
+        items:  Array< {
+          __typename: "Maquinaria",
+          id: string,
+          NroVehiculo: string,
+          Patentedelvehiculo: string,
+          TIPO: string,
+          MARCA: string,
+          DESCRIPCION: string,
+          PHOTO?: string | null,
+          createdAt: string,
+          updatedAt: string,
+          oPERARIOMAQUINARIAId?: string | null,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     createdAt: string,
     updatedAt: string,
     oPERARIOMAQUINARIAId?: string | null,
+  } | null,
+};
+
+export type CreateOPERARIOMutationVariables = {
+  input: CreateOPERARIOInput,
+  condition?: ModelOPERARIOConditionInput | null,
+};
+
+export type CreateOPERARIOMutation = {
+  createOPERARIO?:  {
+    __typename: "OPERARIO",
+    id: string,
+    NOMBRE: string,
+    EMAIL: string,
+    TELEFONO?: string | null,
+    DIRECCION?: string | null,
+    MAQUINARIA?:  {
+      __typename: "ModelMaquinariaConnection",
+      items:  Array< {
+        __typename: "Maquinaria",
+        id: string,
+        NroVehiculo: string,
+        Patentedelvehiculo: string,
+        TIPO: string,
+        MARCA: string,
+        DESCRIPCION: string,
+        PHOTO?: string | null,
+        OPERATIVIDAD?:  {
+          __typename: "ModelOPERATIVIDADConnection",
+          nextToken?: string | null,
+        } | null,
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
+          nextToken?: string | null,
+        } | null,
+        OPERADOR?:  {
+          __typename: "OPERARIO",
+          id: string,
+          NOMBRE: string,
+          EMAIL: string,
+          TELEFONO?: string | null,
+          DIRECCION?: string | null,
+          createdAt: string,
+          updatedAt: string,
+        } | null,
+        createdAt: string,
+        updatedAt: string,
+        oPERARIOMAQUINARIAId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type UpdateOPERARIOMutationVariables = {
+  input: UpdateOPERARIOInput,
+  condition?: ModelOPERARIOConditionInput | null,
+};
+
+export type UpdateOPERARIOMutation = {
+  updateOPERARIO?:  {
+    __typename: "OPERARIO",
+    id: string,
+    NOMBRE: string,
+    EMAIL: string,
+    TELEFONO?: string | null,
+    DIRECCION?: string | null,
+    MAQUINARIA?:  {
+      __typename: "ModelMaquinariaConnection",
+      items:  Array< {
+        __typename: "Maquinaria",
+        id: string,
+        NroVehiculo: string,
+        Patentedelvehiculo: string,
+        TIPO: string,
+        MARCA: string,
+        DESCRIPCION: string,
+        PHOTO?: string | null,
+        OPERATIVIDAD?:  {
+          __typename: "ModelOPERATIVIDADConnection",
+          nextToken?: string | null,
+        } | null,
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
+          nextToken?: string | null,
+        } | null,
+        OPERADOR?:  {
+          __typename: "OPERARIO",
+          id: string,
+          NOMBRE: string,
+          EMAIL: string,
+          TELEFONO?: string | null,
+          DIRECCION?: string | null,
+          createdAt: string,
+          updatedAt: string,
+        } | null,
+        createdAt: string,
+        updatedAt: string,
+        oPERARIOMAQUINARIAId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type DeleteOPERARIOMutationVariables = {
+  input: DeleteOPERARIOInput,
+  condition?: ModelOPERARIOConditionInput | null,
+};
+
+export type DeleteOPERARIOMutation = {
+  deleteOPERARIO?:  {
+    __typename: "OPERARIO",
+    id: string,
+    NOMBRE: string,
+    EMAIL: string,
+    TELEFONO?: string | null,
+    DIRECCION?: string | null,
+    MAQUINARIA?:  {
+      __typename: "ModelMaquinariaConnection",
+      items:  Array< {
+        __typename: "Maquinaria",
+        id: string,
+        NroVehiculo: string,
+        Patentedelvehiculo: string,
+        TIPO: string,
+        MARCA: string,
+        DESCRIPCION: string,
+        PHOTO?: string | null,
+        OPERATIVIDAD?:  {
+          __typename: "ModelOPERATIVIDADConnection",
+          nextToken?: string | null,
+        } | null,
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
+          nextToken?: string | null,
+        } | null,
+        OPERADOR?:  {
+          __typename: "OPERARIO",
+          id: string,
+          NOMBRE: string,
+          EMAIL: string,
+          TELEFONO?: string | null,
+          DIRECCION?: string | null,
+          createdAt: string,
+          updatedAt: string,
+        } | null,
+        createdAt: string,
+        updatedAt: string,
+        oPERARIOMAQUINARIAId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -721,135 +962,6 @@ export type DeleteOPERATIVIDADMutation = {
     createdAt: string,
     updatedAt: string,
     maquinariaOPERATIVIDADId?: string | null,
-  } | null,
-};
-
-export type CreateOPERARIOMutationVariables = {
-  input: CreateOPERARIOInput,
-  condition?: ModelOPERARIOConditionInput | null,
-};
-
-export type CreateOPERARIOMutation = {
-  createOPERARIO?:  {
-    __typename: "OPERARIO",
-    id: string,
-    NOMBRE: string,
-    EMAIL: string,
-    TELEFONO?: string | null,
-    DIRECCION?: string | null,
-    MAQUINARIA?:  {
-      __typename: "ModelMaquinariaConnection",
-      items:  Array< {
-        __typename: "Maquinaria",
-        NroVehiculo: string,
-        Patentedelvehiculo: string,
-        TIPO: string,
-        MARCA: string,
-        DESCRIPCION: string,
-        PHOTO?: string | null,
-        OPERATIVIDAD?:  {
-          __typename: "ModelOPERATIVIDADConnection",
-          nextToken?: string | null,
-        } | null,
-        HOROMETRO?:  {
-          __typename: "ModelHorometroConnection",
-          nextToken?: string | null,
-        } | null,
-        id: string,
-        createdAt: string,
-        updatedAt: string,
-        oPERARIOMAQUINARIAId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type UpdateOPERARIOMutationVariables = {
-  input: UpdateOPERARIOInput,
-  condition?: ModelOPERARIOConditionInput | null,
-};
-
-export type UpdateOPERARIOMutation = {
-  updateOPERARIO?:  {
-    __typename: "OPERARIO",
-    id: string,
-    NOMBRE: string,
-    EMAIL: string,
-    TELEFONO?: string | null,
-    DIRECCION?: string | null,
-    MAQUINARIA?:  {
-      __typename: "ModelMaquinariaConnection",
-      items:  Array< {
-        __typename: "Maquinaria",
-        NroVehiculo: string,
-        Patentedelvehiculo: string,
-        TIPO: string,
-        MARCA: string,
-        DESCRIPCION: string,
-        PHOTO?: string | null,
-        OPERATIVIDAD?:  {
-          __typename: "ModelOPERATIVIDADConnection",
-          nextToken?: string | null,
-        } | null,
-        HOROMETRO?:  {
-          __typename: "ModelHorometroConnection",
-          nextToken?: string | null,
-        } | null,
-        id: string,
-        createdAt: string,
-        updatedAt: string,
-        oPERARIOMAQUINARIAId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type DeleteOPERARIOMutationVariables = {
-  input: DeleteOPERARIOInput,
-  condition?: ModelOPERARIOConditionInput | null,
-};
-
-export type DeleteOPERARIOMutation = {
-  deleteOPERARIO?:  {
-    __typename: "OPERARIO",
-    id: string,
-    NOMBRE: string,
-    EMAIL: string,
-    TELEFONO?: string | null,
-    DIRECCION?: string | null,
-    MAQUINARIA?:  {
-      __typename: "ModelMaquinariaConnection",
-      items:  Array< {
-        __typename: "Maquinaria",
-        NroVehiculo: string,
-        Patentedelvehiculo: string,
-        TIPO: string,
-        MARCA: string,
-        DESCRIPCION: string,
-        PHOTO?: string | null,
-        OPERATIVIDAD?:  {
-          __typename: "ModelOPERATIVIDADConnection",
-          nextToken?: string | null,
-        } | null,
-        HOROMETRO?:  {
-          __typename: "ModelHorometroConnection",
-          nextToken?: string | null,
-        } | null,
-        id: string,
-        createdAt: string,
-        updatedAt: string,
-        oPERARIOMAQUINARIAId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 
@@ -995,6 +1107,7 @@ export type GetMaquinariaQueryVariables = {
 export type GetMaquinariaQuery = {
   getMaquinaria?:  {
     __typename: "Maquinaria",
+    id: string,
     NroVehiculo: string,
     Patentedelvehiculo: string,
     TIPO: string,
@@ -1032,7 +1145,33 @@ export type GetMaquinariaQuery = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    id: string,
+    OPERADOR?:  {
+      __typename: "OPERARIO",
+      id: string,
+      NOMBRE: string,
+      EMAIL: string,
+      TELEFONO?: string | null,
+      DIRECCION?: string | null,
+      MAQUINARIA?:  {
+        __typename: "ModelMaquinariaConnection",
+        items:  Array< {
+          __typename: "Maquinaria",
+          id: string,
+          NroVehiculo: string,
+          Patentedelvehiculo: string,
+          TIPO: string,
+          MARCA: string,
+          DESCRIPCION: string,
+          PHOTO?: string | null,
+          createdAt: string,
+          updatedAt: string,
+          oPERARIOMAQUINARIAId?: string | null,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     createdAt: string,
     updatedAt: string,
     oPERARIOMAQUINARIAId?: string | null,
@@ -1050,6 +1189,7 @@ export type ListMaquinariasQuery = {
     __typename: "ModelMaquinariaConnection",
     items:  Array< {
       __typename: "Maquinaria",
+      id: string,
       NroVehiculo: string,
       Patentedelvehiculo: string,
       TIPO: string,
@@ -1083,10 +1223,115 @@ export type ListMaquinariasQuery = {
         } | null >,
         nextToken?: string | null,
       } | null,
-      id: string,
+      OPERADOR?:  {
+        __typename: "OPERARIO",
+        id: string,
+        NOMBRE: string,
+        EMAIL: string,
+        TELEFONO?: string | null,
+        DIRECCION?: string | null,
+        MAQUINARIA?:  {
+          __typename: "ModelMaquinariaConnection",
+          nextToken?: string | null,
+        } | null,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       createdAt: string,
       updatedAt: string,
       oPERARIOMAQUINARIAId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetOPERARIOQueryVariables = {
+  id: string,
+};
+
+export type GetOPERARIOQuery = {
+  getOPERARIO?:  {
+    __typename: "OPERARIO",
+    id: string,
+    NOMBRE: string,
+    EMAIL: string,
+    TELEFONO?: string | null,
+    DIRECCION?: string | null,
+    MAQUINARIA?:  {
+      __typename: "ModelMaquinariaConnection",
+      items:  Array< {
+        __typename: "Maquinaria",
+        id: string,
+        NroVehiculo: string,
+        Patentedelvehiculo: string,
+        TIPO: string,
+        MARCA: string,
+        DESCRIPCION: string,
+        PHOTO?: string | null,
+        OPERATIVIDAD?:  {
+          __typename: "ModelOPERATIVIDADConnection",
+          nextToken?: string | null,
+        } | null,
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
+          nextToken?: string | null,
+        } | null,
+        OPERADOR?:  {
+          __typename: "OPERARIO",
+          id: string,
+          NOMBRE: string,
+          EMAIL: string,
+          TELEFONO?: string | null,
+          DIRECCION?: string | null,
+          createdAt: string,
+          updatedAt: string,
+        } | null,
+        createdAt: string,
+        updatedAt: string,
+        oPERARIOMAQUINARIAId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type ListOPERARIOSQueryVariables = {
+  filter?: ModelOPERARIOFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListOPERARIOSQuery = {
+  listOPERARIOS?:  {
+    __typename: "ModelOPERARIOConnection",
+    items:  Array< {
+      __typename: "OPERARIO",
+      id: string,
+      NOMBRE: string,
+      EMAIL: string,
+      TELEFONO?: string | null,
+      DIRECCION?: string | null,
+      MAQUINARIA?:  {
+        __typename: "ModelMaquinariaConnection",
+        items:  Array< {
+          __typename: "Maquinaria",
+          id: string,
+          NroVehiculo: string,
+          Patentedelvehiculo: string,
+          TIPO: string,
+          MARCA: string,
+          DESCRIPCION: string,
+          PHOTO?: string | null,
+          createdAt: string,
+          updatedAt: string,
+          oPERARIOMAQUINARIAId?: string | null,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -1131,88 +1376,6 @@ export type ListOPERATIVIDADSQuery = {
       createdAt: string,
       updatedAt: string,
       maquinariaOPERATIVIDADId?: string | null,
-    } | null >,
-    nextToken?: string | null,
-  } | null,
-};
-
-export type GetOPERARIOQueryVariables = {
-  id: string,
-};
-
-export type GetOPERARIOQuery = {
-  getOPERARIO?:  {
-    __typename: "OPERARIO",
-    id: string,
-    NOMBRE: string,
-    EMAIL: string,
-    TELEFONO?: string | null,
-    DIRECCION?: string | null,
-    MAQUINARIA?:  {
-      __typename: "ModelMaquinariaConnection",
-      items:  Array< {
-        __typename: "Maquinaria",
-        NroVehiculo: string,
-        Patentedelvehiculo: string,
-        TIPO: string,
-        MARCA: string,
-        DESCRIPCION: string,
-        PHOTO?: string | null,
-        OPERATIVIDAD?:  {
-          __typename: "ModelOPERATIVIDADConnection",
-          nextToken?: string | null,
-        } | null,
-        HOROMETRO?:  {
-          __typename: "ModelHorometroConnection",
-          nextToken?: string | null,
-        } | null,
-        id: string,
-        createdAt: string,
-        updatedAt: string,
-        oPERARIOMAQUINARIAId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type ListOPERARIOSQueryVariables = {
-  filter?: ModelOPERARIOFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type ListOPERARIOSQuery = {
-  listOPERARIOS?:  {
-    __typename: "ModelOPERARIOConnection",
-    items:  Array< {
-      __typename: "OPERARIO",
-      id: string,
-      NOMBRE: string,
-      EMAIL: string,
-      TELEFONO?: string | null,
-      DIRECCION?: string | null,
-      MAQUINARIA?:  {
-        __typename: "ModelMaquinariaConnection",
-        items:  Array< {
-          __typename: "Maquinaria",
-          NroVehiculo: string,
-          Patentedelvehiculo: string,
-          TIPO: string,
-          MARCA: string,
-          DESCRIPCION: string,
-          PHOTO?: string | null,
-          id: string,
-          createdAt: string,
-          updatedAt: string,
-          oPERARIOMAQUINARIAId?: string | null,
-        } | null >,
-        nextToken?: string | null,
-      } | null,
-      createdAt: string,
-      updatedAt: string,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -1323,6 +1486,7 @@ export type OnCreateMaquinariaSubscriptionVariables = {
 export type OnCreateMaquinariaSubscription = {
   onCreateMaquinaria?:  {
     __typename: "Maquinaria",
+    id: string,
     NroVehiculo: string,
     Patentedelvehiculo: string,
     TIPO: string,
@@ -1360,7 +1524,33 @@ export type OnCreateMaquinariaSubscription = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    id: string,
+    OPERADOR?:  {
+      __typename: "OPERARIO",
+      id: string,
+      NOMBRE: string,
+      EMAIL: string,
+      TELEFONO?: string | null,
+      DIRECCION?: string | null,
+      MAQUINARIA?:  {
+        __typename: "ModelMaquinariaConnection",
+        items:  Array< {
+          __typename: "Maquinaria",
+          id: string,
+          NroVehiculo: string,
+          Patentedelvehiculo: string,
+          TIPO: string,
+          MARCA: string,
+          DESCRIPCION: string,
+          PHOTO?: string | null,
+          createdAt: string,
+          updatedAt: string,
+          oPERARIOMAQUINARIAId?: string | null,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     createdAt: string,
     updatedAt: string,
     oPERARIOMAQUINARIAId?: string | null,
@@ -1374,6 +1564,7 @@ export type OnUpdateMaquinariaSubscriptionVariables = {
 export type OnUpdateMaquinariaSubscription = {
   onUpdateMaquinaria?:  {
     __typename: "Maquinaria",
+    id: string,
     NroVehiculo: string,
     Patentedelvehiculo: string,
     TIPO: string,
@@ -1411,7 +1602,33 @@ export type OnUpdateMaquinariaSubscription = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    id: string,
+    OPERADOR?:  {
+      __typename: "OPERARIO",
+      id: string,
+      NOMBRE: string,
+      EMAIL: string,
+      TELEFONO?: string | null,
+      DIRECCION?: string | null,
+      MAQUINARIA?:  {
+        __typename: "ModelMaquinariaConnection",
+        items:  Array< {
+          __typename: "Maquinaria",
+          id: string,
+          NroVehiculo: string,
+          Patentedelvehiculo: string,
+          TIPO: string,
+          MARCA: string,
+          DESCRIPCION: string,
+          PHOTO?: string | null,
+          createdAt: string,
+          updatedAt: string,
+          oPERARIOMAQUINARIAId?: string | null,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     createdAt: string,
     updatedAt: string,
     oPERARIOMAQUINARIAId?: string | null,
@@ -1425,6 +1642,7 @@ export type OnDeleteMaquinariaSubscriptionVariables = {
 export type OnDeleteMaquinariaSubscription = {
   onDeleteMaquinaria?:  {
     __typename: "Maquinaria",
+    id: string,
     NroVehiculo: string,
     Patentedelvehiculo: string,
     TIPO: string,
@@ -1462,10 +1680,192 @@ export type OnDeleteMaquinariaSubscription = {
       } | null >,
       nextToken?: string | null,
     } | null,
-    id: string,
+    OPERADOR?:  {
+      __typename: "OPERARIO",
+      id: string,
+      NOMBRE: string,
+      EMAIL: string,
+      TELEFONO?: string | null,
+      DIRECCION?: string | null,
+      MAQUINARIA?:  {
+        __typename: "ModelMaquinariaConnection",
+        items:  Array< {
+          __typename: "Maquinaria",
+          id: string,
+          NroVehiculo: string,
+          Patentedelvehiculo: string,
+          TIPO: string,
+          MARCA: string,
+          DESCRIPCION: string,
+          PHOTO?: string | null,
+          createdAt: string,
+          updatedAt: string,
+          oPERARIOMAQUINARIAId?: string | null,
+        } | null >,
+        nextToken?: string | null,
+      } | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     createdAt: string,
     updatedAt: string,
     oPERARIOMAQUINARIAId?: string | null,
+  } | null,
+};
+
+export type OnCreateOPERARIOSubscriptionVariables = {
+  filter?: ModelSubscriptionOPERARIOFilterInput | null,
+};
+
+export type OnCreateOPERARIOSubscription = {
+  onCreateOPERARIO?:  {
+    __typename: "OPERARIO",
+    id: string,
+    NOMBRE: string,
+    EMAIL: string,
+    TELEFONO?: string | null,
+    DIRECCION?: string | null,
+    MAQUINARIA?:  {
+      __typename: "ModelMaquinariaConnection",
+      items:  Array< {
+        __typename: "Maquinaria",
+        id: string,
+        NroVehiculo: string,
+        Patentedelvehiculo: string,
+        TIPO: string,
+        MARCA: string,
+        DESCRIPCION: string,
+        PHOTO?: string | null,
+        OPERATIVIDAD?:  {
+          __typename: "ModelOPERATIVIDADConnection",
+          nextToken?: string | null,
+        } | null,
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
+          nextToken?: string | null,
+        } | null,
+        OPERADOR?:  {
+          __typename: "OPERARIO",
+          id: string,
+          NOMBRE: string,
+          EMAIL: string,
+          TELEFONO?: string | null,
+          DIRECCION?: string | null,
+          createdAt: string,
+          updatedAt: string,
+        } | null,
+        createdAt: string,
+        updatedAt: string,
+        oPERARIOMAQUINARIAId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateOPERARIOSubscriptionVariables = {
+  filter?: ModelSubscriptionOPERARIOFilterInput | null,
+};
+
+export type OnUpdateOPERARIOSubscription = {
+  onUpdateOPERARIO?:  {
+    __typename: "OPERARIO",
+    id: string,
+    NOMBRE: string,
+    EMAIL: string,
+    TELEFONO?: string | null,
+    DIRECCION?: string | null,
+    MAQUINARIA?:  {
+      __typename: "ModelMaquinariaConnection",
+      items:  Array< {
+        __typename: "Maquinaria",
+        id: string,
+        NroVehiculo: string,
+        Patentedelvehiculo: string,
+        TIPO: string,
+        MARCA: string,
+        DESCRIPCION: string,
+        PHOTO?: string | null,
+        OPERATIVIDAD?:  {
+          __typename: "ModelOPERATIVIDADConnection",
+          nextToken?: string | null,
+        } | null,
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
+          nextToken?: string | null,
+        } | null,
+        OPERADOR?:  {
+          __typename: "OPERARIO",
+          id: string,
+          NOMBRE: string,
+          EMAIL: string,
+          TELEFONO?: string | null,
+          DIRECCION?: string | null,
+          createdAt: string,
+          updatedAt: string,
+        } | null,
+        createdAt: string,
+        updatedAt: string,
+        oPERARIOMAQUINARIAId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteOPERARIOSubscriptionVariables = {
+  filter?: ModelSubscriptionOPERARIOFilterInput | null,
+};
+
+export type OnDeleteOPERARIOSubscription = {
+  onDeleteOPERARIO?:  {
+    __typename: "OPERARIO",
+    id: string,
+    NOMBRE: string,
+    EMAIL: string,
+    TELEFONO?: string | null,
+    DIRECCION?: string | null,
+    MAQUINARIA?:  {
+      __typename: "ModelMaquinariaConnection",
+      items:  Array< {
+        __typename: "Maquinaria",
+        id: string,
+        NroVehiculo: string,
+        Patentedelvehiculo: string,
+        TIPO: string,
+        MARCA: string,
+        DESCRIPCION: string,
+        PHOTO?: string | null,
+        OPERATIVIDAD?:  {
+          __typename: "ModelOPERATIVIDADConnection",
+          nextToken?: string | null,
+        } | null,
+        HOROMETRO?:  {
+          __typename: "ModelHorometroConnection",
+          nextToken?: string | null,
+        } | null,
+        OPERADOR?:  {
+          __typename: "OPERARIO",
+          id: string,
+          NOMBRE: string,
+          EMAIL: string,
+          TELEFONO?: string | null,
+          DIRECCION?: string | null,
+          createdAt: string,
+          updatedAt: string,
+        } | null,
+        createdAt: string,
+        updatedAt: string,
+        oPERARIOMAQUINARIAId?: string | null,
+      } | null >,
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
   } | null,
 };
 
@@ -1517,132 +1917,6 @@ export type OnDeleteOPERATIVIDADSubscription = {
     createdAt: string,
     updatedAt: string,
     maquinariaOPERATIVIDADId?: string | null,
-  } | null,
-};
-
-export type OnCreateOPERARIOSubscriptionVariables = {
-  filter?: ModelSubscriptionOPERARIOFilterInput | null,
-};
-
-export type OnCreateOPERARIOSubscription = {
-  onCreateOPERARIO?:  {
-    __typename: "OPERARIO",
-    id: string,
-    NOMBRE: string,
-    EMAIL: string,
-    TELEFONO?: string | null,
-    DIRECCION?: string | null,
-    MAQUINARIA?:  {
-      __typename: "ModelMaquinariaConnection",
-      items:  Array< {
-        __typename: "Maquinaria",
-        NroVehiculo: string,
-        Patentedelvehiculo: string,
-        TIPO: string,
-        MARCA: string,
-        DESCRIPCION: string,
-        PHOTO?: string | null,
-        OPERATIVIDAD?:  {
-          __typename: "ModelOPERATIVIDADConnection",
-          nextToken?: string | null,
-        } | null,
-        HOROMETRO?:  {
-          __typename: "ModelHorometroConnection",
-          nextToken?: string | null,
-        } | null,
-        id: string,
-        createdAt: string,
-        updatedAt: string,
-        oPERARIOMAQUINARIAId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type OnUpdateOPERARIOSubscriptionVariables = {
-  filter?: ModelSubscriptionOPERARIOFilterInput | null,
-};
-
-export type OnUpdateOPERARIOSubscription = {
-  onUpdateOPERARIO?:  {
-    __typename: "OPERARIO",
-    id: string,
-    NOMBRE: string,
-    EMAIL: string,
-    TELEFONO?: string | null,
-    DIRECCION?: string | null,
-    MAQUINARIA?:  {
-      __typename: "ModelMaquinariaConnection",
-      items:  Array< {
-        __typename: "Maquinaria",
-        NroVehiculo: string,
-        Patentedelvehiculo: string,
-        TIPO: string,
-        MARCA: string,
-        DESCRIPCION: string,
-        PHOTO?: string | null,
-        OPERATIVIDAD?:  {
-          __typename: "ModelOPERATIVIDADConnection",
-          nextToken?: string | null,
-        } | null,
-        HOROMETRO?:  {
-          __typename: "ModelHorometroConnection",
-          nextToken?: string | null,
-        } | null,
-        id: string,
-        createdAt: string,
-        updatedAt: string,
-        oPERARIOMAQUINARIAId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-  } | null,
-};
-
-export type OnDeleteOPERARIOSubscriptionVariables = {
-  filter?: ModelSubscriptionOPERARIOFilterInput | null,
-};
-
-export type OnDeleteOPERARIOSubscription = {
-  onDeleteOPERARIO?:  {
-    __typename: "OPERARIO",
-    id: string,
-    NOMBRE: string,
-    EMAIL: string,
-    TELEFONO?: string | null,
-    DIRECCION?: string | null,
-    MAQUINARIA?:  {
-      __typename: "ModelMaquinariaConnection",
-      items:  Array< {
-        __typename: "Maquinaria",
-        NroVehiculo: string,
-        Patentedelvehiculo: string,
-        TIPO: string,
-        MARCA: string,
-        DESCRIPCION: string,
-        PHOTO?: string | null,
-        OPERATIVIDAD?:  {
-          __typename: "ModelOPERATIVIDADConnection",
-          nextToken?: string | null,
-        } | null,
-        HOROMETRO?:  {
-          __typename: "ModelHorometroConnection",
-          nextToken?: string | null,
-        } | null,
-        id: string,
-        createdAt: string,
-        updatedAt: string,
-        oPERARIOMAQUINARIAId?: string | null,
-      } | null >,
-      nextToken?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
   } | null,
 };
 

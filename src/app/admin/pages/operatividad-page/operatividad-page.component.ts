@@ -79,8 +79,8 @@ deleteOperatividad(operatividad: CreateOPERATIVIDADInput) {
                 if(!this.maquinaria?.getMaquinaria?.OPERATIVIDAD){
                   return;
                 }
-                  // this.maquinaria.getMaquinaria.OPERATIVIDAD.items = this.maquinaria?.getMaquinaria?.OPERATIVIDAD?.items?.filter((val) => val.id !== operatividad.id) || [];
-                  this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Maquinaria borrada', life: 3000 });
+                this.maquinaria.getMaquinaria.OPERATIVIDAD.items = this.maquinaria.getMaquinaria.OPERATIVIDAD.items.filter((val:any) => val.id !== operatividad.id);
+                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Maquinaria borrada', life: 3000 });
                 
               })
 
