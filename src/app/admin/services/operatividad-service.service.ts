@@ -25,7 +25,8 @@ export class OperatividadService {
       return this.client.graphql(
         {
           query:mutations.deleteOPERATIVIDAD,
-          variables:{input:id}
+          variables:{input:id},
+          authMode:'userPool'
         }
       )
     

@@ -10,7 +10,7 @@ import { ButtonDirective, ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { NoPhotoDirective } from '../../../shared/directive/no-photo.directive';
 import { MaquinariasService } from '../../../shared/service/maquinarias.service';
-import { CreateMaquinariaInput, Maquinaria, UpdateMaquinariaInput } from '../../../API.service';
+import { CreateMaquinariaInput, DeleteMaquinariaInput, Maquinaria, UpdateMaquinariaInput } from '../../../API.service';
 import { DialogModule } from 'primeng/dialog';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule } from '@angular/forms';
@@ -78,6 +78,17 @@ export default class OperarioPageComponent {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: `Ha Ocurrio un error`, life: 3000 });
     })
   }
+
+
+  deleteMaquinariaOperador(idMaquinariaOperador:string){
+    const maquinariaOperador:DeleteMaquinariaInput={id:idMaquinariaOperador}
+    this.maquinariaService.deleteMaquinaria(maquinariaOperador).then(()=>{
+      this.messageService.add({ severity: 'success', summary: 'Successful', detail: `Se ha asiganido la maquina al usuario con exito`, life: 3000 });
+    }).catch(()=>{
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: `Ha Ocurrio un error`, life: 3000 });
+    })
+  }
+
   close(){
     this.isOpenDialog=false;
   }

@@ -10,6 +10,7 @@ type GeneratedQuery<InputType, OutputType> = string & {
 
 export const getMaquinaria = /* GraphQL */ `query GetMaquinaria($id: ID!) {
   getMaquinaria(id: $id) {
+    id
     NroVehiculo
     Patentedelvehiculo
     TIPO
@@ -47,7 +48,33 @@ export const getMaquinaria = /* GraphQL */ `query GetMaquinaria($id: ID!) {
       nextToken
       __typename
     }
-    id
+    OPERADOR {
+      id
+      NOMBRE
+      EMAIL
+      TELEFONO
+      DIRECCION
+      MAQUINARIA {
+        items {
+          id
+          NroVehiculo
+          Patentedelvehiculo
+          TIPO
+          MARCA
+          DESCRIPCION
+          PHOTO
+          createdAt
+          updatedAt
+          oPERARIOMAQUINARIAId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
     oPERARIOMAQUINARIAId
@@ -65,6 +92,7 @@ export const listMaquinarias = /* GraphQL */ `query ListMaquinarias(
 ) {
   listMaquinarias(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
+      id
       NroVehiculo
       Patentedelvehiculo
       TIPO
@@ -98,7 +126,20 @@ export const listMaquinarias = /* GraphQL */ `query ListMaquinarias(
         nextToken
         __typename
       }
-      id
+      OPERADOR {
+        id
+        NOMBRE
+        EMAIL
+        TELEFONO
+        DIRECCION
+        MAQUINARIA {
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       oPERARIOMAQUINARIAId
@@ -111,6 +152,98 @@ export const listMaquinarias = /* GraphQL */ `query ListMaquinarias(
 ` as GeneratedQuery<
   APITypes.ListMaquinariasQueryVariables,
   APITypes.ListMaquinariasQuery
+>;
+export const getOPERARIO = /* GraphQL */ `query GetOPERARIO($id: ID!) {
+  getOPERARIO(id: $id) {
+    id
+    NOMBRE
+    EMAIL
+    TELEFONO
+    DIRECCION
+    MAQUINARIA {
+      items {
+        id
+        NroVehiculo
+        Patentedelvehiculo
+        TIPO
+        MARCA
+        DESCRIPCION
+        PHOTO
+        OPERATIVIDAD {
+          nextToken
+          __typename
+        }
+        HOROMETRO {
+          nextToken
+          __typename
+        }
+        OPERADOR {
+          id
+          NOMBRE
+          EMAIL
+          TELEFONO
+          DIRECCION
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        oPERARIOMAQUINARIAId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetOPERARIOQueryVariables,
+  APITypes.GetOPERARIOQuery
+>;
+export const listOPERARIOS = /* GraphQL */ `query ListOPERARIOS(
+  $filter: ModelOPERARIOFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listOPERARIOS(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      NOMBRE
+      EMAIL
+      TELEFONO
+      DIRECCION
+      MAQUINARIA {
+        items {
+          id
+          NroVehiculo
+          Patentedelvehiculo
+          TIPO
+          MARCA
+          DESCRIPCION
+          PHOTO
+          createdAt
+          updatedAt
+          oPERARIOMAQUINARIAId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListOPERARIOSQueryVariables,
+  APITypes.ListOPERARIOSQuery
 >;
 export const getOPERATIVIDAD = /* GraphQL */ `query GetOPERATIVIDAD($id: ID!, $FECHA: String!) {
   getOPERATIVIDAD(id: $id, FECHA: $FECHA) {
@@ -161,88 +294,6 @@ export const listOPERATIVIDADS = /* GraphQL */ `query ListOPERATIVIDADS(
 ` as GeneratedQuery<
   APITypes.ListOPERATIVIDADSQueryVariables,
   APITypes.ListOPERATIVIDADSQuery
->;
-export const getOPERARIO = /* GraphQL */ `query GetOPERARIO($id: ID!) {
-  getOPERARIO(id: $id) {
-    id
-    NOMBRE
-    EMAIL
-    TELEFONO
-    DIRECCION
-    MAQUINARIA {
-      items {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        PHOTO
-        OPERATIVIDAD {
-          nextToken
-          __typename
-        }
-        HOROMETRO {
-          nextToken
-          __typename
-        }
-        id
-        createdAt
-        updatedAt
-        oPERARIOMAQUINARIAId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedQuery<
-  APITypes.GetOPERARIOQueryVariables,
-  APITypes.GetOPERARIOQuery
->;
-export const listOPERARIOS = /* GraphQL */ `query ListOPERARIOS(
-  $filter: ModelOPERARIOFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listOPERARIOS(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      NOMBRE
-      EMAIL
-      TELEFONO
-      DIRECCION
-      MAQUINARIA {
-        items {
-          NroVehiculo
-          Patentedelvehiculo
-          TIPO
-          MARCA
-          DESCRIPCION
-          PHOTO
-          id
-          createdAt
-          updatedAt
-          oPERARIOMAQUINARIAId
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
-    nextToken
-    __typename
-  }
-}
-` as GeneratedQuery<
-  APITypes.ListOPERARIOSQueryVariables,
-  APITypes.ListOPERARIOSQuery
 >;
 export const getHorometro = /* GraphQL */ `query GetHorometro($id: ID!) {
   getHorometro(id: $id) {

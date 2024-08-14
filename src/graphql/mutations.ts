@@ -13,6 +13,7 @@ export const createMaquinaria = /* GraphQL */ `mutation CreateMaquinaria(
   $condition: ModelMaquinariaConditionInput
 ) {
   createMaquinaria(input: $input, condition: $condition) {
+    id
     NroVehiculo
     Patentedelvehiculo
     TIPO
@@ -50,7 +51,33 @@ export const createMaquinaria = /* GraphQL */ `mutation CreateMaquinaria(
       nextToken
       __typename
     }
-    id
+    OPERADOR {
+      id
+      NOMBRE
+      EMAIL
+      TELEFONO
+      DIRECCION
+      MAQUINARIA {
+        items {
+          id
+          NroVehiculo
+          Patentedelvehiculo
+          TIPO
+          MARCA
+          DESCRIPCION
+          PHOTO
+          createdAt
+          updatedAt
+          oPERARIOMAQUINARIAId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
     oPERARIOMAQUINARIAId
@@ -66,6 +93,7 @@ export const updateMaquinaria = /* GraphQL */ `mutation UpdateMaquinaria(
   $condition: ModelMaquinariaConditionInput
 ) {
   updateMaquinaria(input: $input, condition: $condition) {
+    id
     NroVehiculo
     Patentedelvehiculo
     TIPO
@@ -103,7 +131,6 @@ export const updateMaquinaria = /* GraphQL */ `mutation UpdateMaquinaria(
       nextToken
       __typename
     }
-    id
     createdAt
     updatedAt
     oPERARIOMAQUINARIAId
@@ -119,6 +146,7 @@ export const deleteMaquinaria = /* GraphQL */ `mutation DeleteMaquinaria(
   $condition: ModelMaquinariaConditionInput
 ) {
   deleteMaquinaria(input: $input, condition: $condition) {
+    id
     NroVehiculo
     Patentedelvehiculo
     TIPO
@@ -156,7 +184,6 @@ export const deleteMaquinaria = /* GraphQL */ `mutation DeleteMaquinaria(
       nextToken
       __typename
     }
-    id
     createdAt
     updatedAt
     oPERARIOMAQUINARIAId
@@ -166,6 +193,168 @@ export const deleteMaquinaria = /* GraphQL */ `mutation DeleteMaquinaria(
 ` as GeneratedMutation<
   APITypes.DeleteMaquinariaMutationVariables,
   APITypes.DeleteMaquinariaMutation
+>;
+export const createOPERARIO = /* GraphQL */ `mutation CreateOPERARIO(
+  $input: CreateOPERARIOInput!
+  $condition: ModelOPERARIOConditionInput
+) {
+  createOPERARIO(input: $input, condition: $condition) {
+    id
+    NOMBRE
+    EMAIL
+    TELEFONO
+    DIRECCION
+    MAQUINARIA {
+      items {
+        id
+        NroVehiculo
+        Patentedelvehiculo
+        TIPO
+        MARCA
+        DESCRIPCION
+        PHOTO
+        OPERATIVIDAD {
+          nextToken
+          __typename
+        }
+        HOROMETRO {
+          nextToken
+          __typename
+        }
+        OPERADOR {
+          id
+          NOMBRE
+          EMAIL
+          TELEFONO
+          DIRECCION
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        oPERARIOMAQUINARIAId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateOPERARIOMutationVariables,
+  APITypes.CreateOPERARIOMutation
+>;
+export const updateOPERARIO = /* GraphQL */ `mutation UpdateOPERARIO(
+  $input: UpdateOPERARIOInput!
+  $condition: ModelOPERARIOConditionInput
+) {
+  updateOPERARIO(input: $input, condition: $condition) {
+    id
+    NOMBRE
+    EMAIL
+    TELEFONO
+    DIRECCION
+    MAQUINARIA {
+      items {
+        id
+        NroVehiculo
+        Patentedelvehiculo
+        TIPO
+        MARCA
+        DESCRIPCION
+        PHOTO
+        OPERATIVIDAD {
+          nextToken
+          __typename
+        }
+        HOROMETRO {
+          nextToken
+          __typename
+        }
+        OPERADOR {
+          id
+          NOMBRE
+          EMAIL
+          TELEFONO
+          DIRECCION
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        oPERARIOMAQUINARIAId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateOPERARIOMutationVariables,
+  APITypes.UpdateOPERARIOMutation
+>;
+export const deleteOPERARIO = /* GraphQL */ `mutation DeleteOPERARIO(
+  $input: DeleteOPERARIOInput!
+  $condition: ModelOPERARIOConditionInput
+) {
+  deleteOPERARIO(input: $input, condition: $condition) {
+    id
+    NOMBRE
+    EMAIL
+    TELEFONO
+    DIRECCION
+    MAQUINARIA {
+      items {
+        id
+        NroVehiculo
+        Patentedelvehiculo
+        TIPO
+        MARCA
+        DESCRIPCION
+        PHOTO
+        OPERATIVIDAD {
+          nextToken
+          __typename
+        }
+        HOROMETRO {
+          nextToken
+          __typename
+        }
+        OPERADOR {
+          id
+          NOMBRE
+          EMAIL
+          TELEFONO
+          DIRECCION
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        oPERARIOMAQUINARIAId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteOPERARIOMutationVariables,
+  APITypes.DeleteOPERARIOMutation
 >;
 export const createOPERATIVIDAD = /* GraphQL */ `mutation CreateOPERATIVIDAD(
   $input: CreateOPERATIVIDADInput!
@@ -223,138 +412,6 @@ export const deleteOPERATIVIDAD = /* GraphQL */ `mutation DeleteOPERATIVIDAD(
 ` as GeneratedMutation<
   APITypes.DeleteOPERATIVIDADMutationVariables,
   APITypes.DeleteOPERATIVIDADMutation
->;
-export const createOPERARIO = /* GraphQL */ `mutation CreateOPERARIO(
-  $input: CreateOPERARIOInput!
-  $condition: ModelOPERARIOConditionInput
-) {
-  createOPERARIO(input: $input, condition: $condition) {
-    id
-    NOMBRE
-    EMAIL
-    TELEFONO
-    DIRECCION
-    MAQUINARIA {
-      items {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        PHOTO
-        OPERATIVIDAD {
-          nextToken
-          __typename
-        }
-        HOROMETRO {
-          nextToken
-          __typename
-        }
-        id
-        createdAt
-        updatedAt
-        oPERARIOMAQUINARIAId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.CreateOPERARIOMutationVariables,
-  APITypes.CreateOPERARIOMutation
->;
-export const updateOPERARIO = /* GraphQL */ `mutation UpdateOPERARIO(
-  $input: UpdateOPERARIOInput!
-  $condition: ModelOPERARIOConditionInput
-) {
-  updateOPERARIO(input: $input, condition: $condition) {
-    id
-    NOMBRE
-    EMAIL
-    TELEFONO
-    DIRECCION
-    MAQUINARIA {
-      items {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        PHOTO
-        OPERATIVIDAD {
-          nextToken
-          __typename
-        }
-        HOROMETRO {
-          nextToken
-          __typename
-        }
-        id
-        createdAt
-        updatedAt
-        oPERARIOMAQUINARIAId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.UpdateOPERARIOMutationVariables,
-  APITypes.UpdateOPERARIOMutation
->;
-export const deleteOPERARIO = /* GraphQL */ `mutation DeleteOPERARIO(
-  $input: DeleteOPERARIOInput!
-  $condition: ModelOPERARIOConditionInput
-) {
-  deleteOPERARIO(input: $input, condition: $condition) {
-    id
-    NOMBRE
-    EMAIL
-    TELEFONO
-    DIRECCION
-    MAQUINARIA {
-      items {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        PHOTO
-        OPERATIVIDAD {
-          nextToken
-          __typename
-        }
-        HOROMETRO {
-          nextToken
-          __typename
-        }
-        id
-        createdAt
-        updatedAt
-        oPERARIOMAQUINARIAId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.DeleteOPERARIOMutationVariables,
-  APITypes.DeleteOPERARIOMutation
 >;
 export const createHorometro = /* GraphQL */ `mutation CreateHorometro(
   $input: CreateHorometroInput!

@@ -47,10 +47,12 @@ export class MaquinariasService {
   }
 
   deleteMaquinaria(id:DeleteMaquinariaInput){
+    console.log(id)
     return this.client.graphql(
       {
         query:mutations.deleteMaquinaria,
-        variables:{input:id}
+        variables:{input:id},
+        authMode:'userPool'
       }
     )
   }

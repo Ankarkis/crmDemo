@@ -12,6 +12,7 @@ export const onCreateMaquinaria = /* GraphQL */ `subscription OnCreateMaquinaria
   $filter: ModelSubscriptionMaquinariaFilterInput
 ) {
   onCreateMaquinaria(filter: $filter) {
+    id
     NroVehiculo
     Patentedelvehiculo
     TIPO
@@ -49,7 +50,33 @@ export const onCreateMaquinaria = /* GraphQL */ `subscription OnCreateMaquinaria
       nextToken
       __typename
     }
-    id
+    OPERADOR {
+      id
+      NOMBRE
+      EMAIL
+      TELEFONO
+      DIRECCION
+      MAQUINARIA {
+        items {
+          id
+          NroVehiculo
+          Patentedelvehiculo
+          TIPO
+          MARCA
+          DESCRIPCION
+          PHOTO
+          createdAt
+          updatedAt
+          oPERARIOMAQUINARIAId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
     oPERARIOMAQUINARIAId
@@ -64,6 +91,7 @@ export const onUpdateMaquinaria = /* GraphQL */ `subscription OnUpdateMaquinaria
   $filter: ModelSubscriptionMaquinariaFilterInput
 ) {
   onUpdateMaquinaria(filter: $filter) {
+    id
     NroVehiculo
     Patentedelvehiculo
     TIPO
@@ -101,7 +129,33 @@ export const onUpdateMaquinaria = /* GraphQL */ `subscription OnUpdateMaquinaria
       nextToken
       __typename
     }
-    id
+    OPERADOR {
+      id
+      NOMBRE
+      EMAIL
+      TELEFONO
+      DIRECCION
+      MAQUINARIA {
+        items {
+          id
+          NroVehiculo
+          Patentedelvehiculo
+          TIPO
+          MARCA
+          DESCRIPCION
+          PHOTO
+          createdAt
+          updatedAt
+          oPERARIOMAQUINARIAId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
     oPERARIOMAQUINARIAId
@@ -116,6 +170,7 @@ export const onDeleteMaquinaria = /* GraphQL */ `subscription OnDeleteMaquinaria
   $filter: ModelSubscriptionMaquinariaFilterInput
 ) {
   onDeleteMaquinaria(filter: $filter) {
+    id
     NroVehiculo
     Patentedelvehiculo
     TIPO
@@ -153,7 +208,33 @@ export const onDeleteMaquinaria = /* GraphQL */ `subscription OnDeleteMaquinaria
       nextToken
       __typename
     }
-    id
+    OPERADOR {
+      id
+      NOMBRE
+      EMAIL
+      TELEFONO
+      DIRECCION
+      MAQUINARIA {
+        items {
+          id
+          NroVehiculo
+          Patentedelvehiculo
+          TIPO
+          MARCA
+          DESCRIPCION
+          PHOTO
+          createdAt
+          updatedAt
+          oPERARIOMAQUINARIAId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
     createdAt
     updatedAt
     oPERARIOMAQUINARIAId
@@ -163,6 +244,159 @@ export const onDeleteMaquinaria = /* GraphQL */ `subscription OnDeleteMaquinaria
 ` as GeneratedSubscription<
   APITypes.OnDeleteMaquinariaSubscriptionVariables,
   APITypes.OnDeleteMaquinariaSubscription
+>;
+export const onCreateOPERARIO = /* GraphQL */ `subscription OnCreateOPERARIO($filter: ModelSubscriptionOPERARIOFilterInput) {
+  onCreateOPERARIO(filter: $filter) {
+    id
+    NOMBRE
+    EMAIL
+    TELEFONO
+    DIRECCION
+    MAQUINARIA {
+      items {
+        id
+        NroVehiculo
+        Patentedelvehiculo
+        TIPO
+        MARCA
+        DESCRIPCION
+        PHOTO
+        OPERATIVIDAD {
+          nextToken
+          __typename
+        }
+        HOROMETRO {
+          nextToken
+          __typename
+        }
+        OPERADOR {
+          id
+          NOMBRE
+          EMAIL
+          TELEFONO
+          DIRECCION
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        oPERARIOMAQUINARIAId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateOPERARIOSubscriptionVariables,
+  APITypes.OnCreateOPERARIOSubscription
+>;
+export const onUpdateOPERARIO = /* GraphQL */ `subscription OnUpdateOPERARIO($filter: ModelSubscriptionOPERARIOFilterInput) {
+  onUpdateOPERARIO(filter: $filter) {
+    id
+    NOMBRE
+    EMAIL
+    TELEFONO
+    DIRECCION
+    MAQUINARIA {
+      items {
+        id
+        NroVehiculo
+        Patentedelvehiculo
+        TIPO
+        MARCA
+        DESCRIPCION
+        PHOTO
+        OPERATIVIDAD {
+          nextToken
+          __typename
+        }
+        HOROMETRO {
+          nextToken
+          __typename
+        }
+        OPERADOR {
+          id
+          NOMBRE
+          EMAIL
+          TELEFONO
+          DIRECCION
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        oPERARIOMAQUINARIAId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateOPERARIOSubscriptionVariables,
+  APITypes.OnUpdateOPERARIOSubscription
+>;
+export const onDeleteOPERARIO = /* GraphQL */ `subscription OnDeleteOPERARIO($filter: ModelSubscriptionOPERARIOFilterInput) {
+  onDeleteOPERARIO(filter: $filter) {
+    id
+    NOMBRE
+    EMAIL
+    TELEFONO
+    DIRECCION
+    MAQUINARIA {
+      items {
+        id
+        NroVehiculo
+        Patentedelvehiculo
+        TIPO
+        MARCA
+        DESCRIPCION
+        PHOTO
+        OPERATIVIDAD {
+          nextToken
+          __typename
+        }
+        HOROMETRO {
+          nextToken
+          __typename
+        }
+        OPERADOR {
+          id
+          NOMBRE
+          EMAIL
+          TELEFONO
+          DIRECCION
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        oPERARIOMAQUINARIAId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteOPERARIOSubscriptionVariables,
+  APITypes.OnDeleteOPERARIOSubscription
 >;
 export const onCreateOPERATIVIDAD = /* GraphQL */ `subscription OnCreateOPERATIVIDAD(
   $filter: ModelSubscriptionOPERATIVIDADFilterInput
@@ -217,129 +451,6 @@ export const onDeleteOPERATIVIDAD = /* GraphQL */ `subscription OnDeleteOPERATIV
 ` as GeneratedSubscription<
   APITypes.OnDeleteOPERATIVIDADSubscriptionVariables,
   APITypes.OnDeleteOPERATIVIDADSubscription
->;
-export const onCreateOPERARIO = /* GraphQL */ `subscription OnCreateOPERARIO($filter: ModelSubscriptionOPERARIOFilterInput) {
-  onCreateOPERARIO(filter: $filter) {
-    id
-    NOMBRE
-    EMAIL
-    TELEFONO
-    DIRECCION
-    MAQUINARIA {
-      items {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        PHOTO
-        OPERATIVIDAD {
-          nextToken
-          __typename
-        }
-        HOROMETRO {
-          nextToken
-          __typename
-        }
-        id
-        createdAt
-        updatedAt
-        oPERARIOMAQUINARIAId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedSubscription<
-  APITypes.OnCreateOPERARIOSubscriptionVariables,
-  APITypes.OnCreateOPERARIOSubscription
->;
-export const onUpdateOPERARIO = /* GraphQL */ `subscription OnUpdateOPERARIO($filter: ModelSubscriptionOPERARIOFilterInput) {
-  onUpdateOPERARIO(filter: $filter) {
-    id
-    NOMBRE
-    EMAIL
-    TELEFONO
-    DIRECCION
-    MAQUINARIA {
-      items {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        PHOTO
-        OPERATIVIDAD {
-          nextToken
-          __typename
-        }
-        HOROMETRO {
-          nextToken
-          __typename
-        }
-        id
-        createdAt
-        updatedAt
-        oPERARIOMAQUINARIAId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedSubscription<
-  APITypes.OnUpdateOPERARIOSubscriptionVariables,
-  APITypes.OnUpdateOPERARIOSubscription
->;
-export const onDeleteOPERARIO = /* GraphQL */ `subscription OnDeleteOPERARIO($filter: ModelSubscriptionOPERARIOFilterInput) {
-  onDeleteOPERARIO(filter: $filter) {
-    id
-    NOMBRE
-    EMAIL
-    TELEFONO
-    DIRECCION
-    MAQUINARIA {
-      items {
-        NroVehiculo
-        Patentedelvehiculo
-        TIPO
-        MARCA
-        DESCRIPCION
-        PHOTO
-        OPERATIVIDAD {
-          nextToken
-          __typename
-        }
-        HOROMETRO {
-          nextToken
-          __typename
-        }
-        id
-        createdAt
-        updatedAt
-        oPERARIOMAQUINARIAId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-` as GeneratedSubscription<
-  APITypes.OnDeleteOPERARIOSubscriptionVariables,
-  APITypes.OnDeleteOPERARIOSubscription
 >;
 export const onCreateHorometro = /* GraphQL */ `subscription OnCreateHorometro($filter: ModelSubscriptionHorometroFilterInput) {
   onCreateHorometro(filter: $filter) {

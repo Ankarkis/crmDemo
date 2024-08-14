@@ -86,6 +86,7 @@ export type Maquinaria = {
   Patentedelvehiculo: string,
   TIPO: string,
   MARCA: string,
+  OPERADORID:string;
   DESCRIPCION: string,
   OPERATIVIDAD?: ModelOPERATIVIDADConnection | null,
   id: string,
@@ -114,6 +115,7 @@ export type UpdateMaquinariaInput = {
   oPERARIOMAQUINARIAId?:string|null,
   NroVehiculo?: string | null,
   Patentedelvehiculo?: string | null,
+  OPERADORID?:string | null;
   TIPO?: string | null,
   MARCA?: string | null,
   DESCRIPCION?: string | null,

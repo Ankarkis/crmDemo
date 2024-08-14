@@ -49,6 +49,11 @@
                     <td style="min-width: 8rem;">{{maquinaria.MARCA}}</td>
                     <td style="min-width: 8rem;">{{maquinaria.NroVehiculo}}</td>
                     <td style="min-width: 8rem;">{{maquinaria.TIPO}}</td>
+                    <td>
+                        <p-button pRipple icon="pi pi-trash" class="mr-2" [rounded]="true" [outlined]="true" severity="danger"
+                        (onClick)="deleteMaquinariaOperador(maquinaria.id)"
+                            />
+                    </td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
