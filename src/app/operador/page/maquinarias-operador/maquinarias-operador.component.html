@@ -22,7 +22,7 @@
 
             <p-calendar  
                 appendTo="body"
-                [(ngModel)]="costos.Date"
+                [(ngModel)]="horometro.Date"
                 [showIcon]="true"
                 [showTime]="true"  
                 inputId="buttondisplay" 
@@ -31,7 +31,7 @@
 
         <div class="flex-auto">
             <label for="horometro" class="font-bold block mb-2"> Ingresa el valor del horometro </label>  
-            <input type="number" pInputText  variant="filled" id="horometro" [(ngModel)]="costos.Horometro" />  
+            <input type="number" pInputText  variant="filled" id="horometro" [(ngModel)]="horometro.Horometro" />  
         
         </div>
 
@@ -46,6 +46,6 @@
 
     <ng-template pTemplate="footer">
         <p-button pRipple label="Cancelar" icon="pi pi-times" [text]="true"  (click)="closeDialogAdjunto()"></p-button>
-        <p-button pRipple label="Guardar" icon="pi pi-check" (click)="addCost()" [text]="true" ></p-button>
+        <p-button pRipple label="Guardar" icon="pi pi-check" (click)="addHorometro()" [text]="true" ></p-button>
     </ng-template>
 </p-dialog>

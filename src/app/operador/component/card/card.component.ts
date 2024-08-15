@@ -16,11 +16,11 @@ export class CardComponent {
   openDialogUpdateImage=model<OutputCard>();
   openDialogUpdateCost=model<OutputCard>();
   
-  openDialogImage(id:string){
-    this.openDialogUpdateImage.set({id,openDialog:true});
+  openDialogImage(id:string,nroVehiculo:string){
+    this.openDialogUpdateImage.set({id,openDialog:true,numeroMaquina:nroVehiculo});
   }
-  openDialogCost(id:string){
-    this.openDialogUpdateCost.set({id,openDialog:true});
+  openDialogCost(id:string,nroVehiculo:string){
+    this.openDialogUpdateCost.set({id,openDialog:true,numeroMaquina:nroVehiculo});
   }
 
 }
