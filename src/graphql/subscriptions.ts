@@ -38,6 +38,7 @@ export const onCreateMaquinaria = /* GraphQL */ `subscription OnCreateMaquinaria
         id
         Horometro
         Date
+        NroVehiculo
         ADJUNTOS {
           nextToken
           __typename
@@ -117,6 +118,7 @@ export const onUpdateMaquinaria = /* GraphQL */ `subscription OnUpdateMaquinaria
         id
         Horometro
         Date
+        NroVehiculo
         ADJUNTOS {
           nextToken
           __typename
@@ -196,6 +198,7 @@ export const onDeleteMaquinaria = /* GraphQL */ `subscription OnDeleteMaquinaria
         id
         Horometro
         Date
+        NroVehiculo
         ADJUNTOS {
           nextToken
           __typename
@@ -457,6 +460,7 @@ export const onCreateHorometro = /* GraphQL */ `subscription OnCreateHorometro($
     id
     Horometro
     Date
+    NroVehiculo
     ADJUNTOS {
       items {
         id
@@ -484,6 +488,7 @@ export const onUpdateHorometro = /* GraphQL */ `subscription OnUpdateHorometro($
     id
     Horometro
     Date
+    NroVehiculo
     ADJUNTOS {
       items {
         id
@@ -511,6 +516,7 @@ export const onDeleteHorometro = /* GraphQL */ `subscription OnDeleteHorometro($
     id
     Horometro
     Date
+    NroVehiculo
     ADJUNTOS {
       items {
         id

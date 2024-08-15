@@ -18,8 +18,8 @@
             </div>
         
             <div class="flex flex-column gap-1  justify-content-between">
-				<button pButton pRipple label="Actualizar imagen" icon="pi pi-upload" class="p-button-outlined" (click)="openDialogImage(maquinariaData.id)"></button>
-				<button pButton pRipple label="Agregar costos" icon="pi pi-plus" class="p-button-outlined" (click)="openDialogCost(maquinariaData.id)"></button>
+				<button pButton pRipple label="Actualizar imagen" icon="pi pi-upload" class="p-button-outlined" (click)="openDialogImage(maquinariaData.id,maquinariaData.NroVehiculo)"></button>
+				<button pButton pRipple label="Agregar costos" icon="pi pi-plus" class="p-button-outlined" (click)="openDialogCost(maquinariaData.id,maquinariaData.NroVehiculo)"></button>
             </div>
         </div>
     </div>

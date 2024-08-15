@@ -32,7 +32,7 @@ import { InputTextModule } from 'primeng/inputtext';
 })
 export default class MaquinariasOperadorComponent {
   images=model<Image[]>([]);
-  costos:CreateHorometroInput=this.resetCost();
+  horometro:CreateHorometroInput=this.resetCost();
   private maquinariUserService=inject(MaquinariaUserService);
   maquinariaItems:Maquinaria[]=[];
   openDialogUpdateImage=model<OutputCard>();
@@ -75,11 +75,12 @@ export default class MaquinariasOperadorComponent {
     
     });
   }
-   addCost(){
+   addHorometro(){
     const id=this.createId();;
-    this.costos.id=id;
-    this.costos.maquinariaHOROMETROId=this.openDialogUpdateCost()?.id;
-   this.costService.saveCost(this.costos).catch(()=>{      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Ha ocurrido un error', life: 3000 });})
+    this.horometro.id=id;
+    this.horometro.maquinariaHOROMETROId=this.openDialogUpdateCost()?.id;
+    this.horometro.NroVehiculo=this.openDialogUpdateCost()?.numeroMaquina!;
+   this.costService.saveCost(this.horometro).catch(()=>{      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Ha ocurrido un error', life: 3000 });})
    this.addAdjuntos(id)
   }
 
@@ -100,14 +101,14 @@ export default class MaquinariasOperadorComponent {
 
 
   closeDialogAdjunto(){
-    this.openDialogUpdateCost.set({id:'',openDialog:false});
+    this.openDialogUpdateCost.set({id:'',openDialog:false,numeroMaquina:''});
   }
   closeDialogImage(){
-    this.openDialogUpdateImage.set({id:'',openDialog:false});
+    this.openDialogUpdateImage.set({id:'',openDialog:false,numeroMaquina:''});
   }
 
   resetCost():CreateHorometroInput{
-    return {Date:'',Horometro:0};
+    return {Date:'',Horometro:0,NroVehiculo:''};
   }
   createId(): string {
     let id = '';

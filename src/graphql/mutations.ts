@@ -39,6 +39,7 @@ export const createMaquinaria = /* GraphQL */ `mutation CreateMaquinaria(
         id
         Horometro
         Date
+        NroVehiculo
         ADJUNTOS {
           nextToken
           __typename
@@ -119,6 +120,7 @@ export const updateMaquinaria = /* GraphQL */ `mutation UpdateMaquinaria(
         id
         Horometro
         Date
+        NroVehiculo
         ADJUNTOS {
           nextToken
           __typename
@@ -129,6 +131,33 @@ export const updateMaquinaria = /* GraphQL */ `mutation UpdateMaquinaria(
         __typename
       }
       nextToken
+      __typename
+    }
+    OPERADOR {
+      id
+      NOMBRE
+      EMAIL
+      TELEFONO
+      DIRECCION
+      MAQUINARIA {
+        items {
+          id
+          NroVehiculo
+          Patentedelvehiculo
+          TIPO
+          MARCA
+          DESCRIPCION
+          PHOTO
+          createdAt
+          updatedAt
+          oPERARIOMAQUINARIAId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
       __typename
     }
     createdAt
@@ -172,6 +201,7 @@ export const deleteMaquinaria = /* GraphQL */ `mutation DeleteMaquinaria(
         id
         Horometro
         Date
+        NroVehiculo
         ADJUNTOS {
           nextToken
           __typename
@@ -182,6 +212,33 @@ export const deleteMaquinaria = /* GraphQL */ `mutation DeleteMaquinaria(
         __typename
       }
       nextToken
+      __typename
+    }
+    OPERADOR {
+      id
+      NOMBRE
+      EMAIL
+      TELEFONO
+      DIRECCION
+      MAQUINARIA {
+        items {
+          id
+          NroVehiculo
+          Patentedelvehiculo
+          TIPO
+          MARCA
+          DESCRIPCION
+          PHOTO
+          createdAt
+          updatedAt
+          oPERARIOMAQUINARIAId
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
       __typename
     }
     createdAt
@@ -421,6 +478,7 @@ export const createHorometro = /* GraphQL */ `mutation CreateHorometro(
     id
     Horometro
     Date
+    NroVehiculo
     ADJUNTOS {
       items {
         id
@@ -451,6 +509,7 @@ export const updateHorometro = /* GraphQL */ `mutation UpdateHorometro(
     id
     Horometro
     Date
+    NroVehiculo
     ADJUNTOS {
       items {
         id
@@ -481,6 +540,7 @@ export const deleteHorometro = /* GraphQL */ `mutation DeleteHorometro(
     id
     Horometro
     Date
+    NroVehiculo
     ADJUNTOS {
       items {
         id

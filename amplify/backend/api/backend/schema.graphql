@@ -45,6 +45,7 @@ type Horometro
     id:ID!
     Horometro:Float!
     Date:String
+    NroVehiculo:String!
     ADJUNTOS:[ADJUNTO] @hasMany
 }
 

@@ -36,6 +36,7 @@ export const getMaquinaria = /* GraphQL */ `query GetMaquinaria($id: ID!) {
         id
         Horometro
         Date
+        NroVehiculo
         ADJUNTOS {
           nextToken
           __typename
@@ -118,6 +119,7 @@ export const listMaquinarias = /* GraphQL */ `query ListMaquinarias(
           id
           Horometro
           Date
+          NroVehiculo
           createdAt
           updatedAt
           maquinariaHOROMETROId
@@ -300,6 +302,7 @@ export const getHorometro = /* GraphQL */ `query GetHorometro($id: ID!) {
     id
     Horometro
     Date
+    NroVehiculo
     ADJUNTOS {
       items {
         id
@@ -332,6 +335,7 @@ export const listHorometros = /* GraphQL */ `query ListHorometros(
       id
       Horometro
       Date
+      NroVehiculo
       ADJUNTOS {
         items {
           id
